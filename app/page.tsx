@@ -1,6 +1,12 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
+
+const heroSlides = [
+  { src: "/hero-hydrogen-clean.png", label: "Hydrogen storage and wind power" },
+  { src: "/hero-solar-clean.png", label: "Solar energy field" },
+  { src: "/hero-forest-clean.png", label: "Forest and natural environment" },
+];
 
 const navItems = [
   ["technology", "Technology", "기술"],
@@ -47,6 +53,14 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [language, setLanguage] = useState<"EN" | "KR">("EN");
   const [submitted, setSubmitted] = useState(false);
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % heroSlides.length);
+    }, 6000);
+    return () => window.clearInterval(interval);
+  }, []);
 
   function submitInquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -78,10 +92,13 @@ export default function Home() {
       </header>
 
       <section className="hero" id="top">
-        <div className="hero-background" aria-hidden="true"><img src="/hydrogen-hero.png" alt="" /></div>
+        <div className="hero-background" aria-hidden="true">
+          {heroSlides.map((slide, index) => (
+            <img className={activeSlide === index ? "active" : ""} key={slide.src} src={slide.src} alt="" />
+          ))}
+        </div>
         <div className="hero-grid" aria-hidden="true" />
         <div className="hero-copy">
-          <div className="eyebrow light"><span /> EST SOLUTION · CLEAN ENERGY R&D</div>
           <h1>{korean ? <>물에서 시작해,<br /><em>에너지의 미래</em>를 만듭니다.</> : <>From water to a<br /><em>cleaner energy future.</em></>}</h1>
           <p>{korean
             ? "촉매와 MEA부터 수전해 스택까지. 이에스티솔루션은 경제적인 그린수소 생산을 위한 핵심 기술을 개발합니다."
@@ -89,6 +106,18 @@ export default function Home() {
           <div className="hero-actions">
             <a className="button primary" href="#technology">{korean ? "기술 살펴보기" : "Explore our technology"}<span>→</span></a>
           </div>
+        </div>
+        <div className="hero-pagination" aria-label="Hero image carousel">
+          {heroSlides.map((slide, index) => (
+            <button
+              className={activeSlide === index ? "active" : ""}
+              key={slide.src}
+              type="button"
+              onClick={() => setActiveSlide(index)}
+              aria-label={`Show ${slide.label}`}
+              aria-current={activeSlide === index ? "true" : undefined}
+            />
+          ))}
         </div>
       </section>
 
