@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { BarElement, CategoryScale, Chart as ChartJS, LinearScale, Tooltip, type ChartData, type ChartOptions } from "chart.js";
+import { IconAtom, IconBoxMultiple, IconGrain, IconLayersIntersect, IconStack2, IconSun } from "@tabler/icons-react";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip);
 
@@ -27,10 +28,18 @@ const challenges = [
   { number: "04", title: "Scaling with confidence", copy: "Distributed sites need flexible capacity and resilient operation. Modular single- and multi-stack designs help systems grow with demand." },
 ];
 
-const solutions = [
-  { href: "/products/systems", eyebrow: "WATER ELECTROLYSIS", title: "PEM stack systems", copy: "A scalable 2.5, 5 and 20 kW stack portfolio for practical green-hydrogen production.", image: "/product-stack-20kw.png", accent: "azure" },
-  { href: "/products/components", eyebrow: "CORE TECHNOLOGY", title: "Catalyst to stack", copy: "Catalysts, MEAs, membranes and Ti-PTL engineered as one connected performance chain.", image: "/product-stack-5kw.png", accent: "teal" },
-  { href: "/products/mobile", eyebrow: "DISTRIBUTED ENERGY", title: "Mobile hydrogen systems", copy: "Independent production and storage for remote sites, demonstrations and emergency energy use.", image: "/mobile-hydrogen-station.png", accent: "green" },
+const systemProducts = [
+  { name: "2.5 kW system", use: "500 L/h · pilot sites", image: "/product-stack-2-5kw.png", alt: "EST Solution 2.5 kW electrolysis system" },
+  { name: "5 kW system", use: "1,000 L/h · distributed", image: "/product-stack-5kw.png", alt: "EST Solution 5 kW electrolysis system" },
+  { name: "20 kW system", use: "4,000 L/h · industrial", image: "/product-stack-20kw.png", alt: "EST Solution 20 kW electrolysis system", flagship: true },
+];
+
+const coreComponents = [
+  { label: "Catalyst", Icon: IconAtom },
+  { label: "MEA", Icon: IconStack2 },
+  { label: "Ti-PTL", Icon: IconGrain },
+  { label: "Membrane", Icon: IconLayersIntersect },
+  { label: "Stack", Icon: IconBoxMultiple },
 ];
 
 const hydrogenMix = [
@@ -121,7 +130,7 @@ export default function Home() {
           <div className="hero-proof" aria-label="Key company strengths">
             <span>↓ Up to 37% component cost reduction</span><span>0 kg CO₂ green H₂</span><span>GIST · KENTECH collaboration</span>
           </div>
-          <div className="hero-actions"><a className="button primary" href="#why-hydrogen">{korean ? "기술 살펴보기" : "Explore our technology"}<span>→</span></a><a className="button ghost" href="#contact">{korean ? "견적 문의" : "Request a quote"}</a></div>
+          <div className="hero-actions"><a className="button primary" href="#why-hydrogen">{korean ? "기술 살펴보기" : "Explore our technology"}<span>→</span></a><a className="button ghost" href="#products">{korean ? "견적 문의" : "Request a quote"}</a></div>
         </div>
         <div className="hero-image-label"><span />{heroSlides[activeSlide].caption}</div>
         <div className="hero-pagination" aria-label="Hero image carousel">
@@ -181,19 +190,24 @@ export default function Home() {
         <div className="challenge-answer"><span>ONE CONNECTED ANSWER</span><strong>Material science</strong><i>→</i><strong>Core components</strong><i>→</i><strong>Modular systems</strong></div>
       </section>
 
-      <section className="solution-section" id="products">
-        <div className="solution-heading">
-          <div><div className="eyebrow"><span /> SOLUTIONS & PRODUCTS</div><h2>From a critical component<br />to a working system.</h2></div>
-          <p>Explore each product family for specifications, technical advantages and application context. The landing page stays simple; the detail lives where buyers expect it.</p>
+      <section className="product-section" id="products">
+        <div className="product-tier system-tier">
+          <div className="product-tier-heading"><div className="product-eyebrow"><span /> WHAT YOU BUY</div><h2>Electrolysis systems</h2></div>
+          <div className="system-card-grid">
+            {systemProducts.map((product) => <article className={product.flagship ? "system-card flagship" : "system-card"} key={product.name}>
+              <a className="system-photo" href="/products/systems" aria-label={`View ${product.name} details`}><img src={product.image} alt={product.alt} /></a>
+              <h3>{product.name}</h3><p>{product.use}</p>
+            </article>)}
+          </div>
+          <div className="product-actions"><a className="spec-download" href="/EST-Solution-product-brochure.pdf" download>Download full spec sheet <span>↓</span></a><a className="quote-link" href="#contact">Request a quote <span>→</span></a></div>
         </div>
-        <div className="solution-grid">
-          {solutions.map((item) => (
-            <a className={`solution-card ${item.accent}`} href={item.href} key={item.href}>
-              <div className="solution-image"><img src={item.image} alt="" /></div>
-              <div className="solution-body"><small>{item.eyebrow}</small><h3>{item.title}</h3><p>{item.copy}</p><span>Explore solution <b>→</b></span></div>
-            </a>
-          ))}
+
+        <div className="product-tier component-tier">
+          <div className="product-tier-heading"><div className="product-eyebrow"><span /> WHAT’S INSIDE</div><h2>Core technology, built in-house</h2><p>Every system runs on components we design and manufacture ourselves — not sold separately, but why our systems cost less to run.</p></div>
+          <div className="component-strip">{coreComponents.map(({ label, Icon }) => <div className="component-tile" key={label}><Icon size={20} stroke={1.7} aria-hidden="true" /><span>{label}</span></div>)}</div>
         </div>
+
+        <div className="solar-footnote"><IconSun size={16} stroke={1.6} aria-hidden="true" /><span>Also offering solar power generation systems as a complementary product line — <a href="/products/solar">view details</a></span></div>
       </section>
 
       <section className="results-section" id="results">
