@@ -58,9 +58,8 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="EST Solution home">
-          <span className="brand-mark" aria-hidden="true"><i /><i /><i /></span>
-          <span><strong>EST</strong><small>ENERGY SPACE TECHNOLOGY</small></span>
+        <a className="brand brand-image" href="#top" aria-label="EST Solution home">
+          <img src="/est-solution-logo.png" alt="EST Solution" />
         </a>
         <nav className={menuOpen ? "nav open" : "nav"} aria-label="Primary navigation">
           {navItems.map(([id, en, kr]) => (
@@ -79,6 +78,7 @@ export default function Home() {
       </header>
 
       <section className="hero" id="top">
+        <div className="hero-background" aria-hidden="true"><img src="/hydrogen-hero.png" alt="" /></div>
         <div className="hero-grid" aria-hidden="true" />
         <div className="hero-copy">
           <div className="eyebrow light"><span /> EST SOLUTION · CLEAN ENERGY R&D</div>
@@ -88,29 +88,8 @@ export default function Home() {
             : "From catalysts and MEAs to water-electrolysis stacks, EST Solution develops the core technologies that make green hydrogen more practical."}</p>
           <div className="hero-actions">
             <a className="button primary" href="#technology">{korean ? "기술 살펴보기" : "Explore our technology"}<span>→</span></a>
-            <a className="button ghost" href="#proof">{korean ? "기술 역량 확인" : "See our capabilities"}</a>
-          </div>
-          <div className="hero-notes">
-            <span><i /> ALKALINE</span><span><i /> PEM</span><span><i /> SOLAR INTEGRATION</span>
           </div>
         </div>
-
-        <div className="hero-visual" aria-label="Diagram of EST Solution water electrolysis stack">
-          <div className="visual-label top-label">RENEWABLE INPUT <b>01</b></div>
-          <div className="sun"><span /></div>
-          <div className="energy-line one" /><div className="energy-line two" />
-          <div className="stack-wrap">
-            <div className="stack-glow" />
-            <div className="stack-top"><span>H₂</span><small>GREEN HYDROGEN</small></div>
-            <div className="stack">
-              {[0,1,2,3,4,5,6].map((n) => <div className="stack-layer" key={n}><i /><b>EST</b><i /></div>)}
-            </div>
-            <div className="stack-base">WATER ELECTROLYSIS STACK <span>PEM / ALKALINE</span></div>
-          </div>
-          <div className="molecule h-one">H</div><div className="molecule h-two">H</div>
-          <div className="visual-label bottom-label"><b>02</b> CORE TECHNOLOGY</div>
-        </div>
-        <div className="scroll-cue"><span /> SCROLL TO DISCOVER</div>
       </section>
 
       <section className="signal-bar" aria-label="Company highlights">
