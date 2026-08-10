@@ -29,6 +29,17 @@ const solutions = [
   { href: "/products/mobile", eyebrow: "DISTRIBUTED ENERGY", title: "Mobile hydrogen systems", copy: "Independent production and storage for remote sites, demonstrations and emergency energy use.", image: "/mobile-hydrogen-station.png", accent: "green" },
 ];
 
+const hydrogenMix = [
+  { year: "2023", gray: 95, blue: 4, green: 1 },
+  { year: "2025", gray: 92, blue: 6, green: 2 },
+  { year: "2027", gray: 85, blue: 10, green: 5 },
+  { year: "2030", gray: 60, blue: 25, green: 15 },
+  { year: "2035", gray: 35, blue: 35, green: 30 },
+  { year: "2040", gray: 18, blue: 32, green: 50 },
+  { year: "2045", gray: 10, blue: 25, green: 65 },
+  { year: "2050", gray: 6, blue: 18, green: 76 },
+];
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [language, setLanguage] = useState<"EN" | "KR">("EN");
@@ -72,13 +83,38 @@ export default function Home() {
           <div className="hero-proof" aria-label="Key company strengths">
             <span>↓ Up to 37% component cost reduction</span><span>0 kg CO₂ green H₂</span><span>GIST · KENTECH collaboration</span>
           </div>
-          <div className="hero-actions"><a className="button primary" href="#about">{korean ? "기술 살펴보기" : "Explore our technology"}<span>→</span></a><a className="button ghost" href="#contact">{korean ? "견적 문의" : "Request a quote"}</a></div>
+          <div className="hero-actions"><a className="button primary" href="#why-hydrogen">{korean ? "기술 살펴보기" : "Explore our technology"}<span>→</span></a><a className="button ghost" href="#contact">{korean ? "견적 문의" : "Request a quote"}</a></div>
         </div>
         <div className="hero-image-label"><span />{heroSlides[activeSlide].caption}</div>
         <div className="hero-pagination" aria-label="Hero image carousel">
           {heroSlides.map((slide, index) => <button className={activeSlide === index ? "active" : ""} key={slide.src} type="button" onClick={() => setActiveSlide(index)} aria-label={`Show ${slide.label}`} aria-current={activeSlide === index ? "true" : undefined} />)}
         </div>
-        <a className="hero-scroll" href="#about" aria-label="Continue to company introduction">↓</a>
+        <a className="hero-scroll" href="#why-hydrogen" aria-label="Continue to why green hydrogen">↓</a>
+      </section>
+
+      <section className="why-section" id="why-hydrogen">
+        <div className="why-heading">
+          <div><div className="eyebrow"><span /> WHY GREEN HYDROGEN</div><h2>Not all hydrogen<br />is created equal.</h2></div>
+          <p>Most hydrogen today comes from fossil fuels. Green hydrogen uses renewable electricity and water, avoiding direct carbon emissions while creating a flexible energy carrier for industry, storage and power.</p>
+        </div>
+
+        <div className="hydrogen-comparison" aria-label="Carbon emissions by hydrogen production type">
+          <article className="hydrogen-card gray"><div className="hydrogen-symbol">CO₂</div><div><small>FOSSIL-BASED</small><h3>Gray hydrogen</h3><strong>~11<span>kg</span></strong><p>CO₂ per kg of H₂</p></div></article>
+          <article className="hydrogen-card blue"><div className="hydrogen-symbol">CCS</div><div><small>CARBON CAPTURE</small><h3>Blue hydrogen</h3><strong>3.5–3.9<span>kg</span></strong><p>CO₂ per kg of H₂</p></div></article>
+          <article className="hydrogen-card green"><div className="hydrogen-symbol">H₂O</div><div><small>RENEWABLE-POWERED</small><h3>Green hydrogen</h3><strong>0<span>kg</span></strong><p>direct CO₂ per kg of H₂</p></div></article>
+        </div>
+
+        <div className="transition-chart-wrap">
+          <div className="chart-copy"><div className="eyebrow"><span /> THE TRANSITION</div><h2>A cleaner production mix is taking shape.</h2><p>As renewable power expands and electrolysis costs fall, green hydrogen is expected to take a growing share of global production.</p><div className="chart-insight"><b>↘</b><span><strong>Green hydrogen is projected to become increasingly cost-competitive with blue hydrogen.</strong><small>Market outlook direction based on BNEF, 2022.</small></span></div></div>
+          <div className="mix-chart" role="img" aria-label="Illustrative transition from gray and blue hydrogen toward green hydrogen from 2023 to 2050">
+            <div className="chart-legend"><span className="gray">Gray hydrogen</span><span className="blue">Blue hydrogen</span><span className="green">Green hydrogen</span></div>
+            <div className="chart-plot">
+              <div className="chart-axis"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div>
+              <div className="chart-bars">{hydrogenMix.map((item) => <div className="bar-column" key={item.year}><div className="stack-bar"><i className="green" style={{ height: `${item.green}%` }} /><i className="blue" style={{ height: `${item.blue}%` }} /><i className="gray" style={{ height: `${item.gray}%` }} /></div><span>{item.year}</span></div>)}</div>
+            </div>
+          </div>
+        </div>
+        <p className="why-note">Emissions figures are based on EST Solution’s company brochure. Actual lifecycle emissions vary by feedstock, electricity source, capture rate and system boundaries.</p>
       </section>
 
       <section className="story-about" id="about">
