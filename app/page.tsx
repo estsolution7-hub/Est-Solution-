@@ -3,7 +3,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { BarElement, CategoryScale, Chart as ChartJS, LinearScale, Tooltip, type ChartData, type ChartOptions } from "chart.js";
-import { IconAtom, IconBoxMultiple, IconGrain, IconLayersIntersect, IconStack2, IconSun } from "@tabler/icons-react";
+import { IconAtom, IconBoxMultiple, IconChevronDown, IconGrain, IconLayersIntersect, IconStack2, IconSun } from "@tabler/icons-react";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip);
 
@@ -14,24 +14,36 @@ const heroSlides = [
 ];
 
 const navItems = [
-  ["about", "About", "회사소개"],
-  ["challenges", "Challenges", "해결과제"],
-  ["products", "Products", "제품"],
-  ["results", "Results", "성과"],
-  ["contact", "Contact", "문의"],
-];
-
-const challenges = [
-  { number: "01", title: "Carbon-heavy hydrogen", copy: "Conventional hydrogen can carry a significant emissions burden. Renewable-powered electrolysis creates a direct route to zero-carbon hydrogen production." },
-  { number: "02", title: "High component cost", copy: "Imported catalysts, membranes and stack parts make projects harder to scale. Local engineering is focused on reducing cost without sacrificing performance." },
-  { number: "03", title: "Fragmented supply chains", copy: "When materials, MEAs and stacks come from separate suppliers, development slows. EST Solution connects these layers in one technical workflow." },
-  { number: "04", title: "Scaling with confidence", copy: "Distributed sites need flexible capacity and resilient operation. Modular single- and multi-stack designs help systems grow with demand." },
+  ["#why-hydrogen", "Why green hydrogen", "그린수소"],
+  ["#products", "Products", "제품"],
+  ["#results", "Results", "성과"],
+  ["/company", "Company", "회사소개"],
+  ["#contact", "Contact", "문의"],
 ];
 
 const systemProducts = [
-  { name: "2.5 kW system", use: "500 L/h · pilot sites", image: "/product-stack-2-5kw.png", alt: "EST Solution 2.5 kW electrolysis system" },
-  { name: "5 kW system", use: "1,000 L/h · distributed", image: "/product-stack-5kw.png", alt: "EST Solution 5 kW electrolysis system" },
-  { name: "20 kW system", use: "4,000 L/h · industrial", image: "/product-stack-20kw.png", alt: "EST Solution 20 kW electrolysis system", flagship: true },
+  {
+    id: "2-5kw",
+    name: "2.5 kW system",
+    use: "500 L/h · pilot sites",
+    stackImage: "/product-stack-2-5kw.png",
+    specs: [["Dimensions", "580 × 374 × 550 mm"], ["Power", "< 2.5 kW"], ["Hydrogen", "500 L/h"], ["Oxygen", "250 L/h"], ["Purity", "99.97–99.99%"]],
+  },
+  {
+    id: "5kw",
+    name: "5 kW system",
+    use: "1,000 L/h · distributed sites",
+    stackImage: "/product-stack-5kw.png",
+    specs: [["Dimensions", "1,000 × 550 × 1,200 mm"], ["Power", "< 5 kW"], ["Hydrogen", "1,000 L/h"], ["Oxygen", "500 L/h"], ["Purity", "99.97–99.99%"]],
+  },
+  {
+    id: "20kw",
+    name: "20 kW system",
+    use: "4,000 L/h · industrial sites",
+    stackImage: "/product-stack-20kw.png",
+    specs: [["Dimensions", "1,800 × 550 × 2,200 mm"], ["Power", "< 20 kW"], ["Hydrogen", "4,000 L/h"], ["Oxygen", "2,000 L/h"], ["Purity", "99.97–99.99%"]],
+    flagship: true,
+  },
 ];
 
 const coreComponents = [
@@ -92,6 +104,7 @@ export default function Home() {
   const [language, setLanguage] = useState<"EN" | "KR">("EN");
   const [submitted, setSubmitted] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [expandedSpecs, setExpandedSpecs] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     const interval = window.setInterval(() => setActiveSlide((current) => (current + 1) % heroSlides.length), 6000);
@@ -103,6 +116,10 @@ export default function Home() {
     setSubmitted(true);
   }
 
+  function toggleSpecs(productId: string) {
+    setExpandedSpecs((current) => ({ ...current, [productId]: !current[productId] }));
+  }
+
   const korean = language === "KR";
 
   return (
@@ -110,7 +127,7 @@ export default function Home() {
       <header className="site-header">
         <a className="brand brand-image" href="#top" aria-label="EST Solution home"><img src="/est-solution-logo.png" alt="EST Solution" /></a>
         <nav className={menuOpen ? "nav open" : "nav"} aria-label="Primary navigation">
-          {navItems.map(([id, en, kr]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{korean ? kr : en}</a>)}
+          {navItems.map(([href, en, kr]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{korean ? kr : en}</a>)}
         </nav>
         <div className="header-actions">
           <button className="language" onClick={() => setLanguage(korean ? "EN" : "KR")} aria-label="Switch language"><b>{language}</b><span>{korean ? "English" : "한국어"}</span></button>
@@ -162,44 +179,31 @@ export default function Home() {
         <p className="why-note">Emissions figures are based on EST Solution’s company brochure. Actual lifecycle emissions vary by feedstock, electricity source, capture rate and system boundaries.</p>
       </section>
 
-      <section className="story-about" id="about">
-        <div className="story-about-copy">
-          <div className="eyebrow"><span /> ABOUT EST SOLUTION</div>
-          <h2>Building the heart of the hydrogen economy.</h2>
-          <p>EST Solution is a Korean clean-energy technology company developing the core materials, components and systems that turn renewable electricity and water into green hydrogen.</p>
-          <p>By connecting catalyst synthesis, MEA manufacturing, porous transport layers and stack design, the company aims to shorten development cycles, reduce import dependence and make deployment more practical.</p>
-          <a className="story-link" href="/company">Meet EST Solution <span>→</span></a>
-        </div>
-        <div className="story-facts" aria-label="Company facts">
-          <div className="story-fact-primary"><small>FOUNDED</small><strong>2023</strong><span>Growing from Gwangju and Naju, Republic of Korea</span></div>
-          <div><small>CORE SCOPE</small><strong>Catalyst → MEA → Stack</strong></div>
-          <div><small>PLATFORMS</small><strong>PEM water electrolysis</strong></div>
-          <div><small>MISSION</small><strong>Practical energy independence</strong></div>
-        </div>
-      </section>
-
-      <section className="challenge-section" id="challenges">
-        <div className="challenge-heading">
-          <div className="eyebrow light"><span /> THE PROBLEMS WE ADDRESS</div>
-          <h2>Green hydrogen must work<br />beyond the laboratory.</h2>
-          <p>The transition needs more than a single breakthrough. It needs lower cost, technical control and systems that can scale into real operating environments.</p>
-        </div>
-        <div className="challenge-grid">
-          {challenges.map((item) => <article key={item.number}><small>{item.number}</small><h3>{item.title}</h3><p>{item.copy}</p></article>)}
-        </div>
-        <div className="challenge-answer"><span>ONE CONNECTED ANSWER</span><strong>Material science</strong><i>→</i><strong>Core components</strong><i>→</i><strong>Modular systems</strong></div>
-      </section>
-
       <section className="product-section" id="products">
         <div className="product-tier system-tier">
           <div className="product-tier-heading"><div className="product-eyebrow"><span /> WHAT YOU BUY</div><h2>Electrolysis systems</h2></div>
           <div className="system-card-grid">
-            {systemProducts.map((product) => <article className={product.flagship ? "system-card flagship" : "system-card"} key={product.name}>
-              <a className="system-photo" href="/products/systems" aria-label={`View ${product.name} details`}><img src={product.image} alt={product.alt} /></a>
-              <h3>{product.name}</h3><p>{product.use}</p>
-            </article>)}
+            {systemProducts.map((product) => {
+              const isExpanded = Boolean(expandedSpecs[product.id]);
+              const panelId = `specs-${product.id}`;
+              return <article className={product.flagship ? "system-card flagship" : "system-card"} key={product.id}>
+                <div className="system-photo">
+                  <img className="system-enclosure-photo" src="/hydrogen-prototype.jpg" alt="EST Solution enclosed electrolysis system prototype" />
+                  <div className="stack-inset"><img src={product.stackImage} alt={`${product.name} internal electrolysis stack`} /><span>Internal stack</span></div>
+                </div>
+                <small className="system-photo-caption">Enclosed system prototype · internal stack shown inset.</small>
+                <h3>{product.name}</h3><p>{product.use}</p>
+                <div className="system-spec-divider" />
+                <button className={isExpanded ? "spec-toggle open" : "spec-toggle"} type="button" onClick={() => toggleSpecs(product.id)} aria-expanded={isExpanded} aria-controls={panelId}>
+                  {isExpanded ? "Hide full specs" : "View full specs"}<IconChevronDown size={16} stroke={1.8} aria-hidden="true" />
+                </button>
+                <div className={isExpanded ? "spec-panel open" : "spec-panel"} id={panelId} aria-hidden={!isExpanded}>
+                  <div className="spec-panel-inner"><dl>{product.specs.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl></div>
+                </div>
+              </article>;
+            })}
           </div>
-          <div className="product-actions"><a className="spec-download" href="/EST-Solution-product-brochure.pdf" download>Download full spec sheet <span>↓</span></a><a className="quote-link" href="#contact">Request a quote <span>→</span></a></div>
+          <div className="product-actions single"><a className="quote-link primary" href="#contact">Request a quote <span>→</span></a></div>
         </div>
 
         <div className="product-tier component-tier">
@@ -254,7 +258,7 @@ export default function Home() {
       <footer>
         <a className="brand footer-brand" href="#top"><img src="/est-solution-logo.png" alt="EST Solution" /></a>
         <p>Core technology for a cleaner, more independent energy future.</p>
-        <div className="footer-links"><a href="#about">About</a><a href="#challenges">Challenges</a><a href="#products">Products</a><a href="#results">Results</a><a href="#contact">Contact</a></div>
+        <div className="footer-links"><a href="#why-hydrogen">Why green hydrogen</a><a href="#products">Products</a><a href="#results">Results</a><a href="/company">Company</a><a href="#contact">Contact</a></div>
         <div className="footer-bottom"><span>© 2026 EST Solution Co., Ltd. Concept redesign.</span><span>Gwangju · Naju · Republic of Korea</span></div>
       </footer>
     </main>
