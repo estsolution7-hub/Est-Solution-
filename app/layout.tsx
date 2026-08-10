@@ -12,8 +12,16 @@ const notoSansKR = Noto_Sans_KR({
 });
 
 export const metadata: Metadata = {
-  title: "EST Solution | Green Hydrogen Technology",
+  metadataBase: new URL("https://est-solution-energy.estsolution7.chatgpt.site"),
+  title: { default: "EST Solution | Green Hydrogen Technology", template: "%s | EST Solution" },
   description: "EST Solution develops catalysts, MEAs, water-electrolysis stacks and integrated renewable-energy systems for practical green hydrogen.",
+  openGraph: {
+    title: "EST Solution | Green Hydrogen Technology",
+    description: "Green hydrogen, engineered from material to system.",
+    type: "website",
+    images: [{ url: "/og.png", width: 1792, height: 933, alt: "EST Solution green hydrogen technology" }],
+  },
+  twitter: { card: "summary_large_image", title: "EST Solution | Green Hydrogen Technology", description: "Green hydrogen, engineered from material to system.", images: ["/og.png"] },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
