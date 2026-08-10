@@ -27,6 +27,7 @@ const systemProducts = [
     name: "2.5 kW system",
     use: "500 L/h · pilot sites",
     stackImage: "/product-stack-2-5kw.png",
+    stackCaption: "Electrolyzer stack, 2.5kW",
     specs: [["Dimensions", "580 × 374 × 550 mm"], ["Power", "< 2.5 kW"], ["Hydrogen", "500 L/h"], ["Oxygen", "250 L/h"], ["Purity", "99.97–99.99%"]],
   },
   {
@@ -34,6 +35,7 @@ const systemProducts = [
     name: "5 kW system",
     use: "1,000 L/h · distributed sites",
     stackImage: "/product-stack-5kw.png",
+    stackCaption: "Electrolyzer stack, 5kW",
     specs: [["Dimensions", "1,000 × 550 × 1,200 mm"], ["Power", "< 5 kW"], ["Hydrogen", "1,000 L/h"], ["Oxygen", "500 L/h"], ["Purity", "99.97–99.99%"]],
   },
   {
@@ -41,6 +43,7 @@ const systemProducts = [
     name: "20 kW system",
     use: "4,000 L/h · industrial sites",
     stackImage: "/product-stack-20kw.png",
+    stackCaption: "Electrolyzer stack, 20kW",
     specs: [["Dimensions", "1,800 × 550 × 2,200 mm"], ["Power", "< 20 kW"], ["Hydrogen", "4,000 L/h"], ["Oxygen", "2,000 L/h"], ["Purity", "99.97–99.99%"]],
     flagship: true,
   },
@@ -188,10 +191,9 @@ export default function Home() {
               const panelId = `specs-${product.id}`;
               return <article className={product.flagship ? "system-card flagship" : "system-card"} key={product.id}>
                 <div className="system-photo">
-                  <img className="system-enclosure-photo" src="/hydrogen-prototype.jpg" alt="EST Solution enclosed electrolysis system prototype" />
-                  <div className="stack-inset"><img src={product.stackImage} alt={`${product.name} internal electrolysis stack`} /><span>Internal stack</span></div>
+                  <img className="system-stack-photo" src={product.stackImage} alt={`${product.name} electrolyzer stack`} />
                 </div>
-                <small className="system-photo-caption">Enclosed system prototype · internal stack shown inset.</small>
+                <small className="system-photo-caption">{product.stackCaption}</small>
                 <h3>{product.name}</h3><p>{product.use}</p>
                 <div className="system-spec-divider" />
                 <button className={isExpanded ? "spec-toggle open" : "spec-toggle"} type="button" onClick={() => toggleSpecs(product.id)} aria-expanded={isExpanded} aria-controls={panelId}>
