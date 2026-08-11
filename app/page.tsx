@@ -3,7 +3,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { BarElement, CategoryScale, Chart as ChartJS, LinearScale, Tooltip, type ChartData, type ChartOptions } from "chart.js";
-import { IconAtom, IconBoxMultiple, IconChevronDown, IconGrain, IconLayersIntersect, IconQuote, IconStack2, IconSun } from "@tabler/icons-react";
+import { IconArrowRight, IconAtom, IconBoxMultiple, IconChevronDown, IconGrain, IconLayersIntersect, IconQuote, IconStack2, IconSun } from "@tabler/icons-react";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip);
 
@@ -16,7 +16,7 @@ const heroSlides = [
 const navItems = [
   ["#why-hydrogen", "Why green hydrogen", "그린수소"],
   ["#products", "Products", "제품"],
-  ["#results", "Results", "성과"],
+  ["#case-study", "Case study", "실증 사례"],
   ["#who-we-are", "Company", "회사소개"],
   ["#contact", "Contact", "문의"],
 ];
@@ -283,20 +283,27 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="results-section" id="results">
-        <div className="results-visual"><img src="/field-demonstration.jpg" alt="EST Solution mobile green hydrogen field demonstration" /><span>FIELD DEMONSTRATION · GWANGJU</span></div>
-        <div className="results-copy">
-          <div className="eyebrow light"><span /> RESULTS & EVIDENCE</div>
-          <h2>Progress you can inspect.</h2>
-          <p>EST Solution’s company brochure reports a growing body of component development, stack performance work and public field demonstrations.</p>
-          <div className="result-metrics">
-            <div><strong>20<span>kW</span></strong><p>Largest stack class in the current product lineup</p></div>
-            <div><strong>99.97<span>%+</span></strong><p>Reported hydrogen purity across listed stack models</p></div>
-            <div><strong>20<span>%+</span></strong><p>Targeted overall stack cost reduction through localized components</p></div>
-            <div><strong>0<span>kg</span></strong><p>Direct CO₂ per kg H₂ for renewable-powered green hydrogen*</p></div>
+      <section className="case-section" id="case-study">
+        <div className="case-container">
+          <div className="case-eyebrow">TESTED AND VERIFIED</div>
+          <h2>We took a self-contained hydrogen system into the field <span>and proved it works.</span></h2>
+
+          <div className="tested-conditions" aria-label="Tested conditions">
+            <article><h3>Outdoor</h3><p>Ran on-site, exposed to real weather and field conditions.</p></article>
+            <article><h3>Indoor</h3><p>Stress-tested under controlled lab conditions.</p></article>
           </div>
-          <small className="results-note">* Product and performance figures are based on the EST Solution company brochure. Final specifications depend on project configuration and validation.</small>
-          <a className="story-link light-link" href="/products/systems">Review technical specifications <span>→</span></a>
+
+          <p className="case-support">That capability turns wasted renewable power into usable backup energy for remote sites, on demand.</p>
+
+          <div className="case-photos">
+            <img src="/field-demonstration.jpg" alt="EST Solution outdoor hydrogen-system field demonstration" />
+            <img src="/hydrogen-prototype.jpg" alt="EST Solution hydrogen system undergoing indoor testing" />
+          </div>
+
+          <div className="case-closing">
+            <h3>Next, we’d like to prove it on your site.</h3>
+            <a href="#contact">Request a quote <IconArrowRight size={16} stroke={1.8} aria-hidden="true" /></a>
+          </div>
         </div>
       </section>
 
@@ -327,7 +334,7 @@ export default function Home() {
       <footer>
         <a className="brand footer-brand" href="#top"><img src="/est-solution-logo.png" alt="EST Solution" /></a>
         <p>Core technology for a cleaner, more independent energy future.</p>
-        <div className="footer-links"><a href="#why-hydrogen">Why green hydrogen</a><a href="#products">Products</a><a href="#results">Results</a><a href="#who-we-are">Company</a><a href="#contact">Contact</a></div>
+        <div className="footer-links"><a href="#why-hydrogen">Why green hydrogen</a><a href="#products">Products</a><a href="#case-study">Case study</a><a href="#who-we-are">Company</a><a href="#contact">Contact</a></div>
         <div className="footer-bottom"><span>© 2026 EST Solution Co., Ltd. Concept redesign.</span><span>Gwangju · Naju · Republic of Korea</span></div>
       </footer>
     </main>
