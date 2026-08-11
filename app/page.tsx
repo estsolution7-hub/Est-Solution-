@@ -17,7 +17,7 @@ const navItems = [
   ["#why-hydrogen", "Why green hydrogen", "그린수소"],
   ["#products", "Products", "제품"],
   ["#results", "Results", "성과"],
-  ["/company", "Company", "회사소개"],
+  ["#who-we-are", "Company", "회사소개"],
   ["#contact", "Contact", "문의"],
 ];
 
@@ -216,6 +216,40 @@ export default function Home() {
         <div className="solar-footnote"><IconSun size={16} stroke={1.6} aria-hidden="true" /><span>Also offering solar power generation systems as a complementary product line — <a href="/products/solar">view details</a></span></div>
       </section>
 
+      <section className="who-section" id="who-we-are">
+        <div className="who-container">
+          <div className="who-eyebrow"><span /> WHO WE ARE</div>
+          <h2 className="who-headline">Founded in 2023, built on technology we own end to end</h2>
+
+          <div className="who-lead">
+            <figure className="ceo-profile">
+              <div className="ceo-portrait"><img src="/est-solution-ceo.png" alt="EST Solution founder and CEO with hydrogen equipment" /></div>
+              <figcaption><strong>CEO name</strong><span>Founder and CEO, EST Solution</span></figcaption>
+            </figure>
+            <blockquote className="ceo-quote">
+              <p>“We put trust and value creation with our customers first. Through relentless in-house research, we’re building a green hydrogen energy society — and working toward true energy self-sufficiency for Korea’s hydrogen economy through core technology we own ourselves.”</p>
+              <small>Adapted from the Korean mission statement; final English wording is pending client approval.</small>
+            </blockquote>
+          </div>
+
+          <p className="who-description">EST Solution is based in Gwangju and Naju, South Korea. From catalyst to stack, every core component in our systems is designed and manufactured in-house — not licensed or imported.</p>
+
+          <div className="who-stats" aria-label="Company statistics">
+            <div><strong>3</strong><span>Years since founding</span></div>
+            <div><strong>10+</strong><span>Programs selected</span></div>
+            <div><strong>2</strong><span>Patents filed</span></div>
+          </div>
+
+          <div className="partner-evidence">
+            <div className="partner-label">PARTNERED WITH</div>
+            <figure className="partner-composite" data-placeholder="individual-logo-tiles">
+              <img src="/partner-logos-composite.png" alt="Partner institutions and university logos from EST Solution company materials" />
+              <figcaption>Temporary composite source graphic · replace with individual logo tiles when available.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
       <section className="results-section" id="results">
         <div className="results-visual"><img src="/field-demonstration.jpg" alt="EST Solution mobile green hydrogen field demonstration" /><span>FIELD DEMONSTRATION · GWANGJU</span></div>
         <div className="results-copy">
@@ -260,7 +294,7 @@ export default function Home() {
       <footer>
         <a className="brand footer-brand" href="#top"><img src="/est-solution-logo.png" alt="EST Solution" /></a>
         <p>Core technology for a cleaner, more independent energy future.</p>
-        <div className="footer-links"><a href="#why-hydrogen">Why green hydrogen</a><a href="#products">Products</a><a href="#results">Results</a><a href="/company">Company</a><a href="#contact">Contact</a></div>
+        <div className="footer-links"><a href="#why-hydrogen">Why green hydrogen</a><a href="#products">Products</a><a href="#results">Results</a><a href="#who-we-are">Company</a><a href="#contact">Contact</a></div>
         <div className="footer-bottom"><span>© 2026 EST Solution Co., Ltd. Concept redesign.</span><span>Gwangju · Naju · Republic of Korea</span></div>
       </footer>
     </main>
