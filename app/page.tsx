@@ -1,9 +1,9 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { BarElement, CategoryScale, Chart as ChartJS, LinearScale, Tooltip, type ChartData, type ChartOptions } from "chart.js";
-import { IconArrowRight, IconAtom, IconBoxMultiple, IconChevronDown, IconGrain, IconLayersIntersect, IconQuote, IconStack2, IconSun } from "@tabler/icons-react";
+import { IconArrowRight, IconAtom, IconBoxMultiple, IconBuilding, IconChevronDown, IconFlask2, IconGrain, IconLayersIntersect, IconMail, IconPhone, IconQuote, IconStack2, IconSun } from "@tabler/icons-react";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip);
 
@@ -138,25 +138,26 @@ const hydrogenChartOptions: ChartOptions<"bar"> = {
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [language, setLanguage] = useState<"EN" | "KR">("EN");
-  const [submitted, setSubmitted] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
   const [expandedSpecs, setExpandedSpecs] = useState<Record<string, boolean>>({});
+  const [mapLocation, setMapLocation] = useState<"hq" | "rd">("hq");
 
   useEffect(() => {
     const interval = window.setInterval(() => setActiveSlide((current) => (current + 1) % heroSlides.length), 6000);
     return () => window.clearInterval(interval);
   }, []);
 
-  function submitInquiry(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setSubmitted(true);
-  }
-
   function toggleSpecs(productId: string) {
     setExpandedSpecs((current) => ({ ...current, [productId]: !current[productId] }));
   }
 
   const korean = language === "KR";
+  const googleMapsKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY;
+  const mapQuery = mapLocation === "hq" ? "Gwangju Institute of Science and Technology" : "32-18 Hyeoksinsandan 3-gil Naju-si Jeollanam-do South Korea";
+  // Temporary no-key fallback. Set NEXT_PUBLIC_GOOGLE_MAPS_KEY to use the official Google Maps Embed API.
+  const mapSrc = googleMapsKey
+    ? `https://www.google.com/maps/embed/v1/place?key=${googleMapsKey}&q=${encodeURIComponent(mapQuery)}`
+    : `https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`;
 
   return (
     <main>
@@ -183,7 +184,7 @@ export default function Home() {
           <div className="hero-proof" aria-label="Key company strengths">
             <span>↓ Up to 37% component cost reduction</span><span>0 kg CO₂ green H₂</span><span>GIST · KENTECH collaboration</span>
           </div>
-          <div className="hero-actions"><a className="button primary" href="#why-hydrogen">{korean ? "기술 살펴보기" : "Explore our technology"}<span>→</span></a><a className="button ghost" href="#products">{korean ? "견적 문의" : "Request a quote"}</a></div>
+          <div className="hero-actions"><a className="button primary" href="#why-hydrogen">{korean ? "기술 살펴보기" : "Explore our technology"}<span>→</span></a><a className="button ghost" href="#contact">{korean ? "견적 문의" : "Request a quote"}</a></div>
         </div>
         <div className="hero-image-label"><span />{heroSlides[activeSlide].caption}</div>
         <div className="hero-pagination" aria-label="Hero image carousel">
@@ -307,28 +308,42 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="contact-section" id="contact">
-        <div className="contact-copy">
-          <div className="eyebrow light"><span /> START A CONVERSATION</div>
-          <h2>What energy challenge<br />are you solving?</h2>
-          <p>Tell us about your application, target capacity and timeline. We’ll route your inquiry to the right technical conversation.</p>
-          <div className="contact-details"><a href="tel:+82629720823"><small>CALL</small>+82 62 972 0823</a><a href="mailto:estsolution1@naver.com"><small>EMAIL</small>estsolution1@naver.com</a></div>
-          <address><small>HEADQUARTERS</small>GIST Startup Promotion Center B, Room 302<br />123 Cheomdangwagi-ro, Buk-gu, Gwangju, Korea</address>
+      <section className="contact-section-v2" id="contact">
+        <div className="contact-container">
+          <div className="contact-eyebrow"><span /> GET IN TOUCH</div>
+          <h2>Let’s talk about your site, or your research</h2>
+          <p className="contact-subhead">Whether you’re evaluating a system for deployment or exploring a research partnership, tell us a bit about what you need.</p>
+
+          <div className="contact-card">
+            {/* FormSubmit is the active delivery backend; confirm this provider with EST Solution before final production handoff. */}
+            <form className="contact-form" action="https://formsubmit.co/estsolution1@naver.com" method="POST">
+              <input type="hidden" name="_subject" value="New EST Solution website inquiry" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
+              <div className="contact-form-grid">
+                <label><span>Company or institution</span><input required name="company_or_institution" type="text" autoComplete="organization" /></label>
+                <label><span>Contact person</span><input required name="contact_person" type="text" autoComplete="name" /></label>
+                <label><span>Email</span><input required name="email" type="email" autoComplete="email" /></label>
+                <label><span>Phone, optional</span><input name="phone" type="tel" autoComplete="tel" /></label>
+                <label className="full"><span>What are you reaching out about?</span><select required name="inquiry_type" defaultValue=""><option value="" disabled>Select one</option><option>Request a quote</option><option>Product inquiry</option><option>Research collaboration</option><option>University partnership</option><option>Investment or media</option><option>Other</option></select></label>
+                <label className="full"><span>Message</span><textarea required name="message" rows={4} /></label>
+              </div>
+              <button className="contact-submit" type="submit">Send inquiry</button>
+            </form>
+
+            <aside className="contact-panel" aria-label="EST Solution locations and contact details">
+              <div className="location-list">
+                <article><span className="location-icon"><IconBuilding size={17} stroke={1.8} aria-hidden="true" /></span><div><small>HEADQUARTERS · GWANGJU</small><p>123 Cheomdan-gwagi-ro, Buk-gu, Gwangju, South Korea — inside GIST</p></div></article>
+                <article><span className="location-icon"><IconFlask2 size={17} stroke={1.8} aria-hidden="true" /></span><div><small>R&amp;D CENTER · NAJU</small><p>32-18 Hyeoksinsandan 3-gil, Naju-si, Jeollanam-do, South Korea</p></div></article>
+              </div>
+
+              <div className="contact-chips"><a href="tel:+82629720823"><IconPhone size={15} stroke={1.8} aria-hidden="true" />062-972-0823</a><a href="mailto:estsolution1@naver.com"><IconMail size={15} stroke={1.8} aria-hidden="true" />estsolution1@naver.com</a></div>
+
+              <div className="map-tabs" aria-label="Choose map location"><button className={mapLocation === "hq" ? "active" : ""} type="button" onClick={() => setMapLocation("hq")} aria-pressed={mapLocation === "hq"}>Headquarters</button><button className={mapLocation === "rd" ? "active" : ""} type="button" onClick={() => setMapLocation("rd")} aria-pressed={mapLocation === "rd"}>R&amp;D center</button></div>
+              <div className="contact-map"><iframe key={mapLocation} title={mapLocation === "hq" ? "EST Solution headquarters map" : "EST Solution R&D center map"} src={mapSrc} loading="lazy" allowFullScreen referrerPolicy="no-referrer-when-downgrade" /></div>
+            </aside>
+          </div>
         </div>
-        <form className="inquiry-form" onSubmit={submitInquiry}>
-          {submitted ? <div className="form-success" role="status"><span>✓</span><h3>Thank you.</h3><p>Your inquiry is ready for review. This prototype does not send data; connect the production form to EST Solution’s approved email workflow.</p><button type="button" onClick={() => setSubmitted(false)}>Send another inquiry</button></div> : <>
-            <div className="form-title"><span>TECHNICAL INQUIRY</span><b>Fields marked * are required</b></div>
-            <div className="form-grid">
-              <label><span>Name *</span><input required name="name" placeholder="Your name" /></label>
-              <label><span>Organization *</span><input required name="organization" placeholder="Company or institute" /></label>
-              <label><span>Work email *</span><input required type="email" name="email" placeholder="name@company.com" /></label>
-              <label><span>Area of interest *</span><select required name="interest" defaultValue=""><option value="" disabled>Select one</option><option>Water electrolysis system</option><option>Catalyst / Electrode</option><option>Membrane / MEA</option><option>Mobile hydrogen system</option><option>R&D partnership</option></select></label>
-              <label className="full"><span>Project context</span><textarea name="message" rows={4} placeholder="Application, target capacity, timeline and the challenge you are solving" /></label>
-            </div>
-            <label className="consent"><input type="checkbox" required /><span>I agree to the collection and use of my information for responding to this inquiry. *</span></label>
-            <button className="submit" type="submit">Send technical inquiry <span>↗</span></button>
-          </>}
-        </form>
       </section>
 
       <footer>
