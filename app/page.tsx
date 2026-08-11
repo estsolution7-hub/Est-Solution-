@@ -135,6 +135,19 @@ const hydrogenChartOptions: ChartOptions<"bar"> = {
   },
 };
 
+const mapLocations = {
+  hq: {
+    lat: "35.2281557",
+    lon: "126.8421662",
+    bbox: "126.8371662,35.2231557,126.8471662,35.2331557",
+  },
+  rd: {
+    lat: "34.974837113219",
+    lon: "126.688945217552",
+    bbox: "126.683945217552,34.969837113219,126.693945217552,34.979837113219",
+  },
+} as const;
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [language, setLanguage] = useState<"EN" | "KR">("EN");
@@ -152,12 +165,9 @@ export default function Home() {
   }
 
   const korean = language === "KR";
-  const googleMapsKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY;
-  const mapQuery = mapLocation === "hq" ? "Gwangju Institute of Science and Technology" : "32-18 Hyeoksinsandan 3-gil Naju-si Jeollanam-do South Korea";
-  // Temporary no-key fallback. Set NEXT_PUBLIC_GOOGLE_MAPS_KEY to use the official Google Maps Embed API.
-  const mapSrc = googleMapsKey
-    ? `https://www.google.com/maps/embed/v1/place?key=${googleMapsKey}&q=${encodeURIComponent(mapQuery)}`
-    : `https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`;
+  const activeMap = mapLocations[mapLocation];
+  const mapSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${encodeURIComponent(activeMap.bbox)}&layer=mapnik&marker=${encodeURIComponent(`${activeMap.lat},${activeMap.lon}`)}`;
+  const externalMapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${activeMap.lat},${activeMap.lon}`)}`;
 
   return (
     <main>
@@ -340,7 +350,8 @@ export default function Home() {
               <div className="contact-chips"><a href="tel:+82629720823"><IconPhone size={15} stroke={1.8} aria-hidden="true" />062-972-0823</a><a href="mailto:estsolution1@naver.com"><IconMail size={15} stroke={1.8} aria-hidden="true" />estsolution1@naver.com</a></div>
 
               <div className="map-tabs" aria-label="Choose map location"><button className={mapLocation === "hq" ? "active" : ""} type="button" onClick={() => setMapLocation("hq")} aria-pressed={mapLocation === "hq"}>Headquarters</button><button className={mapLocation === "rd" ? "active" : ""} type="button" onClick={() => setMapLocation("rd")} aria-pressed={mapLocation === "rd"}>R&amp;D center</button></div>
-              <div className="contact-map"><iframe key={mapLocation} title={mapLocation === "hq" ? "EST Solution headquarters map" : "EST Solution R&D center map"} src={mapSrc} loading="lazy" allowFullScreen referrerPolicy="no-referrer-when-downgrade" /></div>
+              <div className="contact-map"><iframe key={mapLocation} title={mapLocation === "hq" ? "EST Solution headquarters map" : "EST Solution R&D center map"} src={mapSrc} loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></div>
+              <a className="contact-map-link" href={externalMapUrl} target="_blank" rel="noreferrer">Open in Google Maps <span aria-hidden="true">↗</span></a>
             </aside>
           </div>
         </div>
