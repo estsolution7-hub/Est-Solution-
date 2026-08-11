@@ -3,7 +3,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { BarElement, CategoryScale, Chart as ChartJS, LinearScale, Tooltip, type ChartData, type ChartOptions } from "chart.js";
-import { IconAtom, IconBoxMultiple, IconChevronDown, IconGrain, IconLayersIntersect, IconStack2, IconSun } from "@tabler/icons-react";
+import { IconAtom, IconBoxMultiple, IconChevronDown, IconGrain, IconLayersIntersect, IconQuote, IconStack2, IconSun } from "@tabler/icons-react";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip);
 
@@ -55,6 +55,39 @@ const coreComponents = [
   { label: "Ti-PTL", Icon: IconGrain },
   { label: "Membrane", Icon: IconLayersIntersect },
   { label: "Stack", Icon: IconBoxMultiple },
+];
+
+const partnerLogos = [
+  { src: "/partners/inst_01.png", name: "녹색에너지연구원" },
+  { src: "/partners/inst_02.png", name: "산업통상자원부" },
+  { src: "/partners/inst_03.png", name: "연구개발특구진흥재단" },
+  { src: "/partners/inst_04.png", name: "전남테크노파크" },
+  { src: "/partners/inst_05.png", name: "전라남도" },
+  { src: "/partners/inst_06.png", name: "한국가스공사" },
+  { src: "/partners/inst_07.png", name: "한국가스안전공사" },
+  { src: "/partners/inst_08.png", name: "한국과학기술연구원" },
+  { src: "/partners/inst_09.png", name: "한국남부발전" },
+  { src: "/partners/inst_10.png", name: "한국동서발전" },
+  { src: "/partners/inst_11.png", name: "한국생산기술연구원" },
+  { src: "/partners/inst_12.png", name: "한국에너지공단" },
+  { src: "/partners/inst_13.png", name: "한국에너지기술연구원" },
+  { src: "/partners/inst_14.png", name: "한국에너지기술평가원" },
+  { src: "/partners/inst_15.png", name: "한국전력공사" },
+  { src: "/partners/inst_16.png", name: "한국전력연구원" },
+  { src: "/partners/inst_17.png", name: "한국화학연구원" },
+  { src: "/partners/inst_18.png", name: "광주테크노파크" },
+  { src: "/partners/inst_19.png", name: "과학기술정보통신부" },
+  { src: "/partners/inst_20.png", name: "광주광역시" },
+  { src: "/partners/uni_01.png", name: "전남대학교" },
+  { src: "/partners/uni_02.png", name: "전북대학교" },
+  { src: "/partners/uni_03.png", name: "한국에너지공과대학교" },
+  { src: "/partners/uni_04.png", name: "광주과학기술원" },
+  { src: "/partners/uni_05.png", name: "연세대학교" },
+  { src: "/partners/uni_06.png", name: "카이스트" },
+  { src: "/partners/uni_07.png", name: "서울대학교" },
+  { src: "/partners/uni_08.png", name: "포항공과대학교" },
+  { src: "/partners/uni_09.png", name: "강릉원주대학교" },
+  { src: "/partners/uni_10.png", name: "한양대학교" },
 ];
 
 const hydrogenMix = [
@@ -227,6 +260,7 @@ export default function Home() {
               <figcaption><strong>CEO name</strong><span>Founder and CEO, EST Solution</span></figcaption>
             </figure>
             <blockquote className="ceo-quote">
+              <IconQuote className="quote-mark" size={32} stroke={1.7} aria-hidden="true" />
               <p>“We put trust and value creation with our customers first. Through relentless in-house research, we’re building a green hydrogen energy society — and working toward true energy self-sufficiency for Korea’s hydrogen economy through core technology we own ourselves.”</p>
               <small>Adapted from the Korean mission statement; final English wording is pending client approval.</small>
             </blockquote>
@@ -242,10 +276,9 @@ export default function Home() {
 
           <div className="partner-evidence">
             <div className="partner-label">PARTNERED WITH</div>
-            <figure className="partner-composite" data-placeholder="individual-logo-tiles">
-              <img src="/partner-logos-composite.png" alt="Partner institutions and university logos from EST Solution company materials" />
-              <figcaption>Temporary composite source graphic · replace with individual logo tiles when available.</figcaption>
-            </figure>
+            <div className="partner-logo-grid">
+              {partnerLogos.map((partner) => <figure className="partner-logo" key={partner.src}><img src={partner.src} alt={`${partner.name} logo`} /><figcaption>{partner.name}</figcaption></figure>)}
+            </div>
           </div>
         </div>
       </section>
