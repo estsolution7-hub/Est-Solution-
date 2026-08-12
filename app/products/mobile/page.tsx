@@ -1,0 +1,12 @@
+import { DetailShell } from "../../detail-shell";
+
+export default function MobilePage() {
+  return <DetailShell eyebrow="DISTRIBUTED ENERGY" title="Green hydrogen where the energy is needed." intro="A mobile, independent production concept converts available renewable electricity into hydrogen for storage, demonstration and distributed use.">
+    <div className="detail-content">
+      <section className="detail-intro"><h2>Move production closer to demand.</h2><p>The mobile green-hydrogen system is designed around a simple idea: use otherwise idle clean electricity to produce and store hydrogen near the point of use. That opens possibilities for remote mountainous areas, islands, field demonstrations and emergency-support scenarios where centralized infrastructure is difficult to reach.</p></section>
+      <section className="detail-media"><img src="/field-demonstration.jpg" alt="EST Solution field demonstration of a mobile hydrogen system" /><div className="detail-media-copy"><div className="eyebrow"><span /> FIELD PROOF</div><h2>A system people can see.</h2><p>The demonstration installation brings production equipment, storage and public-facing monitoring into one transportable environment. It turns a complex technology story into a tangible operating experience.</p></div></section>
+      <section className="detail-section"><div className="eyebrow"><span /> APPLICATIONS</div><h2>Designed for distributed use.</h2><div className="feature-grid"><article><small>REMOTE SITES</small><h3>Independent supply</h3><p>Support clean-energy operation where grid and fuel infrastructure are constrained.</p></article><article><small>EMERGENCY</small><h3>Stored energy access</h3><p>Convert available electricity into an energy carrier that can be stored for later use.</p></article><article><small>DEMONSTRATION</small><h3>Visible innovation</h3><p>Bring hydrogen production closer to partners, communities and technical stakeholders.</p></article></div></section>
+      <section className="detail-media"><img src="/hydrogen-prototype.jpg" alt="EST Solution hydrogen production prototype" /><div className="detail-media-copy"><div className="eyebrow"><span /> SYSTEM DEVELOPMENT</div><h2>From stack to enclosure.</h2><p>Integrated prototypes combine the electrolysis stack, controls and supporting balance-of-plant hardware into a practical equipment package.</p></div></section>
+    </div>
+  </DetailShell>;
+}
