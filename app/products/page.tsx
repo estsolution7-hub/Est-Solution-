@@ -1,5 +1,6 @@
 import { DetailShell } from "../detail-shell";
 import { ProductSystemsSection } from "./product-systems-section";
+import { ApplicationsSection } from "./applications-section";
 import { IconArrowRight, IconBolt, IconCylinder, IconMapPin } from "@tabler/icons-react";
 
 const subNav = [
@@ -45,7 +46,7 @@ export default function ProductsPage() {
           <article><IconMapPin size={22} stroke={1.7} aria-hidden="true" /><h3>Deploys off-grid</h3><p>Serves as emergency or backup power where grid access is limited.</p></article>
         </div>
       </section>
-      <section className="detail-section nav-target" id="applications"><div className="eyebrow"><span /> APPLICATIONS</div><h2>Designed for places where distributed energy matters.</h2><div className="feature-grid"><article><small>MOBILITY</small><h3>Local fueling</h3><p>Support demonstration fleets and equipment where centralized hydrogen supply is limited.</p></article><article><small>FARMS &amp; REMOTE SITES</small><h3>Energy resilience</h3><p>Convert available renewable electricity into a storable fuel for remote operations.</p></article><article><small>DATA CENTERS</small><h3>Clean backup power</h3><p>Provide a pathway from renewable generation to hydrogen-based backup and resilience.</p></article></div></section>
+      <ApplicationsSection />
     </div>
   </DetailShell>;
 }
