@@ -35,9 +35,9 @@ export default function ProductsPage() {
         <a className="titanium-link" href="/technology#core-technology">See the full technology breakdown <IconArrowRight size={16} stroke={1.8} aria-hidden="true" /></a>
       </section>
       <section className="neohyd-section nav-target" id="dispensing">
-        <div className="neohyd-heading"><span /><h2>Produce it, store it, take it anywhere</h2></div>
+        <div className="neohyd-heading"><span /><h2>Produce it, <em>store it, take it anywhere</em></h2></div>
         <p className="neohyd-intro">A mobile electrolysis unit that produces green hydrogen on-site and stores it in cartridges — bringing power to places the grid doesn't reach.</p>
-        <div className="neohyd-visual"><img src="/images/products/neohyd_mobile_unit.png" alt="Mobile containerized unit that produces green hydrogen and stores it in cartridges" /></div>
+        <div className="neohyd-visual"><img src="/images/products/neohyd_mobile_truck.png" alt="EST Solution mobile green-hydrogen production and cartridge storage truck" /></div>
         <p className="neohyd-caption">Mobile green-hydrogen production and cartridge storage unit.</p>
         <div className="neohyd-features">
           <article><IconBolt size={22} stroke={1.7} aria-hidden="true" /><h3>Produces on-site</h3><p>Electrolysis happens in the unit itself, no separate plant needed.</p></article>
