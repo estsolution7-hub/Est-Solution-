@@ -9,6 +9,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip);
 
 const subNav = [
   { label: "Why green hydrogen", id: "why-green-hydrogen" },
+  { label: "Production system", id: "production-system" },
   { label: "How it works", id: "how-it-works" },
   { label: "Core technology", id: "core-technology" },
   { label: "Roadmap", id: "roadmap" },
@@ -77,6 +78,30 @@ export default function TechnologyPage() {
           </div>
         </div>
         <p className="why-note">Emissions figures are based on EST Solution’s company brochure. Actual lifecycle emissions vary by feedstock, electricity source, capture rate and system boundaries.</p>
+      </section>
+      <section className="technology-section production-system-section nav-target" id="production-system">
+        <div className="technology-eyebrow">PRODUCTION SYSTEM</div>
+        <h2>From renewable power to <span>green hydrogen</span></h2>
+        <p className="technology-intro">Renewable electricity and water are the only inputs. No carbon enters this loop at any stage — the only byproduct is oxygen.</p>
+        <div className="production-system-panel">
+          <svg viewBox="0 0 900 420" role="img" aria-label="Renewable power and water converge into an EST Solution PEM electrolyzer producing green hydrogen and oxygen">
+            <path d="M120 150 C 220 150, 260 210, 355 212" fill="none" stroke="var(--border-strong)" strokeWidth="2" />
+            <path d="M120 280 C 220 280, 260 225, 355 218" fill="none" stroke="var(--border-strong)" strokeWidth="2" />
+            <path d="M545 210 C 640 195, 680 110, 800 105" fill="none" stroke="var(--border-strong)" strokeWidth="2" />
+            <path d="M545 222 C 640 250, 680 300, 800 310" fill="none" stroke="var(--border-strong)" strokeWidth="2" />
+            <g><circle cx="80" cy="150" r="46" fill="var(--bg-accent)" /><circle cx="60" cy="132" r="16" fill="none" stroke="var(--text-accent)" strokeWidth="2.5" /><g stroke="var(--text-accent)" strokeWidth="2.5"><line x1="60" y1="108" x2="60" y2="102" /><line x1="60" y1="162" x2="60" y2="156" /><line x1="36" y1="132" x2="30" y2="132" /><line x1="42" y1="114" x2="38" y2="110" /><line x1="42" y1="150" x2="38" y2="154" /></g><path d="M84 118 L104 130 L84 142 L90 130 Z" fill="var(--text-accent)" /><path d="M84 142 L104 154 L84 166 L90 154 Z" fill="var(--text-accent)" opacity="0.55" /></g>
+            <text x="80" y="210" textAnchor="middle" fontSize="12" fontWeight="500" fill="var(--text-primary)">Renewable power</text><text x="80" y="226" textAnchor="middle" fontSize="10" fill="var(--text-muted)">Solar and wind</text>
+            <g><circle cx="80" cy="280" r="46" fill="var(--bg-accent)" /><path d="M80 254 C 92 270, 100 282, 100 292 A 20 20 0 1 1 60 292 C 60 282, 68 270, 80 254 Z" fill="var(--text-accent)" /><ellipse cx="72" cy="288" rx="4" ry="7" fill="var(--bg-accent)" opacity="0.6" /></g>
+            <text x="80" y="340" textAnchor="middle" fontSize="12" fontWeight="500" fill="var(--text-primary)">Water</text><text x="80" y="356" textAnchor="middle" fontSize="10" fill="var(--text-muted)">Feedstock, not fuel</text>
+            <rect x="360" y="145" width="180" height="135" rx="16" fill="var(--surface-2)" stroke="var(--fill-accent)" strokeWidth="2" /><rect x="415" y="160" width="70" height="70" rx="8" fill="var(--surface-1)" /><image href="/images/technology/prod_electrolyzer_hq.png" x="424" y="163" width="52" height="64" preserveAspectRatio="xMidYMid meet" />
+            <text x="450" y="248" textAnchor="middle" fontSize="13" fontWeight="500" fill="var(--text-primary)">PEM electrolyzer</text><text x="450" y="264" textAnchor="middle" fontSize="10" fill="var(--text-muted)">H2-241002A, our own unit</text>
+            <g><circle cx="850" cy="90" r="40" fill="var(--bg-success)" /><circle cx="838" cy="90" r="9" fill="none" stroke="var(--text-success)" strokeWidth="2.5" /><circle cx="862" cy="90" r="9" fill="none" stroke="var(--text-success)" strokeWidth="2.5" /><line x1="847" y1="90" x2="853" y2="90" stroke="var(--text-success)" strokeWidth="2.5" /><text x="850" y="112" textAnchor="middle" fontSize="9" fill="var(--text-success)" fontWeight="500">H₂</text></g>
+            <text x="850" y="150" textAnchor="middle" fontSize="12" fontWeight="500" fill="var(--text-primary)">Green hydrogen</text><text x="850" y="166" textAnchor="middle" fontSize="10" fill="var(--text-muted)">Stored or dispensed</text>
+            <g><circle cx="850" cy="320" r="34" fill="var(--surface-2)" /><circle cx="841" cy="320" r="7.5" fill="none" stroke="var(--text-secondary)" strokeWidth="2" /><circle cx="859" cy="320" r="7.5" fill="none" stroke="var(--text-secondary)" strokeWidth="2" /><line x1="848" y1="320" x2="852" y2="320" stroke="var(--text-secondary)" strokeWidth="2" /><text x="850" y="338" textAnchor="middle" fontSize="8" fill="var(--text-secondary)" fontWeight="500">O₂</text></g>
+            <text x="850" y="368" textAnchor="middle" fontSize="11" fontWeight="500" fill="var(--text-secondary)">Oxygen</text><text x="850" y="384" textAnchor="middle" fontSize="9" fill="var(--text-muted)">Released, no CO₂</text>
+          </svg>
+        </div>
+        <p className="production-system-caption">The unit shown at the center is our own H2-241002A electrolyzer, not a stock illustration.</p>
       </section>
       <section className="technology-section nav-target" id="how-it-works">
         <div className="pem-explainer">
