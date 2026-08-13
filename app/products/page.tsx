@@ -14,7 +14,16 @@ const products = [
 ];
 
 export default function ProductsPage() {
-  return <DetailShell eyebrow="PRODUCTS" title="A product platform built around real operating needs." intro="Explore scalable electrolysis systems, in-house core components, on-site dispensing and the applications they enable." subNav={subNav}>
+  return <DetailShell eyebrow="PRODUCTS" title="A product platform built around real operating needs." intro="Explore scalable electrolysis systems, in-house core components, on-site dispensing and the applications they enable." subNav={subNav} hero={
+    <section className="products-hero">
+      <div className="products-hero-copy">
+        <p className="products-hero-eyebrow">Products</p>
+        <h1>Made for your project.<br />Built to last.</h1>
+        <p><strong>Customizable sizing</strong> and <strong>titanium-grade components</strong>, manufactured in-house from 2.5kW to 20kW.</p>
+        <div className="products-hero-actions"><a href="#electrolysis-systems">View electrolysis systems</a><a href="/contact">Request a quote</a></div>
+      </div>
+    </section>
+  }>
     <div className="detail-content nav-section-stack">
       <section className="detail-section nav-target" id="electrolysis-systems"><div className="eyebrow"><span /> ELECTROLYSIS SYSTEMS</div><h2>Three sizes. One scalable platform.</h2><div className="spec-grid">{products.map((product) => <article className="spec-card" key={product.name}><div className="spec-card-image"><img src={product.image} alt={`${product.name} electrolyzer stack`} /></div><div className="spec-card-body"><h3>{product.name}</h3><p>{product.output} · {product.use}</p><a href="/products/systems">View system details →</a></div></article>)}</div></section>
       <section className="detail-section nav-target" id="components"><div className="eyebrow"><span /> COMPONENTS</div><h2>What is inside our systems.</h2><div className="feature-grid"><article><small>CATALYST</small><h3>Reaction efficiency</h3><p>Catalyst synthesis targets performance with a practical path to lower component cost.</p></article><article><small>MEA · MEMBRANE</small><h3>Integrated active area</h3><p>Membrane and electrode interfaces are developed together for reliable proton transport.</p></article><article><small>TI-PTL</small><h3>Flow and conductivity</h3><p>Titanium porous transport layers manage water, gases, current and mechanical support.</p></article></div><a className="detail-inline-link" href="/products/components">Explore component technology →</a></section>
