@@ -1,4 +1,4 @@
-import { IconAlertTriangle, IconCheck, IconDroplet, IconFlame, IconShip, IconTrendingDown, IconWavesElectricity } from "@tabler/icons-react";
+import { IconAlertTriangle, IconCheck, IconShip, IconTrendingDown, IconWavesElectricity } from "@tabler/icons-react";
 import { DetailShell } from "../detail-shell";
 
 const subNav = [
@@ -31,7 +31,35 @@ export default function TechnologyPage() {
     <div className="technology-page-content">
       <section className="technology-section nav-target" id="how-it-works">
         <div className="technology-eyebrow">HOW IT WORKS</div><h2>Splitting water with <span>nothing but electricity.</span></h2><p className="technology-intro">Electrolysis uses electricity to split water into hydrogen and oxygen. When that electricity comes from solar or wind, the hydrogen carries no carbon at all.</p>
-        <div className="reaction-panel"><div className="reaction-halves"><div className="reaction-half"><div className="reaction-icon blue"><IconDroplet size={21} stroke={1.7} /></div><strong>Anode</strong><span>Water splits, oxygen released</span><code>2H₂O → O₂ + 4H⁺ + 4e⁻</code></div><div className="reaction-membrane"><i /><span>PEM membrane</span></div><div className="reaction-half"><div className="reaction-icon green"><IconFlame size={21} stroke={1.7} /></div><strong>Cathode</strong><span>Protons recombine as H₂</span><code>4H⁺ + 4e⁻ → 2H₂</code></div></div><div className="overall-reaction"><code>2H₂O → 2H₂ + O₂</code></div></div>
+        <div className="reaction-panel">
+          <svg viewBox="0 0 320 260" style={{ width: "100%", height: "auto", display: "block" }} role="img" aria-label="PEM electrolysis process diagram">
+            <text x="160" y="16" textAnchor="middle" fontSize="10" fill="var(--text-muted)">e⁻</text>
+            <path d="M110 40 V24 H210 V40" fill="none" stroke="var(--text-muted)" strokeWidth="1.5" />
+            <text x="30" y="90" fontSize="11" fill="var(--text-secondary)">H₂O</text>
+            <path d="M55 88 H90" stroke="#5dcaeb" strokeWidth="4" markerEnd="url(#arrowBlue)" />
+            <rect x="100" y="40" width="30" height="180" fill="var(--bg-accent)" />
+            <text x="115" y="135" textAnchor="middle" fontSize="9" fill="var(--text-accent)" transform="rotate(-90 115 135)">Anode (+)</text>
+            <rect x="130" y="40" width="60" height="180" fill="var(--surface-2)" stroke="var(--border)" strokeWidth="1" />
+            <text x="160" y="70" textAnchor="middle" fontSize="10" fill="var(--text-accent)" fontWeight="500">PEM</text>
+            <text x="160" y="82" textAnchor="middle" fontSize="8" fill="var(--text-muted)">membrane</text>
+            <text x="160" y="128" textAnchor="middle" fontSize="12" fill="#d85a30" fontWeight="500">H⁺</text>
+            <path d="M138 140 H182" stroke="#d85a30" strokeWidth="3" markerEnd="url(#arrowRed)" />
+            <rect x="190" y="40" width="30" height="180" fill="var(--bg-success)" />
+            <text x="205" y="135" textAnchor="middle" fontSize="9" fill="var(--text-success)" transform="rotate(-90 205 135)">Cathode (-)</text>
+            <path d="M35 220 V70 H100" fill="none" stroke="var(--border-strong)" strokeWidth="1.5" />
+            <path d="M285 220 V70 H220" fill="none" stroke="var(--border-strong)" strokeWidth="1.5" />
+            <text x="15" y="225" fontSize="11" fill="var(--text-secondary)">O₂</text>
+            <path d="M55 222 H35" stroke="var(--text-secondary)" strokeWidth="3" markerEnd="url(#arrowGray)" />
+            <text x="275" y="90" fontSize="11" fill="var(--text-secondary)">H₂</text>
+            <path d="M255 88 H285" stroke="#639922" strokeWidth="4" markerEnd="url(#arrowGreen)" />
+            <defs>
+              <marker id="arrowBlue" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5dcaeb" /></marker>
+              <marker id="arrowRed" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#d85a30" /></marker>
+              <marker id="arrowGray" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--text-secondary)" /></marker>
+              <marker id="arrowGreen" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#639922" /></marker>
+            </defs>
+          </svg>
+        </div>
         <h3 className="technology-table-title">Why PEM, and not the alternatives</h3><div className="method-card-grid">{methods.map((item) => <article className={`method-card${item.featured ? " featured" : ""}`} key={item.method}><div className="method-diagram"><img src={item.image} alt={item.alt} /></div><div className="method-title"><h4>{item.method}</h4>{item.note && <span>{item.note}</span>}</div><div className="method-detail strengths"><span><IconCheck size={11} stroke={2} />Strengths</span><ul>{item.strengths.map((strength) => <li key={strength}>{strength}</li>)}</ul></div><div className="method-detail tradeoff"><span><IconAlertTriangle size={11} stroke={1.8} />Trade-off</span><ul>{item.tradeoffs.map((tradeoff) => <li key={tradeoff}>{tradeoff}</li>)}</ul></div></article>)}</div>
         <div className="pem-callout">PEM's responsiveness is what matches solar and wind, which don't produce on a steady schedule. Its one weakness — precious-metal cost — is the specific problem our materials work addresses.</div>
       </section>
