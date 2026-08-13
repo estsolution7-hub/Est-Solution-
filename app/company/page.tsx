@@ -12,7 +12,20 @@ const subNav = [
 const partnerLogos = [...Array.from({ length: 20 }, (_, i) => `/partners/inst_${String(i + 1).padStart(2, "0")}.png`), ...Array.from({ length: 10 }, (_, i) => `/partners/uni_${String(i + 1).padStart(2, "0")}.png`)];
 
 export default function CompanyPage() {
-  return <DetailShell eyebrow="COMPANY" title="A focused team for practical green hydrogen." intro="EST Solution develops renewable-energy technology through local technical capability, connected R&D and deployable hydrogen systems." subNav={subNav}>
+  return <DetailShell eyebrow="COMPANY" title="A focused team for practical green hydrogen." intro="EST Solution develops renewable-energy technology through local technical capability, connected R&D and deployable hydrogen systems." subNav={subNav} hero={
+    <section className="company-hero hero-gradient">
+      <div className="company-bubbles" aria-hidden="true">
+        <i className="bubble bubble-1" /><i className="bubble bubble-2" /><i className="bubble bubble-3" /><i className="bubble bubble-4" />
+        <i className="bubble bubble-5" /><i className="bubble bubble-6" /><i className="bubble bubble-7" /><i className="bubble bubble-8" />
+      </div>
+      <div className="company-hero-copy">
+        <p className="company-hero-eyebrow">Company</p>
+        <h1>13 years in hydrogen.<br />3 years as a company.</h1>
+        <p>EST Solution engineers green hydrogen production systems in-house, from catalyst to finished stack — built on technical experience developed over more than a decade.</p>
+        <div className="company-hero-actions"><a href="#team-advisors">Meet the team</a><a href="/contact">Get in touch</a></div>
+      </div>
+    </section>
+  }>
     <div className="detail-content nav-section-stack">
       <section className="detail-section nav-target" id="overview"><div className="eyebrow"><span /> OVERVIEW</div><div className="detail-intro"><h2>Technology with a clear purpose.</h2><p>Founded in 2023, EST Solution works across the PEM water-electrolysis value chain: catalyst synthesis, membrane electrode assemblies, hydrocarbon membranes, porous transport layers, stack engineering and independent hydrogen production systems. The goal is to strengthen energy independence while helping customers move toward carbon-neutral operations.</p></div><div className="feature-grid"><article><small>FOUNDED</small><h3>2023</h3><p>Growing from Gwangju and Naju, Republic of Korea.</p></article><article><small>CORE SCOPE</small><h3>Catalyst → MEA → Stack</h3><p>Connected development across the interfaces that determine cost and performance.</p></article><article><small>PLATFORM</small><h3>PEM electrolysis</h3><p>Scalable systems for research, demonstration and distributed deployment.</p></article></div></section>
       <section className="detail-section nav-target company-ceo" id="ceo-message"><div className="eyebrow"><span /> CEO MESSAGE</div><div className="company-ceo-grid"><img src="/est-solution-ceo.png" alt="EST Solution founder and CEO with hydrogen equipment" /><blockquote><IconQuote size={32} stroke={1.6} /><p>We put trust and value creation with our customers first. Through relentless in-house research, we are building a green hydrogen energy society and working toward true energy self-sufficiency through core technology we own ourselves.</p><small>Founder and CEO · EST Solution</small></blockquote></div></section>
