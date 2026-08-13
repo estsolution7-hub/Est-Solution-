@@ -158,6 +158,18 @@ export default function TechnologyPage() {
       </section>
       <section className="technology-section nav-target" id="core-technology"><div className="technology-eyebrow">CORE TECHNOLOGY</div><h2>Every layer of the stack, <span>engineered in-house.</span></h2><p className="technology-intro">Most electrolyzer makers assemble systems from imported parts. We develop the four components that determine cost and performance ourselves.</p><div className="component-photo-grid">{components.map((item) => <article key={item.name}><div className="component-photo"><img src={item.image} alt={`${item.name} developed by EST Solution`} /></div>{item.caption && <small className="component-caption">{item.caption}</small>}<div className="component-copy"><div className="component-metric"><strong>{item.metric}</strong><span>{item.qualifier}</span></div><h3>{item.name}</h3><p>{item.description}</p></div></article>)}</div><div className="technology-summary"><IconTrendingDown size={20} stroke={1.7} /><p>Together, roughly <strong>20% lower total stack cost</strong> against the industry baseline — concentrated in MEA and PTL, where our materials work runs deepest.</p></div></section>
       <section className="technology-section nav-target" id="roadmap"><h2>Where we're <span>taking this.</span></h2><p className="technology-intro">Two active development directions, both aimed at removing practical limits on where green hydrogen can be produced and used.</p><div className="roadmap-grid">{roadmap.map(({ name, Icon, image, alt, description }) => <article key={name}><div className="roadmap-photo"><img src={image} alt={alt} /></div><div className="roadmap-content"><div className="roadmap-icon"><Icon size={24} stroke={1.8} /></div><h3>{name}</h3><p>{description}</p></div></article>)}</div></section>
+      <section className="technology-section product-portfolio nav-target" id="product-portfolio">
+        <div className="portfolio-label"><span /><p>Our product portfolio</p></div>
+        <div className="portfolio-grid">
+          <div className="portfolio-visual"><img src="/images/technology/prod_electrolyzer_hq.png" alt="H2-241002A PEM electrolysis system" /></div>
+          <div className="portfolio-copy">
+            <p className="portfolio-headline"><strong>Compact, containerized electrolyzers</strong> ready to install, from <strong>2.5kW to 20kW</strong>.</p>
+            <div className="portfolio-rule" />
+            <p className="portfolio-support">PEM electrolysis systems: pilot, prove, and scale your green hydrogen production.</p>
+            <div className="portfolio-actions"><a href="/products">View products</a><a className="primary" href="/contact">Request a quote</a></div>
+          </div>
+        </div>
+      </section>
     </div>
   </DetailShell>;
 }
