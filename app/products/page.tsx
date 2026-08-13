@@ -4,14 +4,21 @@ import { ApplicationsSection } from "./applications-section";
 import { IconArrowRight, IconBolt, IconCylinder, IconMapPin } from "@tabler/icons-react";
 
 const subNav = [
-  { label: "Electrolysis systems", id: "products" },
+  { label: "Systems", id: "products" },
   { label: "Components", id: "components" },
-  { label: "NEOHYD dispensing", id: "dispensing" },
+  { label: "Mobile deployment", id: "dispensing" },
   { label: "Applications", id: "applications" },
+  { label: "Contact", id: "contact", href: "/contact" },
 ];
 
 export default function ProductsPage() {
-  return <DetailShell eyebrow="PRODUCTS" title="A product platform built around real operating needs." intro="Explore scalable electrolysis systems, in-house core components, on-site dispensing and the applications they enable." subNav={subNav} hero={
+  return <DetailShell eyebrow="PRODUCTS" title="A product platform built around real operating needs." intro="Explore scalable electrolysis systems, in-house core components, on-site dispensing and the applications they enable." subNav={subNav} closingCta={
+    <section className="products-closing-cta">
+      <h2>Tell us your project.<br />We'll size the system.</h2>
+      <a href="/contact">Request a quote →</a>
+      <div className="products-closing-brand" aria-label="EST Solution"><span><img src="/est-solution-logo.png" alt="" /></span><strong>EST SOLUTION</strong></div>
+    </section>
+  } hero={
     <section className="products-hero">
       <div className="products-hero-copy">
         <p className="products-hero-eyebrow">Products</p>

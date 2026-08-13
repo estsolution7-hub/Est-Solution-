@@ -30,7 +30,7 @@ const navigation: NavGroup[] = [
   { label: "Contact", href: "/#contact" },
 ];
 
-export type SubNavItem = { label: string; id: string };
+export type SubNavItem = { label: string; id: string; href?: string };
 
 export function PageSubNavigation({ subNav }: { subNav: SubNavItem[] }) {
   const [activeSection, setActiveSection] = useState(subNav[0]?.id ?? "");
@@ -46,7 +46,7 @@ export function PageSubNavigation({ subNav }: { subNav: SubNavItem[] }) {
     return () => observer.disconnect();
   }, [subNav]);
 
-  return <nav className="page-subnav" aria-label="On this page"><div>{subNav.map((item) => <a className={activeSection === item.id ? "active" : ""} href={`#${item.id}`} key={item.id} aria-current={activeSection === item.id ? "location" : undefined}>{item.label}</a>)}</div></nav>;
+  return <nav className="page-subnav" aria-label="On this page"><div>{subNav.map((item) => <a className={activeSection === item.id ? "active" : ""} href={item.href ?? `#${item.id}`} key={item.id} aria-current={activeSection === item.id ? "location" : undefined}>{item.label}</a>)}</div></nav>;
 }
 
 export function SiteNavigation({ subNav = [] }: { subNav?: SubNavItem[] }) {
