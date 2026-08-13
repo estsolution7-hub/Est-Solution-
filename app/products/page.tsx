@@ -1,11 +1,11 @@
 import { DetailShell } from "../detail-shell";
 import { ProductSystemsSection } from "./product-systems-section";
-import { IconArrowRight } from "@tabler/icons-react";
+import { IconArrowRight, IconBolt, IconCylinder, IconMapPin } from "@tabler/icons-react";
 
 const subNav = [
   { label: "Electrolysis systems", id: "products" },
   { label: "Components", id: "components" },
-  { label: "NEOHYD dispensing", id: "neohyd" },
+  { label: "NEOHYD dispensing", id: "dispensing" },
   { label: "Applications", id: "applications" },
 ];
 
@@ -34,7 +34,17 @@ export default function ProductsPage() {
         </div>
         <a className="titanium-link" href="/technology#core-technology">See the full technology breakdown <IconArrowRight size={16} stroke={1.8} aria-hidden="true" /></a>
       </section>
-      <section className="detail-section nav-target" id="neohyd"><div className="eyebrow"><span /> NEOHYD DISPENSING</div><h2>Hydrogen production closer to use.</h2><div className="detail-media"><img src="/mobile-hydrogen-station.png" alt="EST Solution mobile on-site hydrogen dispensing unit" /><div className="detail-media-copy"><h3>On-site delivery unit</h3><p>A transportable demonstration and dispensing concept makes distributed green hydrogen tangible for operators, partners and the public.</p><a href="/products/mobile">View NEOHYD concept →</a></div></div></section>
+      <section className="neohyd-section nav-target" id="dispensing">
+        <div className="neohyd-heading"><span /><h2>Produce it, store it, take it anywhere</h2></div>
+        <p className="neohyd-intro">A mobile electrolysis unit that produces green hydrogen on-site and stores it in cartridges — bringing power to places the grid doesn't reach.</p>
+        <div className="neohyd-visual"><img src="/images/products/neohyd_mobile_unit.png" alt="Mobile containerized unit that produces green hydrogen and stores it in cartridges" /></div>
+        <p className="neohyd-caption">Mobile green-hydrogen production and cartridge storage unit.</p>
+        <div className="neohyd-features">
+          <article><IconBolt size={22} stroke={1.7} aria-hidden="true" /><h3>Produces on-site</h3><p>Electrolysis happens in the unit itself, no separate plant needed.</p></article>
+          <article><IconCylinder size={22} stroke={1.7} aria-hidden="true" /><h3>Stores in cartridges</h3><p>Hydrogen is captured and held for later use, not just piped out.</p></article>
+          <article><IconMapPin size={22} stroke={1.7} aria-hidden="true" /><h3>Deploys off-grid</h3><p>Serves as emergency or backup power where grid access is limited.</p></article>
+        </div>
+      </section>
       <section className="detail-section nav-target" id="applications"><div className="eyebrow"><span /> APPLICATIONS</div><h2>Designed for places where distributed energy matters.</h2><div className="feature-grid"><article><small>MOBILITY</small><h3>Local fueling</h3><p>Support demonstration fleets and equipment where centralized hydrogen supply is limited.</p></article><article><small>FARMS &amp; REMOTE SITES</small><h3>Energy resilience</h3><p>Convert available renewable electricity into a storable fuel for remote operations.</p></article><article><small>DATA CENTERS</small><h3>Clean backup power</h3><p>Provide a pathway from renewable generation to hydrogen-based backup and resilience.</p></article></div></section>
     </div>
   </DetailShell>;

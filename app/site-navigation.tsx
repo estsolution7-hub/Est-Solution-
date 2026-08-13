@@ -16,7 +16,7 @@ const navigation: NavGroup[] = [
   { label: "Products", href: "/products", items: [
     { label: "Electrolysis systems", description: "2.5kW · 5kW · 20kW", href: "/products#products" },
     { label: "Components", description: "What's inside our systems", href: "/products#components" },
-    { label: "NEOHYD dispensing", description: "On-site delivery unit", href: "/products#neohyd" },
+    { label: "NEOHYD dispensing", description: "On-site delivery unit", href: "/products#dispensing" },
     { label: "Applications", description: "Mobility, farms, data centers", href: "/products#applications" },
   ]},
   { label: "Company", href: "/company", items: [
