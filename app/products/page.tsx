@@ -1,6 +1,6 @@
 import { DetailShell } from "../detail-shell";
 import { ProductSystemsSection } from "./product-systems-section";
-import { IconArrowRight, IconAtom, IconGrain, IconLayersIntersect, IconStack2 } from "@tabler/icons-react";
+import { IconArrowRight } from "@tabler/icons-react";
 
 const subNav = [
   { label: "Electrolysis systems", id: "products" },
@@ -21,15 +21,16 @@ export default function ProductsPage() {
     </section>
   }>
     <ProductSystemsSection />
-    <div className="detail-content nav-section-stack">
+    <div className="detail-content products-content nav-section-stack">
       <section className="titanium-teaser nav-target" id="components">
-        <div className="titanium-heading"><span /><h2>Titanium components, engineered for the long run</h2></div>
-        <p>Every EST system, at every size, is built on the same titanium-grade stack, catalyst coating, and membrane — the quality doesn't change, only the scale does.</p>
+        <div className="titanium-kicker"><span /> BUILT IN-HOUSE</div>
+        <div className="titanium-heading"><h2>Titanium components,<br /><span>engineered for the long run.</span></h2></div>
+        <p>Every EST system, at every size, is built on the same <strong>titanium-grade stack, catalyst coating, and membrane</strong> — <strong>the quality doesn't change, only the scale does.</strong></p>
         <div className="titanium-grid">
-          <article><IconAtom size={28} stroke={1.6} aria-hidden="true" /><h3>Catalyst</h3></article>
-          <article><IconLayersIntersect size={28} stroke={1.6} aria-hidden="true" /><h3>MEA</h3></article>
-          <article><IconGrain size={28} stroke={1.6} aria-hidden="true" /><h3>Ti-PTL</h3></article>
-          <article><IconStack2 size={28} stroke={1.6} aria-hidden="true" /><h3>Electrolyte membrane</h3></article>
+          <article><div className="titanium-photo"><img src="/images/technology/enhanced_catalyst.png" alt="EST Solution catalyst material" /></div><h3>Catalyst</h3></article>
+          <article><div className="titanium-photo"><img src="/images/technology/enhanced_mea.png" alt="EST Solution membrane electrode assembly" /></div><h3>MEA</h3></article>
+          <article><div className="titanium-photo"><img src="/images/technology/enhanced_ptl.png" alt="EST Solution titanium porous transport layer" /></div><h3>Ti-PTL</h3></article>
+          <article><div className="titanium-photo"><img src="/images/technology/enhanced_cell.png" alt="EST Solution assembled cell with electrolyte membrane" /></div><h3>Electrolyte membrane</h3></article>
         </div>
         <a className="titanium-link" href="/technology#core-technology">See the full technology breakdown <IconArrowRight size={16} stroke={1.8} aria-hidden="true" /></a>
       </section>
