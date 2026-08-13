@@ -14,7 +14,7 @@ const navigation: NavGroup[] = [
     { label: "Roadmap", description: "Seawater, marine, next steps", href: "/technology#roadmap" },
   ]},
   { label: "Products", href: "/products", items: [
-    { label: "Electrolysis systems", description: "2.5kW · 5kW · 20kW", href: "/products#electrolysis-systems" },
+    { label: "Electrolysis systems", description: "2.5kW · 5kW · 20kW", href: "/products#products" },
     { label: "Components", description: "What's inside our systems", href: "/products#components" },
     { label: "NEOHYD dispensing", description: "On-site delivery unit", href: "/products#neohyd" },
     { label: "Applications", description: "Mobility, farms, data centers", href: "/products#applications" },

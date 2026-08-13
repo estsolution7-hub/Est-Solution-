@@ -1,41 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { IconArrowRight, IconAtom, IconBoxMultiple, IconBuilding, IconChevronDown, IconFlask2, IconGrain, IconLayersIntersect, IconMail, IconPhone, IconQuote, IconStack2, IconSun } from "@tabler/icons-react";
+import { IconArrowRight, IconAtom, IconBoxMultiple, IconBuilding, IconFlask2, IconGrain, IconLayersIntersect, IconMail, IconPhone, IconQuote, IconStack2, IconSun } from "@tabler/icons-react";
 import { SiteNavigation } from "./site-navigation";
 
 const heroSlides = [
   { src: "/hydrogen-prototype.jpg", label: "EST Solution electrolysis cabinet", caption: "EST SOLUTION ELECTROLYSIS PROTOTYPE" },
   { src: "/mobile-hydrogen-station.png", label: "EST Solution mobile hydrogen station", caption: "MOBILE GREEN HYDROGEN SYSTEM" },
   { src: "/product-stack-20kw.png", label: "EST Solution PEM electrolysis stack", caption: "PEM STACK DEVELOPMENT" },
-];
-
-const systemProducts = [
-  {
-    id: "2-5kw",
-    name: "2.5 kW system",
-    use: "500 L/h · pilot sites",
-    stackImage: "/product-stack-2-5kw.png",
-    stackCaption: "Electrolyzer stack, 2.5kW",
-    specs: [["Dimensions", "580 × 374 × 550 mm"], ["Power", "< 2.5 kW"], ["Hydrogen", "500 L/h"], ["Oxygen", "250 L/h"], ["Purity", "99.97–99.99%"]],
-  },
-  {
-    id: "5kw",
-    name: "5 kW system",
-    use: "1,000 L/h · distributed sites",
-    stackImage: "/product-stack-5kw.png",
-    stackCaption: "Electrolyzer stack, 5kW",
-    specs: [["Dimensions", "1,000 × 550 × 1,200 mm"], ["Power", "< 5 kW"], ["Hydrogen", "1,000 L/h"], ["Oxygen", "500 L/h"], ["Purity", "99.97–99.99%"]],
-  },
-  {
-    id: "20kw",
-    name: "20 kW system",
-    use: "4,000 L/h · industrial sites",
-    stackImage: "/product-stack-20kw.png",
-    stackCaption: "Electrolyzer stack, 20kW",
-    specs: [["Dimensions", "1,800 × 550 × 2,200 mm"], ["Power", "< 20 kW"], ["Hydrogen", "4,000 L/h"], ["Oxygen", "2,000 L/h"], ["Purity", "99.97–99.99%"]],
-    flagship: true,
-  },
 ];
 
 const coreComponents = [
@@ -95,17 +67,12 @@ const mapLocations = {
 export default function Home() {
   const [language, setLanguage] = useState<"EN" | "KR">("EN");
   const [activeSlide, setActiveSlide] = useState(0);
-  const [expandedSpecs, setExpandedSpecs] = useState<Record<string, boolean>>({});
   const [mapLocation, setMapLocation] = useState<"hq" | "rd">("hq");
 
   useEffect(() => {
     const interval = window.setInterval(() => setActiveSlide((current) => (current + 1) % heroSlides.length), 6000);
     return () => window.clearInterval(interval);
   }, []);
-
-  function toggleSpecs(productId: string) {
-    setExpandedSpecs((current) => ({ ...current, [productId]: !current[productId] }));
-  }
 
   const korean = language === "KR";
   const activeMap = mapLocations[mapLocation];
@@ -136,32 +103,7 @@ export default function Home() {
         <a className="hero-scroll" href="/technology#why-green-hydrogen" aria-label="Continue to why green hydrogen">↓</a>
       </section>
 
-      <section className="product-section" id="products">
-        <div className="product-tier system-tier">
-          <div className="product-tier-heading"><div className="product-eyebrow"><span /> WHAT YOU BUY</div><h2>Electrolysis systems</h2></div>
-          <div className="system-card-grid">
-            {systemProducts.map((product) => {
-              const isExpanded = Boolean(expandedSpecs[product.id]);
-              const panelId = `specs-${product.id}`;
-              return <article className={product.flagship ? "system-card flagship" : "system-card"} key={product.id}>
-                <div className="system-photo">
-                  <img className="system-stack-photo" src={product.stackImage} alt={`${product.name} electrolyzer stack`} />
-                </div>
-                <small className="system-photo-caption">{product.stackCaption}</small>
-                <h3>{product.name}</h3><p>{product.use}</p>
-                <div className="system-spec-divider" />
-                <button className={isExpanded ? "spec-toggle open" : "spec-toggle"} type="button" onClick={() => toggleSpecs(product.id)} aria-expanded={isExpanded} aria-controls={panelId}>
-                  {isExpanded ? "Hide full specs" : "View full specs"}<IconChevronDown size={16} stroke={1.8} aria-hidden="true" />
-                </button>
-                <div className={isExpanded ? "spec-panel open" : "spec-panel"} id={panelId} aria-hidden={!isExpanded}>
-                  <div className="spec-panel-inner"><dl>{product.specs.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl></div>
-                </div>
-              </article>;
-            })}
-          </div>
-          <div className="product-actions single"><a className="quote-link primary" href="#contact">Request a quote <span>→</span></a></div>
-        </div>
-
+      <section className="product-section" id="core-components">
         <div className="product-tier component-tier">
           <div className="product-tier-heading"><div className="product-eyebrow"><span /> WHAT’S INSIDE</div><h2>Core technology, built in-house</h2><p>Every system runs on components we design and manufacture ourselves — not sold separately, but why our systems cost less to run.</p></div>
           <div className="component-strip">{coreComponents.map(({ label, Icon }) => <div className="component-tile" key={label}><Icon size={20} stroke={1.7} aria-hidden="true" /><span>{label}</span></div>)}</div>
@@ -270,7 +212,7 @@ export default function Home() {
       <footer>
         <a className="brand footer-brand" href="#top"><img src="/est-solution-logo.png" alt="EST Solution" /></a>
         <p>Core technology for a cleaner, more independent energy future.</p>
-        <div className="footer-links"><a href="/technology#why-green-hydrogen">Why green hydrogen</a><a href="#products">Products</a><a href="#case-study">Case study</a><a href="#who-we-are">Company</a><a href="#contact">Contact</a></div>
+        <div className="footer-links"><a href="/technology#why-green-hydrogen">Why green hydrogen</a><a href="/products#products">Products</a><a href="#case-study">Case study</a><a href="#who-we-are">Company</a><a href="#contact">Contact</a></div>
         <div className="footer-bottom"><span>© 2026 EST Solution Co., Ltd. Concept redesign.</span><span>Gwangju · Naju · Republic of Korea</span></div>
       </footer>
     </main>

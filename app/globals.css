@@ -292,6 +292,8 @@ footer { background:#041d2c;color:#fff;padding:70px 8vw 25px;display:grid;grid-t
 .product-actions a { min-height: 40px; padding: 0 14px; display: inline-flex; align-items: center; gap: 18px; border: 1px solid var(--border); border-radius: var(--radius); color: var(--text-primary); background: #fff; font-size: 12px; font-weight: 500; }
 .product-actions a:hover { background: var(--surface-1); }
 .product-actions.single { margin-top: 18px; }
+.system-detail-link { margin-top: 14px; display: inline-flex; color: var(--text-accent); font-size: 12px; font-weight: 500 !important; }
+.relocated-product-section { scroll-margin-top: 145px; }
 .product-actions .quote-link.primary { min-height: 44px; padding: 0 18px; border-color: var(--border-accent); background: var(--border-accent); color: #fff; }
 .product-actions .quote-link.primary:hover { background: var(--text-accent); border-color: var(--text-accent); }
 .component-tier { padding-top: 36px; }
