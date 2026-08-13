@@ -32,18 +32,8 @@ const navigation: NavGroup[] = [
 
 export type SubNavItem = { label: string; id: string };
 
-export function SiteNavigation({ subNav = [] }: { subNav?: SubNavItem[] }) {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [openGroup, setOpenGroup] = useState<string | null>(null);
-  const [scrolled, setScrolled] = useState(false);
+export function PageSubNavigation({ subNav }: { subNav: SubNavItem[] }) {
   const [activeSection, setActiveSection] = useState(subNav[0]?.id ?? "");
-
-  useEffect(() => {
-    const update = () => setScrolled(window.scrollY > 12);
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
-  }, []);
 
   useEffect(() => {
     if (!subNav.length) return;
@@ -55,6 +45,21 @@ export function SiteNavigation({ subNav = [] }: { subNav?: SubNavItem[] }) {
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
   }, [subNav]);
+
+  return <nav className="page-subnav" aria-label="On this page"><div>{subNav.map((item) => <a className={activeSection === item.id ? "active" : ""} href={`#${item.id}`} key={item.id} aria-current={activeSection === item.id ? "location" : undefined}>{item.label}</a>)}</div></nav>;
+}
+
+export function SiteNavigation({ subNav = [] }: { subNav?: SubNavItem[] }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [openGroup, setOpenGroup] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > 12);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
 
   const closeMenu = () => { setMenuOpen(false); setOpenGroup(null); };
   return <>
@@ -68,6 +73,6 @@ export function SiteNavigation({ subNav = [] }: { subNav?: SubNavItem[] }) {
       </nav>
       <div className="global-header-right"><div className="global-language" aria-label="Language"><a className="active" href="/">EN</a><span>/</span><a href="/" lang="ko">한국어</a></div><a className="global-inquiry" href="/#contact">Technical inquiry <IconArrowUpRight size={15} stroke={1.8} /></a><button className="global-menu-button" type="button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Toggle navigation">{menuOpen ? <IconX size={22} /> : <IconMenu2 size={22} />}</button></div>
     </header>
-    {subNav.length > 0 && <nav className="page-subnav" aria-label="On this page"><div>{subNav.map((item) => <a className={activeSection === item.id ? "active" : ""} href={`#${item.id}`} key={item.id} aria-current={activeSection === item.id ? "location" : undefined}>{item.label}</a>)}</div></nav>}
+    {subNav.length > 0 && <PageSubNavigation subNav={subNav} />}
   </>;
 }
