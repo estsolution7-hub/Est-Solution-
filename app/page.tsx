@@ -14,14 +14,6 @@ const heroSlides = [
   { src: "/product-stack-20kw.png", label: "EST Solution PEM electrolysis stack", caption: "PEM STACK DEVELOPMENT" },
 ];
 
-const navItems = [
-  ["#why-hydrogen", "Why green hydrogen", "그린수소"],
-  ["#products", "Products", "제품"],
-  ["#case-study", "Case study", "실증 사례"],
-  ["#who-we-are", "Company", "회사소개"],
-  ["#contact", "Contact", "문의"],
-];
-
 const systemProducts = [
   {
     id: "2-5kw",
@@ -184,16 +176,16 @@ export default function Home() {
           <div className="hero-proof" aria-label="Key company strengths">
             <span>↓ Up to 37% component cost reduction</span><span>0 kg CO₂ green H₂</span><span>GIST · KENTECH collaboration</span>
           </div>
-          <div className="hero-actions"><a className="button primary" href="#why-hydrogen">{korean ? "기술 살펴보기" : "Explore our technology"}<span>→</span></a><a className="button ghost" href="#contact">{korean ? "견적 문의" : "Request a quote"}</a></div>
+          <div className="hero-actions"><a className="button primary" href="#why-green-hydrogen">{korean ? "기술 살펴보기" : "Explore our technology"}<span>→</span></a><a className="button ghost" href="#contact">{korean ? "견적 문의" : "Request a quote"}</a></div>
         </div>
         <div className="hero-image-label"><span />{heroSlides[activeSlide].caption}</div>
         <div className="hero-pagination" aria-label="Hero image carousel">
           {heroSlides.map((slide, index) => <button className={activeSlide === index ? "active" : ""} key={slide.src} type="button" onClick={() => setActiveSlide(index)} aria-label={`Show ${slide.label}`} aria-current={activeSlide === index ? "true" : undefined} />)}
         </div>
-        <a className="hero-scroll" href="#why-hydrogen" aria-label="Continue to why green hydrogen">↓</a>
+        <a className="hero-scroll" href="#why-green-hydrogen" aria-label="Continue to why green hydrogen">↓</a>
       </section>
 
-      <section className="why-section" id="why-hydrogen">
+      <section className="why-section" id="why-green-hydrogen">
         <div className="why-heading">
           <div><div className="why-eyebrow"><span /> WHY GREEN HYDROGEN</div><h2>Not all hydrogen is <span>created equal.</span></h2></div>
           <p>Most hydrogen today comes from fossil fuels. Green hydrogen uses renewable electricity and water, avoiding direct carbon emissions while creating a flexible energy carrier for industry, storage and power.</p>
@@ -350,7 +342,7 @@ export default function Home() {
       <footer>
         <a className="brand footer-brand" href="#top"><img src="/est-solution-logo.png" alt="EST Solution" /></a>
         <p>Core technology for a cleaner, more independent energy future.</p>
-        <div className="footer-links"><a href="#why-hydrogen">Why green hydrogen</a><a href="#products">Products</a><a href="#case-study">Case study</a><a href="#who-we-are">Company</a><a href="#contact">Contact</a></div>
+        <div className="footer-links"><a href="#why-green-hydrogen">Why green hydrogen</a><a href="#products">Products</a><a href="#case-study">Case study</a><a href="#who-we-are">Company</a><a href="#contact">Contact</a></div>
         <div className="footer-bottom"><span>© 2026 EST Solution Co., Ltd. Concept redesign.</span><span>Gwangju · Naju · Republic of Korea</span></div>
       </footer>
     </main>

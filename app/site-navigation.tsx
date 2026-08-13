@@ -8,8 +8,8 @@ type NavGroup = { label: string; href: string; items?: NavEntry[] };
 
 const navigation: NavGroup[] = [
   { label: "Technology", href: "/technology", items: [
-    { label: "Why green hydrogen", description: "Gray vs blue vs green", href: "/technology#why-green-hydrogen" },
-    { label: "How PEM electrolysis works", description: "Reaction and method comparison", href: "/technology#pem-electrolysis" },
+      { label: "Why green hydrogen", description: "Gray vs blue vs green", href: "/#why-green-hydrogen" },
+      { label: "How PEM electrolysis works", description: "Reaction and method comparison", href: "/technology#how-it-works" },
     { label: "Core technology", description: "Catalyst, MEA, Ti-PTL, membrane", href: "/technology#core-technology" },
     { label: "Roadmap", description: "Seawater, marine, next steps", href: "/technology#roadmap" },
   ]},
