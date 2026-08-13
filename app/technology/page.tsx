@@ -52,7 +52,7 @@ const components = [
 ];
 
 const roadmap = [
-  { name: "Seawater electrolysis", Icon: IconWavesElectricity, image: "/images/technology/roadmap-seawater.jpg", alt: "Offshore wind turbine in coastal water", description: "Conventional electrolysis needs purified freshwater — a real constraint in coastal and water-scarce regions. Running directly on seawater removes that dependency and makes coastal production viable." },
+  { name: "Seawater electrolysis", Icon: IconWavesElectricity, image: "/images/technology/roadmap-seawater-v2.jpg", alt: "Offshore wind turbines at sea", description: "Conventional electrolysis needs purified freshwater — a real constraint in coastal and water-scarce regions. Running directly on seawater removes that dependency and makes coastal production viable." },
   { name: "Hydrogen fuel cell vessels", Icon: IconShip, image: "/images/technology/roadmap-vessels.jpg", alt: "Small boats docked in a coastal harbor", description: "Hydrogen-powered leisure craft in Jeollanam-do, supplying clean hydrogen to vessels in the region's coastal waters. Boats operate far from hydrogen infrastructure — a natural fit for on-site production." },
 ];
 
