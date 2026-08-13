@@ -35,14 +35,14 @@ export default function CompanyPage() {
         <h2>The people building it</h2>
         <div className="company-team-grid">
           <article className="company-team-card">
-            <header><img src="/kim-dong-ho.jpg" alt="Kim Dong-ho, CEO of EST Solution" /><div><h3>Kim Dong-ho</h3><p>CEO · Ph.D., Energy Resources Engineering</p></div></header>
-            <div className="company-team-stat"><strong>13</strong><span>years leading hydrogen and fuel cell research, before founding EST</span></div>
+            <header><img src="/kim_dongho_circle_final.png" alt="Kim Dong-ho" /><div><h3>Kim Dong-ho</h3><p>CEO · Ph.D., Energy Resources Engineering</p></div></header>
+            <div className="company-team-stat"><strong>13</strong><span>years leading hydrogen<br />and fuel cell research,<br />before founding EST</span></div>
             <div className="company-team-divider" />
             <p className="company-team-bio">Before starting EST Solution, Kim Dong-ho spent over a decade as <strong>VP and Director of Research</strong> at hydrogen and fuel cell research institutes. That track record shows up as <strong>director-level trust</strong> today: he sits on the Gwangju Hydrogen Planning Committee and reviews national gas safety standards as Director of the Korea Hydrogen Safety Association.</p>
           </article>
           <article className="company-team-card">
-            <header><img src="/park-seo-jin.jpg" alt="Park Seo-jin, senior researcher at EST Solution" /><div><h3>Park Seo-jin</h3><p>Senior researcher · New material engineering</p></div></header>
-            <div className="company-team-stat"><strong>6</strong><span>years focused specifically on hydrogen materials engineering</span></div>
+            <header><img src="/park_seojin_circle_v2.png" alt="Park Seo-jin" /><div><h3>Park Seo-jin</h3><p>Senior researcher · New material engineering</p></div></header>
+            <div className="company-team-stat"><strong>6</strong><span>years focused<br />specifically on hydrogen<br />materials engineering</span></div>
             <div className="company-team-divider" />
             <p className="company-team-bio">Park Seo-jin owns the process at the <strong>core of every EST stack</strong>: she manages MEA production, the membrane electrode assembly step where catalyst, membrane, and electrode become a single working unit. It&apos;s the hardest part of the stack to get right, and the one she&apos;s spent her career on.</p>
           </article>
