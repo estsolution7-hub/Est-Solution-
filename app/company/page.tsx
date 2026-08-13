@@ -3,6 +3,7 @@ import { DetailShell } from "../detail-shell";
 
 const subNav = [
   { label: "Team", id: "team" },
+  { label: "Milestones", id: "milestones" },
   { label: "CEO message", id: "ceo-message" },
   { label: "Advisors", id: "team-advisors" },
   { label: "Partners and certifications", id: "partners-certifications" },
@@ -43,6 +44,27 @@ export default function CompanyPage() {
             <div className="company-team-divider" />
             <p className="company-team-bio">Park Seo-jin owns the process at the <strong>core of every EST stack</strong>: she manages MEA production, the membrane electrode assembly step where catalyst, membrane, and electrode become a single working unit. It&apos;s the hardest part of the stack to get right, and the one she&apos;s spent her career on.</p>
           </article>
+        </div>
+      </section>
+      <section className="detail-section nav-target company-milestones" id="milestones">
+        <div className="company-milestones-layout">
+          <div className="company-milestones-intro">
+            <div className="company-team-label"><span /><p>Milestones</p></div>
+            <h2>Three years, nine government-backed programs</h2>
+            <p>Founded August 2023. Since then, EST has been selected for nine national and regional R&amp;D programs, spanning stack materials, mobile deployment, and BOP engineering, with seven additional projects in progress.</p>
+          </div>
+          <div className="company-milestones-stack">
+            <article className="milestone-card milestone-01"><header><div><h3>KEPCO</h3><small>24.08 ~</small></div><b>01</b></header><p>Commercialization of manufacturing technologies for high-efficiency, large-area MEAs and PEM water electrolysis stacks</p></article>
+            <article className="milestone-card milestone-02"><header><div><h3>Ministry of SMEs and Startups (Entrusted: KENTECH)</h3><small>24.08 ~</small></div><b>02</b></header><p>Development of stack commercialization manufacturing technology for 2.5kW PEMWE with high efficiency through R&amp;D of low-cost hydrocarbon electrolyte membrane</p></article>
+            <article className="milestone-card milestone-03"><header><div><h3>Gwangju Technopark <span>Best Enterprise Selection</span></h3><small>24.10 ~</small></div><b>03</b></header><p>Mobility utilization using green hydrogen production technology and citizen-engaged demonstration commercialization for carbon neutrality</p></article>
+            <article className="milestone-card milestone-04"><header><div><h3>Ministry of SMEs and Startups (Co-operation: KITECH)</h3><small>25.05 ~</small></div><b>04</b></header><p>Development of Ti-PTL commercialization performance technology based on high-efficiency PEM water electrolysis tape casting process</p></article>
+            <article className="milestone-card milestone-05"><header><div><h3>Ministry of Education</h3><small>25.08 ~</small></div><b>05</b></header><p>MEA manufacturing technology utilizing high-durability, low-cost hydrocarbon-based electrolyte membranes and applied R&amp;D on core technologies for small-scale PEM water electrolysis stacks</p></article>
+            <article className="milestone-card milestone-06"><header><div><h3>Jeonnam Technopark</h3><small>25.09 ~</small></div><b>06</b></header><p>Integrated BOP optimization manufacturing technology and low-cost commercialization for large-area stack-based PEM water electrolysis systems</p></article>
+            <article className="milestone-card milestone-07"><header><div><h3>KISED</h3><small>26.04 ~</small></div><b>07</b></header><p>Commercialization of modular PEM water electrolysis systems for distributed green hydrogen production</p></article>
+            <article className="milestone-card milestone-08"><header><div><h3>Ministry of SMEs and Startups (Co-operation: KITECH)</h3><small>26.04 ~</small></div><b>08</b></header><p>Development of technology for commercialization of 100cm² class Ti-PTL based on tape casting process for PEM water electrolysis</p></article>
+            <article className="milestone-card milestone-09"><header><div><h3>Ministry of Education</h3><small>26.06 ~</small></div><b>09</b></header><p>Localization of pore structure-controlled Ti-PTL and development of commercialization technology for 25cm² scale PEM water electrolysis unit cells</p></article>
+            <p className="company-milestones-footnote">Seven additional development projects are underway beyond the nine listed here.</p>
+          </div>
         </div>
       </section>
       <section className="detail-section nav-target company-ceo" id="ceo-message"><div className="eyebrow"><span /> CEO MESSAGE</div><div className="company-ceo-grid"><img src="/est-solution-ceo.png" alt="EST Solution founder and CEO with hydrogen equipment" /><blockquote><IconQuote size={32} stroke={1.6} /><p>We put trust and value creation with our customers first. Through relentless in-house research, we are building a green hydrogen energy society and working toward true energy self-sufficiency through core technology we own ourselves.</p><small>Founder and CEO В· EST Solution</small></blockquote></div></section>
