@@ -23,9 +23,9 @@ export default function ProductsPage() {
     <ProductSystemsSection />
     <div className="detail-content products-content nav-section-stack">
       <section className="titanium-teaser nav-target" id="components">
-        <div className="titanium-kicker"><span /> BUILT IN-HOUSE</div>
-        <div className="titanium-heading"><h2>Titanium components,<br /><span>engineered for the long run.</span></h2></div>
-        <p>Every EST system, at every size, is built on the same <strong>titanium-grade stack, catalyst coating, and membrane</strong> — <strong>the quality doesn't change, only the scale does.</strong></p>
+        <p className="titanium-kicker">Built in-house</p>
+        <div className="titanium-heading"><span /><h2>Every core component, engineered in-house</h2></div>
+        <p>From catalyst to titanium plates, every EST system — at every size — shares the same materials and manufacturing standard. Producing these in-house, rather than sourcing them, keeps quality consistent and cuts supply-chain risk.</p>
         <div className="titanium-grid">
           <article><div className="titanium-photo"><img src="/images/technology/enhanced_catalyst.png" alt="EST Solution catalyst material" /></div><h3>Catalyst</h3></article>
           <article><div className="titanium-photo"><img src="/images/technology/enhanced_mea.png" alt="EST Solution membrane electrode assembly" /></div><h3>MEA</h3></article>
