@@ -38,31 +38,43 @@ export default function TechnologyPage() {
             <p>Protons pass straight through the membrane. Electrons travel around the external circuit and recombine with the protons at the cathode, forming pure hydrogen gas.</p>
           </div>
           <div className="pem-diagram-panel">
-          <svg viewBox="0 0 320 260" style={{ width: "100%", height: "auto", display: "block", maxHeight: "240px" }} role="img" aria-label="PEM electrolysis process diagram">
-            <text x="160" y="16" textAnchor="middle" fontSize="10" fill="var(--text-muted)">e⁻</text>
-            <path d="M110 40 V24 H210 V40" fill="none" stroke="var(--text-muted)" strokeWidth="1.5" />
-            <text x="30" y="90" fontSize="11" fill="var(--text-secondary)">H₂O</text>
-            <path d="M55 88 H90" stroke="#5dcaeb" strokeWidth="4" markerEnd="url(#arrowBlue)" />
-            <rect x="100" y="40" width="30" height="180" fill="var(--bg-accent)" />
-            <text x="115" y="135" textAnchor="middle" fontSize="9" fill="var(--text-accent)" transform="rotate(-90 115 135)">Anode (+)</text>
-            <rect x="130" y="40" width="60" height="180" fill="var(--surface-2)" stroke="var(--border)" strokeWidth="1" />
-            <text x="160" y="70" textAnchor="middle" fontSize="10" fill="var(--text-accent)" fontWeight="500">PEM</text>
-            <text x="160" y="82" textAnchor="middle" fontSize="8" fill="var(--text-muted)">membrane</text>
-            <text x="160" y="128" textAnchor="middle" fontSize="12" fill="#d85a30" fontWeight="500">H⁺</text>
-            <path d="M138 140 H182" stroke="#d85a30" strokeWidth="3" markerEnd="url(#arrowRed)" />
-            <rect x="190" y="40" width="30" height="180" fill="var(--bg-success)" />
-            <text x="205" y="135" textAnchor="middle" fontSize="9" fill="var(--text-success)" transform="rotate(-90 205 135)">Cathode (-)</text>
-            <path d="M35 220 V70 H100" fill="none" stroke="var(--border-strong)" strokeWidth="1.5" />
-            <path d="M285 220 V70 H220" fill="none" stroke="var(--border-strong)" strokeWidth="1.5" />
-            <text x="15" y="225" fontSize="11" fill="var(--text-secondary)">O₂</text>
-            <path d="M55 222 H35" stroke="var(--text-secondary)" strokeWidth="3" markerEnd="url(#arrowGray)" />
-            <text x="275" y="90" fontSize="11" fill="var(--text-secondary)">H₂</text>
-            <path d="M255 88 H285" stroke="#639922" strokeWidth="4" markerEnd="url(#arrowGreen)" />
+          <svg viewBox="0 0 320 270" style={{ width: "100%", height: "auto", display: "block" }} role="img" aria-label="PEM electrolysis process diagram">
+            <path d="M118 46 V30 H202 V46" fill="none" stroke="#8aa4bd" strokeWidth="1.5" />
+            <path d="M118 40 V32" fill="none" stroke="#8aa4bd" strokeWidth="1.5" markerEnd="url(#arrowElecUp)" />
+            <path d="M202 32 V40" fill="none" stroke="#8aa4bd" strokeWidth="1.5" markerEnd="url(#arrowElecDown)" />
+            <text x="118" y="20" textAnchor="middle" fontSize="9" fill="#8aa4bd">e⁻</text>
+            <text x="202" y="20" textAnchor="middle" fontSize="9" fill="#8aa4bd">e⁻</text>
+            <text x="30" y="95" fontSize="11" fill="#c3d3e2">H₂O</text>
+            <path d="M55 92 H88" stroke="#6fd0f2" strokeWidth="4" markerEnd="url(#arrowBlue)" />
+            <rect x="100" y="50" width="30" height="172" fill="#123a5e" />
+            <circle cx="115" cy="92" r="2" fill="#6fd0f2" opacity="0.6" />
+            <circle cx="110" cy="132" r="2" fill="#6fd0f2" opacity="0.6" />
+            <circle cx="120" cy="172" r="2" fill="#6fd0f2" opacity="0.6" />
+            <text x="115" y="140" textAnchor="middle" fontSize="9" fill="#8ec9ec" transform="rotate(-90 115 140)">Anode (+)</text>
+            <rect x="130" y="50" width="60" height="172" fill="#0a2440" stroke="#2f5578" strokeWidth="1" />
+            <text x="160" y="74" textAnchor="middle" fontSize="10" fill="#9fd8f5" fontWeight="500">PEM</text>
+            <text x="160" y="86" textAnchor="middle" fontSize="8" fill="#7695ae">membrane</text>
+            <text x="160" y="130" textAnchor="middle" fontSize="12" fill="#f0916a" fontWeight="500">H⁺</text>
+            <path d="M140 142 H180" stroke="#f0916a" strokeWidth="3" markerEnd="url(#arrowRed)" />
+            <rect x="190" y="50" width="30" height="172" fill="#123a5e" />
+            <circle cx="205" cy="97" r="2" fill="#8fdc7a" opacity="0.6" />
+            <circle cx="200" cy="137" r="2" fill="#8fdc7a" opacity="0.6" />
+            <circle cx="210" cy="177" r="2" fill="#8fdc7a" opacity="0.6" />
+            <text x="205" y="140" textAnchor="middle" fontSize="9" fill="#8fdc7a" transform="rotate(-90 205 140)">Cathode (-)</text>
+            <path d="M35 224 V78 H98" fill="none" stroke="#3a5f80" strokeWidth="1.5" />
+            <path d="M300 224 V78 H222" fill="none" stroke="#3a5f80" strokeWidth="1.5" />
+            <text x="15" y="229" fontSize="11" fill="#c3d3e2">O₂</text>
+            <path d="M55 226 H37" stroke="#a9bccb" strokeWidth="3" markerEnd="url(#arrowGray)" />
+            <text x="290" y="95" textAnchor="middle" fontSize="11" fill="#c3d3e2">H₂</text>
+            <path d="M250 110 H295" stroke="#8fdc7a" strokeWidth="5" markerEnd="url(#arrowGreen)" />
+            <text x="160" y="256" textAnchor="middle" fontSize="9" fill="#5c7b98">External circuit carries electrons around the membrane</text>
             <defs>
-              <marker id="arrowBlue" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5dcaeb" /></marker>
-              <marker id="arrowRed" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#d85a30" /></marker>
-              <marker id="arrowGray" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--text-secondary)" /></marker>
-              <marker id="arrowGreen" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#639922" /></marker>
+              <marker id="arrowBlue" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#6fd0f2" /></marker>
+              <marker id="arrowRed" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#f0916a" /></marker>
+              <marker id="arrowGray" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#a9bccb" /></marker>
+              <marker id="arrowGreen" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="#8fdc7a" /></marker>
+              <marker id="arrowElecUp" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="3.5" refY="5" orient="auto"><path d="M0,6 L3.5,0 L7,6 Z" fill="#8aa4bd" /></marker>
+              <marker id="arrowElecDown" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="3.5" refY="1" orient="auto"><path d="M0,0 L3.5,6 L7,0 Z" fill="#8aa4bd" /></marker>
             </defs>
           </svg>
           </div>
