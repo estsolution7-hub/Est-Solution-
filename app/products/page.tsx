@@ -16,7 +16,7 @@ export default function ProductsPage() {
     <section className="products-closing-cta">
       <h2>Tell us your project.<br />We'll size the system.</h2>
       <a href="/contact">Request a quote →</a>
-      <div className="products-closing-brand" aria-label="EST Solution"><span><img src="/est-solution-logo.png" alt="" /></span><strong>EST SOLUTION</strong></div>
+      <div className="products-closing-brand"><img src="/est-solution-logo.png" alt="EST Solution" /></div>
     </section>
   } hero={
     <section className="products-hero">
