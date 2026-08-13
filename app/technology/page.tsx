@@ -1,11 +1,40 @@
+"use client";
+
+import { Bar } from "react-chartjs-2";
+import { BarElement, CategoryScale, Chart as ChartJS, LinearScale, Tooltip, type ChartData, type ChartOptions } from "chart.js";
 import { IconAlertTriangle, IconCheck, IconShip, IconTrendingDown, IconWavesElectricity } from "@tabler/icons-react";
 import { DetailShell } from "../detail-shell";
 
+ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip);
+
 const subNav = [
+  { label: "Why green hydrogen", id: "why-green-hydrogen" },
   { label: "How it works", id: "how-it-works" },
   { label: "Core technology", id: "core-technology" },
   { label: "Roadmap", id: "roadmap" },
 ];
+
+const hydrogenMix = [
+  { year: "2023", gray: 95, blue: 4, green: 1 }, { year: "2025", gray: 92, blue: 6, green: 2 },
+  { year: "2027", gray: 85, blue: 10, green: 5 }, { year: "2030", gray: 60, blue: 25, green: 15 },
+  { year: "2035", gray: 35, blue: 35, green: 30 }, { year: "2040", gray: 18, blue: 32, green: 50 },
+  { year: "2045", gray: 10, blue: 25, green: 65 }, { year: "2050", gray: 6, blue: 18, green: 76 },
+];
+
+const hydrogenChartData: ChartData<"bar"> = {
+  labels: hydrogenMix.map((item) => item.year),
+  datasets: [
+    { label: "Gray hydrogen", data: hydrogenMix.map((item) => item.gray), backgroundColor: "#898781", borderWidth: 0, stack: "hydrogen" },
+    { label: "Blue hydrogen", data: hydrogenMix.map((item) => item.blue), backgroundColor: "#2a78d6", borderWidth: 0, stack: "hydrogen" },
+    { label: "Green hydrogen", data: hydrogenMix.map((item) => item.green), backgroundColor: "#008300", borderWidth: 0, stack: "hydrogen" },
+  ],
+};
+
+const hydrogenChartOptions: ChartOptions<"bar"> = {
+  responsive: true, maintainAspectRatio: false, interaction: { mode: "index", intersect: false },
+  plugins: { legend: { display: false }, tooltip: { enabled: true, backgroundColor: "#1a1a19", titleColor: "#ffffff", bodyColor: "#ffffff", borderColor: "rgba(255,255,255,0.1)", borderWidth: 1, padding: 10, titleFont: { size: 12, weight: 500 }, bodyFont: { size: 12 }, callbacks: { label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y}%` } } },
+  scales: { x: { stacked: true, grid: { display: false }, ticks: { color: "#898781", font: { size: 11 } } }, y: { stacked: true, beginAtZero: true, max: 100, grid: { color: "#e1e0d9" }, ticks: { color: "#898781", font: { size: 11 }, callback: (value) => `${value}%` } } },
+};
 
 const methods = [
   { method: "PEM", image: "/diag_pem.png", alt: "PEM electrolysis cell diagram", note: "what we build", strengths: ["High current density", "Compact", "Responds fast to variable renewables", "99.97–99.99% purity"], tradeoffs: ["Needs precious-metal catalysts — the exact cost problem we solve"], featured: true },
@@ -29,6 +58,26 @@ const roadmap = [
 export default function TechnologyPage() {
   return <DetailShell eyebrow="TECHNOLOGY" title="PEM technology by EST Solution" intro="We build every layer of the electrolysis stack ourselves — so green hydrogen costs less to make." subNav={subNav} hero={<section className="technology-hero" role="img" aria-label="Hydrogen storage tanks and wind turbines"><div className="technology-hero-overlay" /><div className="technology-hero-copy"><h1>PEM technology by <span>EST Solution</span></h1><p>We build every layer of the electrolysis stack ourselves — so green hydrogen costs less to make.</p><div className="technology-hero-actions"><a href="/products">Our products</a><a href="/technical-resources">Technical resources</a></div></div></section>}>
     <div className="technology-page-content">
+      <section className="technology-section technology-why-section nav-target" id="why-green-hydrogen">
+        <div className="why-heading">
+          <div><div className="why-eyebrow"><span /> WHY GREEN HYDROGEN</div><h2>Not all hydrogen is <span>created equal.</span></h2></div>
+          <p>Most hydrogen today comes from fossil fuels. Green hydrogen uses renewable electricity and water, avoiding direct carbon emissions while creating a flexible energy carrier for industry, storage and power.</p>
+        </div>
+        <div className="hydrogen-comparison" aria-label="Carbon emissions by hydrogen production type">
+          <article className="hydrogen-card gray"><small>FOSSIL-BASED</small><strong>~11<span>kg</span></strong><p>CO₂ per kg of H₂</p><h3>Gray hydrogen</h3></article>
+          <article className="hydrogen-card blue"><small>CARBON CAPTURE</small><strong>3.5–3.9<span>kg</span></strong><p>CO₂ per kg of H₂</p><h3>Blue hydrogen</h3></article>
+          <article className="hydrogen-card green"><small>RENEWABLE-POWERED</small><strong>0<span>kg</span></strong><p>Direct CO₂ per kg of H₂</p><h3>Green hydrogen</h3></article>
+        </div>
+        <div className="transition-chart-wrap">
+          <div className="chart-copy"><div className="eyebrow"><span /> THE TRANSITION</div><h2>A cleaner production mix is taking shape.</h2><p>As renewable power expands and electrolysis costs fall, green hydrogen is expected to take a growing share of global production.</p></div>
+          <div className="mix-chart" aria-label="Illustrative transition from gray and blue hydrogen toward green hydrogen from 2023 to 2050">
+            <div className="chart-legend" aria-label="Chart legend"><span className="gray">Gray hydrogen</span><span className="blue">Blue hydrogen</span><span className="green">Green hydrogen</span></div>
+            <div className="chart-canvas"><Bar data={hydrogenChartData} options={hydrogenChartOptions} /></div>
+            <div className="chart-insight"><b>↘</b><span><strong>Green hydrogen is projected to become increasingly cost-competitive with blue hydrogen.</strong><small>Market outlook direction based on BNEF, 2022.</small></span></div>
+          </div>
+        </div>
+        <p className="why-note">Emissions figures are based on EST Solution’s company brochure. Actual lifecycle emissions vary by feedstock, electricity source, capture rate and system boundaries.</p>
+      </section>
       <section className="technology-section nav-target" id="how-it-works">
         <div className="pem-explainer">
           <div className="pem-explainer-copy">
