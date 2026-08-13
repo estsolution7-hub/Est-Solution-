@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { BarElement, CategoryScale, Chart as ChartJS, LinearScale, Tooltip, type ChartData, type ChartOptions } from "chart.js";
 import { IconArrowRight, IconAtom, IconBoxMultiple, IconBuilding, IconChevronDown, IconFlask2, IconGrain, IconLayersIntersect, IconMail, IconPhone, IconQuote, IconStack2, IconSun } from "@tabler/icons-react";
+import { SiteNavigation } from "./site-navigation";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip);
 
@@ -149,7 +150,6 @@ const mapLocations = {
 } as const;
 
 export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [language, setLanguage] = useState<"EN" | "KR">("EN");
   const [activeSlide, setActiveSlide] = useState(0);
   const [expandedSpecs, setExpandedSpecs] = useState<Record<string, boolean>>({});
@@ -171,17 +171,7 @@ export default function Home() {
 
   return (
     <main>
-      <header className="site-header">
-        <a className="brand brand-image" href="#top" aria-label="EST Solution home"><img src="/est-solution-logo.png" alt="EST Solution" /></a>
-        <nav className={menuOpen ? "nav open" : "nav"} aria-label="Primary navigation">
-          {navItems.map(([href, en, kr]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{korean ? kr : en}</a>)}
-        </nav>
-        <div className="header-actions">
-          <button className="language" onClick={() => setLanguage(korean ? "EN" : "KR")} aria-label="Switch language"><b>{language}</b><span>{korean ? "English" : "한국어"}</span></button>
-          <a className="header-cta" href="#contact">{korean ? "기술 문의" : "Technical inquiry"}<span>↗</span></a>
-          <button className="menu" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Toggle navigation"><span /><span /></button>
-        </div>
-      </header>
+      <SiteNavigation />
 
       <section className="hero" id="top">
         <div className="hero-background" aria-hidden="true">

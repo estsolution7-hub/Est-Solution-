@@ -1,21 +1,24 @@
+import { IconQuote } from "@tabler/icons-react";
 import { DetailShell } from "../detail-shell";
 
-const milestones = [
-  ["2023", "EST Solution founded in August; corporate research department established in October."],
-  ["2024", "Technology development, university cooperation and public support programs expanded."],
-  ["TODAY", "Continuing component localization, stack development and distributed green-hydrogen demonstrations."],
+const subNav = [
+  { label: "Overview", id: "overview" },
+  { label: "CEO message", id: "ceo-message" },
+  { label: "Team and advisors", id: "team-advisors" },
+  { label: "Partners and certifications", id: "partners-certifications" },
+  { label: "Case study", id: "case-study" },
 ];
 
+const partnerLogos = [...Array.from({ length: 20 }, (_, i) => `/partners/inst_${String(i + 1).padStart(2, "0")}.png`), ...Array.from({ length: 10 }, (_, i) => `/partners/uni_${String(i + 1).padStart(2, "0")}.png`)];
+
 export default function CompanyPage() {
-  return <DetailShell eyebrow="COMPANY" title="A focused team for practical green hydrogen." intro="EST Solution develops renewable-energy technology with an emphasis on local technical capability, connected R&D and deployable hydrogen systems.">
-    <div className="detail-content">
-      <section className="detail-intro"><h2>Technology with a clear purpose.</h2><p>Founded in 2023, EST Solution works across the value chain that determines the cost and performance of PEM water electrolysis. The company’s scope includes catalyst synthesis, membrane electrode assemblies, hydrocarbon membranes, porous transport layers, stack engineering and independent hydrogen production systems. The goal is straightforward: strengthen energy independence while helping customers move toward carbon-neutral operations.</p></section>
-      <section className="detail-section"><div className="eyebrow"><span /> HOW WE WORK</div><h2>Four principles guide the company.</h2><div className="feature-grid">
-        <article><small>01</small><h3>Customer focus</h3><p>Start with the operating environment, target capacity and technical constraint—not a generic product pitch.</p></article>
-        <article><small>02</small><h3>Core technology</h3><p>Build knowledge in-house across the interfaces that most strongly affect performance and cost.</p></article>
-        <article><small>03</small><h3>Value creation</h3><p>Translate R&D into measurable gains in localization, manufacturability and practical deployment.</p></article>
-      </div></section>
-      <section className="detail-section"><div className="eyebrow"><span /> COMPANY JOURNEY</div><h2>Young company. Focused momentum.</h2><div className="feature-grid">{milestones.map(([year, copy]) => <article key={year}><small>{year}</small><h3>{year === "TODAY" ? "Building the next stage" : "A foundation for growth"}</h3><p>{copy}</p></article>)}</div></section>
+  return <DetailShell eyebrow="COMPANY" title="A focused team for practical green hydrogen." intro="EST Solution develops renewable-energy technology through local technical capability, connected R&D and deployable hydrogen systems." subNav={subNav}>
+    <div className="detail-content nav-section-stack">
+      <section className="detail-section nav-target" id="overview"><div className="eyebrow"><span /> OVERVIEW</div><div className="detail-intro"><h2>Technology with a clear purpose.</h2><p>Founded in 2023, EST Solution works across the PEM water-electrolysis value chain: catalyst synthesis, membrane electrode assemblies, hydrocarbon membranes, porous transport layers, stack engineering and independent hydrogen production systems. The goal is to strengthen energy independence while helping customers move toward carbon-neutral operations.</p></div><div className="feature-grid"><article><small>FOUNDED</small><h3>2023</h3><p>Growing from Gwangju and Naju, Republic of Korea.</p></article><article><small>CORE SCOPE</small><h3>Catalyst → MEA → Stack</h3><p>Connected development across the interfaces that determine cost and performance.</p></article><article><small>PLATFORM</small><h3>PEM electrolysis</h3><p>Scalable systems for research, demonstration and distributed deployment.</p></article></div></section>
+      <section className="detail-section nav-target company-ceo" id="ceo-message"><div className="eyebrow"><span /> CEO MESSAGE</div><div className="company-ceo-grid"><img src="/est-solution-ceo.png" alt="EST Solution founder and CEO with hydrogen equipment" /><blockquote><IconQuote size={32} stroke={1.6} /><p>We put trust and value creation with our customers first. Through relentless in-house research, we are building a green hydrogen energy society and working toward true energy self-sufficiency through core technology we own ourselves.</p><small>Founder and CEO · EST Solution</small></blockquote></div></section>
+      <section className="detail-section nav-target" id="team-advisors"><div className="eyebrow"><span /> TEAM AND ADVISORS</div><h2>Research depth connected to application.</h2><div className="feature-grid"><article><small>LEADERSHIP</small><h3>Commercial direction</h3><p>Customer requirements and deployment constraints shape the product and research roadmap.</p></article><article><small>ENGINEERING</small><h3>Materials to systems</h3><p>Researchers connect catalyst, MEA, transport-layer and stack decisions across one platform.</p></article><article><small>ADVISORY NETWORK</small><h3>University collaboration</h3><p>Academic and institutional relationships extend testing, validation and specialist knowledge.</p></article></div></section>
+      <section className="detail-section nav-target" id="partners-certifications"><div className="eyebrow"><span /> PARTNERS AND CERTIFICATIONS</div><h2>An ecosystem built around proof.</h2><p className="detail-section-lead">EST Solution collaborates with Korean research institutes, public institutions, technology parks and universities. Patent filings, selected programs and field demonstrations support the company’s growing technical evidence base.</p><div className="company-partner-grid">{partnerLogos.map((src) => <div key={src}><img src={src} alt="EST Solution partner organization logo" /></div>)}</div></section>
+      <section className="detail-section nav-target" id="case-study"><div className="eyebrow"><span /> CASE STUDY</div><h2>Tested indoors and demonstrated in the field.</h2><div className="case-photos company-case-photos"><img src="/field-demonstration.jpg" alt="Outdoor field demonstration of EST Solution hydrogen equipment" /><img src="/hydrogen-prototype.jpg" alt="Indoor testing of EST Solution hydrogen equipment" /></div><p className="detail-section-lead">A self-contained hydrogen system was operated under controlled indoor conditions and presented as an outdoor field demonstration, showing how distributed production can move beyond the laboratory.</p></section>
     </div>
   </DetailShell>;
 }
