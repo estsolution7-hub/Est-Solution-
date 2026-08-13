@@ -30,9 +30,15 @@ export default function TechnologyPage() {
   return <DetailShell eyebrow="TECHNOLOGY" title="PEM technology by EST Solution" intro="We build every layer of the electrolysis stack ourselves — so green hydrogen costs less to make." subNav={subNav} hero={<section className="technology-hero" role="img" aria-label="Hydrogen storage tanks and wind turbines"><div className="technology-hero-overlay" /><div className="technology-hero-copy"><h1>PEM technology by <span>EST Solution</span></h1><p>We build every layer of the electrolysis stack ourselves — so green hydrogen costs less to make.</p><div className="technology-hero-actions"><a href="/products">Our products</a><a href="/technical-resources">Technical resources</a></div></div></section>}>
     <div className="technology-page-content">
       <section className="technology-section nav-target" id="how-it-works">
-        <div className="technology-eyebrow">HOW IT WORKS</div><h2>Splitting water with <span>nothing but electricity.</span></h2><p className="technology-intro">Electrolysis uses electricity to split water into hydrogen and oxygen. When that electricity comes from solar or wind, the hydrogen carries no carbon at all.</p>
-        <div className="reaction-panel">
-          <svg viewBox="0 0 320 260" style={{ width: "100%", height: "auto", display: "block" }} role="img" aria-label="PEM electrolysis process diagram">
+        <div className="pem-explainer">
+          <div className="pem-explainer-copy">
+            <p className="pem-explainer-eyebrow">How it works</p>
+            <h2>What is <span>PEM electrolysis</span></h2>
+            <p>A thin polymer membrane sits between two electrodes. Water enters at the anode, where it splits into oxygen, protons, and electrons.</p>
+            <p>Protons pass straight through the membrane. Electrons travel around the external circuit and recombine with the protons at the cathode, forming pure hydrogen gas.</p>
+          </div>
+          <div className="pem-diagram-panel">
+          <svg viewBox="0 0 320 260" style={{ width: "100%", height: "auto", display: "block", maxHeight: "240px" }} role="img" aria-label="PEM electrolysis process diagram">
             <text x="160" y="16" textAnchor="middle" fontSize="10" fill="var(--text-muted)">e⁻</text>
             <path d="M110 40 V24 H210 V40" fill="none" stroke="var(--text-muted)" strokeWidth="1.5" />
             <text x="30" y="90" fontSize="11" fill="var(--text-secondary)">H₂O</text>
@@ -59,6 +65,7 @@ export default function TechnologyPage() {
               <marker id="arrowGreen" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#639922" /></marker>
             </defs>
           </svg>
+          </div>
         </div>
         <h3 className="technology-table-title">Why PEM, and not the alternatives</h3><div className="method-card-grid">{methods.map((item) => <article className={`method-card${item.featured ? " featured" : ""}`} key={item.method}><div className="method-diagram"><img src={item.image} alt={item.alt} /></div><div className="method-title"><h4>{item.method}</h4>{item.note && <span>{item.note}</span>}</div><div className="method-detail strengths"><span><IconCheck size={11} stroke={2} />Strengths</span><ul>{item.strengths.map((strength) => <li key={strength}>{strength}</li>)}</ul></div><div className="method-detail tradeoff"><span><IconAlertTriangle size={11} stroke={1.8} />Trade-off</span><ul>{item.tradeoffs.map((tradeoff) => <li key={tradeoff}>{tradeoff}</li>)}</ul></div></article>)}</div>
         <div className="pem-callout">PEM's responsiveness is what matches solar and wind, which don't produce on a steady schedule. Its one weakness — precious-metal cost — is the specific problem our materials work addresses.</div>
