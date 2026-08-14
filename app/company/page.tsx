@@ -6,7 +6,6 @@ const subNav = [
   { label: "Milestones", id: "milestones" },
   { label: "Certifications & IP", id: "certifications" },
   { label: "CEO message", id: "ceo-message" },
-  { label: "Advisors", id: "team-advisors" },
   { label: "Partners and certifications", id: "partners-certifications" },
   { label: "Case study", id: "case-study" },
 ];
@@ -112,9 +111,20 @@ export default function CompanyPage() {
         <p className="company-certifications-disclosure">All four certificates are genuine, issued by Korean national and regional government agencies (2025 Venture Enterprise Verification, Gwangju Metropolitan City Demonstration Confirmation, Ministry of Climate Energy and Environment Energy-Specialized Enterprise Designation, and KODIT &quot;First Penguin&quot; Company Selection).</p>
       </section>
       <section className="detail-section nav-target company-ceo" id="ceo-message"><div className="eyebrow"><span /> CEO MESSAGE</div><div className="company-ceo-grid"><img src="/est-solution-ceo.png" alt="EST Solution founder and CEO with hydrogen equipment" /><blockquote><IconQuote size={32} stroke={1.6} /><p>We put trust and value creation with our customers first. Through relentless in-house research, we are building a green hydrogen energy society and working toward true energy self-sufficiency through core technology we own ourselves.</p><small>Founder and CEO В· EST Solution</small></blockquote></div></section>
-      <section className="detail-section nav-target" id="team-advisors"><div className="eyebrow"><span /> TEAM AND ADVISORS</div><h2>Research depth connected to application.</h2><div className="feature-grid"><article><small>LEADERSHIP</small><h3>Commercial direction</h3><p>Customer requirements and deployment constraints shape the product and research roadmap.</p></article><article><small>ENGINEERING</small><h3>Materials to systems</h3><p>Researchers connect catalyst, MEA, transport-layer and stack decisions across one platform.</p></article><article><small>ADVISORY NETWORK</small><h3>University collaboration</h3><p>Academic and institutional relationships extend testing, validation and specialist knowledge.</p></article></div></section>
       <section className="detail-section nav-target" id="partners-certifications"><div className="eyebrow"><span /> PARTNERS AND CERTIFICATIONS</div><h2>An ecosystem built around proof.</h2><p className="detail-section-lead">EST Solution collaborates with Korean research institutes, public institutions, technology parks and universities. Patent filings, selected programs and field demonstrations support the companyвЂ™s growing technical evidence base.</p><div className="company-partner-grid">{partnerLogos.map((src) => <div key={src}><img src={src} alt="EST Solution partner organization logo" /></div>)}</div></section>
       <section className="detail-section nav-target" id="case-study"><div className="eyebrow"><span /> CASE STUDY</div><h2>Tested indoors and demonstrated in the field.</h2><div className="case-photos company-case-photos"><img src="/field-demonstration.jpg" alt="Outdoor field demonstration of EST Solution hydrogen equipment" /><img src="/hydrogen-prototype.jpg" alt="Indoor testing of EST Solution hydrogen equipment" /></div><p className="detail-section-lead">A self-contained hydrogen system was operated under controlled indoor conditions and presented as an outdoor field demonstration, showing how distributed production can move beyond the laboratory.</p></section>
+      <section className="detail-section nav-target company-product-portfolio" id="company-products">
+        <h2 className="portfolio-title">Our product <span>portfolio.</span></h2>
+        <div className="portfolio-grid">
+          <div className="portfolio-visual"><img src="/images/technology/prod_electrolyzer_hq.png" alt="H2-241002A PEM electrolysis system" /></div>
+          <div className="portfolio-copy">
+            <p className="portfolio-headline"><strong>Compact, containerized electrolyzers</strong> ready to install, from <strong>2.5kW to 20kW</strong>.</p>
+            <div className="portfolio-hook" aria-label="Product highlights"><span>Ready to install</span><strong>2.5–20 kW range</strong></div>
+            <p className="portfolio-support">PEM electrolysis systems: pilot, prove, and scale your green hydrogen production.</p>
+            <div className="portfolio-actions"><a className="primary" href="/products">View products</a></div>
+          </div>
+        </div>
+      </section>
     </div>
   </DetailShell>;
 }
