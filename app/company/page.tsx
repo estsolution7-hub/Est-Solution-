@@ -4,6 +4,7 @@ import { DetailShell } from "../detail-shell";
 const subNav = [
   { label: "Team", id: "team" },
   { label: "Milestones", id: "milestones" },
+  { label: "Certifications & IP", id: "certifications" },
   { label: "CEO message", id: "ceo-message" },
   { label: "Advisors", id: "team-advisors" },
   { label: "Partners and certifications", id: "partners-certifications" },
@@ -11,6 +12,21 @@ const subNav = [
 ];
 
 const partnerLogos = [...Array.from({ length: 20 }, (_, i) => `/partners/inst_${String(i + 1).padStart(2, "0")}.png`), ...Array.from({ length: 10 }, (_, i) => `/partners/uni_${String(i + 1).padStart(2, "0")}.png`)];
+
+const ipRows = [
+  { category: "Application", title: "Method for manufacturing membrane electrode assembly, membrane electrode assembly, and water electrolysis apparatus", date: "26.02.26", number: "10-2026-0035753" },
+  { category: "Registration", title: "Method for manufacturing low-cost hydrocarbon-based polymer electrolyte membrane", date: "26.04.29", number: "10-2961064-00-00" },
+  { category: "Application", title: "Water electrolysis system comprising surface-treated titanium porous transport layer (Ti-PTL)", date: "24.10.28", number: "10-2024-0149069" },
+  { category: "Trademark", title: "Registered trademark", date: "2025.09.26", number: "40-2025-0098856" },
+  { category: "Trademark", title: "Trademark application", date: "2025.05.31", number: "40-2025-0098855" },
+] as const;
+
+const certificates = [
+  { src: "/assets/company/cert1_venture_inspect.png", alt: "Venture Enterprise Verification Certificate", caption: "Venture Enterprise Verification" },
+  { src: "/assets/company/cert2_demo_inspect.png", alt: "Demonstration Confirmation Certificate", caption: "Demonstration Confirmation" },
+  { src: "/assets/company/cert3_energy_inspect.png", alt: "Energy Specialized Enterprise Certificate", caption: "Energy Specialized Enterprise" },
+  { src: "/assets/company/cert4_penguin_inspect.png", alt: "First Penguin Company Selection Certificate", caption: '"First Penguin" Company Selection' },
+] as const;
 
 export default function CompanyPage() {
   return <DetailShell eyebrow="COMPANY" title="A focused team for practical green hydrogen." intro="EST Solution develops renewable-energy technology through local technical capability, connected R&D and deployable hydrogen systems." subNav={subNav} hero={
@@ -66,6 +82,34 @@ export default function CompanyPage() {
             <p className="company-milestones-footnote">Seven additional development projects are underway beyond the nine listed here.</p>
           </div>
         </div>
+      </section>
+      <section className="detail-section nav-target company-certifications" id="certifications">
+        <div className="company-team-label"><span /><p>Certifications &amp; IP</p></div>
+        <h2>Protected, verified, and government-recognized</h2>
+        <p className="company-certifications-lead">Five active patents and trademarks, and four certifications from Korean national and regional agencies confirming EST&apos;s technology and business status.</p>
+
+        <h3 className="company-certifications-subtitle">IP status</h3>
+        <div className="company-ip-table-wrap">
+          <table className="company-ip-table">
+            <thead><tr><th>Category</th><th>IP title</th><th>Date</th><th>App. / reg. no.</th></tr></thead>
+            <tbody>{ipRows.map((row) => <tr key={row.number}>
+              <td><span className={`ip-badge ip-${row.category.toLowerCase()}`}>{row.category}</span></td>
+              <td>{row.title}</td><td>{row.date}</td><td>{row.number}</td>
+            </tr>)}</tbody>
+          </table>
+        </div>
+        <div className="company-ip-mobile" aria-label="IP status">
+          {ipRows.map((row) => <article key={row.number}>
+            <span className={`ip-badge ip-${row.category.toLowerCase()}`}>{row.category}</span>
+            <dl><div><dt>IP title</dt><dd>{row.title}</dd></div><div><dt>Date</dt><dd>{row.date}</dd></div><div><dt>App. / reg. no.</dt><dd>{row.number}</dd></div></dl>
+          </article>)}
+        </div>
+
+        <h3 className="company-certifications-subtitle">Certifications</h3>
+        <div className="company-certifications-grid">
+          {certificates.map((certificate) => <figure key={certificate.src}><img src={certificate.src} alt={certificate.alt} /><figcaption>{certificate.caption}</figcaption></figure>)}
+        </div>
+        <p className="company-certifications-disclosure">All four certificates are genuine, issued by Korean national and regional government agencies (2025 Venture Enterprise Verification, Gwangju Metropolitan City Demonstration Confirmation, Ministry of Climate Energy and Environment Energy-Specialized Enterprise Designation, and KODIT &quot;First Penguin&quot; Company Selection).</p>
       </section>
       <section className="detail-section nav-target company-ceo" id="ceo-message"><div className="eyebrow"><span /> CEO MESSAGE</div><div className="company-ceo-grid"><img src="/est-solution-ceo.png" alt="EST Solution founder and CEO with hydrogen equipment" /><blockquote><IconQuote size={32} stroke={1.6} /><p>We put trust and value creation with our customers first. Through relentless in-house research, we are building a green hydrogen energy society and working toward true energy self-sufficiency through core technology we own ourselves.</p><small>Founder and CEO В· EST Solution</small></blockquote></div></section>
       <section className="detail-section nav-target" id="team-advisors"><div className="eyebrow"><span /> TEAM AND ADVISORS</div><h2>Research depth connected to application.</h2><div className="feature-grid"><article><small>LEADERSHIP</small><h3>Commercial direction</h3><p>Customer requirements and deployment constraints shape the product and research roadmap.</p></article><article><small>ENGINEERING</small><h3>Materials to systems</h3><p>Researchers connect catalyst, MEA, transport-layer and stack decisions across one platform.</p></article><article><small>ADVISORY NETWORK</small><h3>University collaboration</h3><p>Academic and institutional relationships extend testing, validation and specialist knowledge.</p></article></div></section>
