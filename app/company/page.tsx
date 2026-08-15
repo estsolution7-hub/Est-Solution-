@@ -1,16 +1,15 @@
 ﻿import { IconQuote } from "@tabler/icons-react";
 import { DetailShell } from "../detail-shell";
+import { PartnersSection } from "./partners-section";
 
 const subNav = [
   { label: "Team", id: "team" },
   { label: "Milestones", id: "milestones" },
   { label: "Certifications & IP", id: "certifications" },
+  { label: "Partners & universities", id: "partners" },
   { label: "CEO message", id: "ceo-message" },
-  { label: "Partners and certifications", id: "partners-certifications" },
   { label: "Case study", id: "case-study" },
 ];
-
-const partnerLogos = [...Array.from({ length: 20 }, (_, i) => `/partners/inst_${String(i + 1).padStart(2, "0")}.png`), ...Array.from({ length: 10 }, (_, i) => `/partners/uni_${String(i + 1).padStart(2, "0")}.png`)];
 
 const ipRows = [
   { category: "Application", title: "Method for manufacturing membrane electrode assembly, membrane electrode assembly, and water electrolysis apparatus", date: "26.02.26", number: "10-2026-0035753" },
@@ -110,8 +109,8 @@ export default function CompanyPage() {
         </div>
         <p className="company-certifications-disclosure">All four certificates are genuine, issued by Korean national and regional government agencies (2025 Venture Enterprise Verification, Gwangju Metropolitan City Demonstration Confirmation, Ministry of Climate Energy and Environment Energy-Specialized Enterprise Designation, and KODIT &quot;First Penguin&quot; Company Selection).</p>
       </section>
+      <PartnersSection />
       <section className="detail-section nav-target company-ceo" id="ceo-message"><div className="eyebrow"><span /> CEO MESSAGE</div><div className="company-ceo-grid"><img src="/est-solution-ceo.png" alt="EST Solution founder and CEO with hydrogen equipment" /><blockquote><IconQuote size={32} stroke={1.6} /><p>We put trust and value creation with our customers first. Through relentless in-house research, we are building a green hydrogen energy society and working toward true energy self-sufficiency through core technology we own ourselves.</p><small>Founder and CEO В· EST Solution</small></blockquote></div></section>
-      <section className="detail-section nav-target" id="partners-certifications"><div className="eyebrow"><span /> PARTNERS AND CERTIFICATIONS</div><h2>An ecosystem built around proof.</h2><p className="detail-section-lead">EST Solution collaborates with Korean research institutes, public institutions, technology parks and universities. Patent filings, selected programs and field demonstrations support the companyвЂ™s growing technical evidence base.</p><div className="company-partner-grid">{partnerLogos.map((src) => <div key={src}><img src={src} alt="EST Solution partner organization logo" /></div>)}</div></section>
       <section className="detail-section nav-target" id="case-study"><div className="eyebrow"><span /> CASE STUDY</div><h2>Tested indoors and demonstrated in the field.</h2><div className="case-photos company-case-photos"><img src="/field-demonstration.jpg" alt="Outdoor field demonstration of EST Solution hydrogen equipment" /><img src="/hydrogen-prototype.jpg" alt="Indoor testing of EST Solution hydrogen equipment" /></div><p className="detail-section-lead">A self-contained hydrogen system was operated under controlled indoor conditions and presented as an outdoor field demonstration, showing how distributed production can move beyond the laboratory.</p></section>
       <section className="detail-section nav-target company-product-portfolio" id="company-products">
         <h2 className="portfolio-title">Our product <span>portfolio.</span></h2>
