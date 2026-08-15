@@ -110,7 +110,15 @@ export default function CompanyPage() {
         <p className="company-certifications-disclosure">All four certificates are genuine, issued by Korean national and regional government agencies (2025 Venture Enterprise Verification, Gwangju Metropolitan City Demonstration Confirmation, Ministry of Climate Energy and Environment Energy-Specialized Enterprise Designation, and KODIT &quot;First Penguin&quot; Company Selection).</p>
       </section>
       <PartnersSection />
-      <section className="detail-section nav-target company-ceo" id="ceo-message"><div className="eyebrow"><span /> CEO MESSAGE</div><div className="company-ceo-grid"><img src="/est-solution-ceo.png" alt="EST Solution founder and CEO with hydrogen equipment" /><blockquote><IconQuote size={32} stroke={1.6} /><p>We put trust and value creation with our customers first. Through relentless in-house research, we are building a green hydrogen energy society and working toward true energy self-sufficiency through core technology we own ourselves.</p><small>Founder and CEO В· EST Solution</small></blockquote></div></section>
+      <section className="detail-section nav-target company-ceo" id="ceo-message">
+        <div className="company-ceo-inner">
+          <div className="company-ceo-label"><span /><p>CEO message</p></div>
+          <div className="company-ceo-grid">
+            <blockquote><span className="company-ceo-quote-mark" aria-hidden="true">&ldquo;</span><p>Trust with our customers comes first. Everything else follows from it: relentless in-house research, technology we own outright, and a green hydrogen society built on real energy self-sufficiency.</p><small>Founder and CEO, Kim Dong-ho &middot; EST Solution</small></blockquote>
+            <img src="/est-solution-ceo.png" alt="Kim Dong-ho, CEO" />
+          </div>
+        </div>
+      </section>
       <section className="detail-section nav-target" id="case-study"><div className="eyebrow"><span /> CASE STUDY</div><h2>Tested indoors and demonstrated in the field.</h2><div className="case-photos company-case-photos"><img src="/field-demonstration.jpg" alt="Outdoor field demonstration of EST Solution hydrogen equipment" /><img src="/hydrogen-prototype.jpg" alt="Indoor testing of EST Solution hydrogen equipment" /></div><p className="detail-section-lead">A self-contained hydrogen system was operated under controlled indoor conditions and presented as an outdoor field demonstration, showing how distributed production can move beyond the laboratory.</p></section>
       <section className="detail-section nav-target company-product-portfolio" id="company-products">
         <h2 className="portfolio-title">Our product <span>portfolio.</span></h2>
