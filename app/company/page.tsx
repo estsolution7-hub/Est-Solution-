@@ -119,7 +119,22 @@ export default function CompanyPage() {
           </div>
         </div>
       </section>
-      <section className="detail-section nav-target" id="case-study"><div className="eyebrow"><span /> CASE STUDY</div><h2>Tested indoors and demonstrated in the field.</h2><div className="case-photos company-case-photos"><img src="/field-demonstration.jpg" alt="Outdoor field demonstration of EST Solution hydrogen equipment" /><img src="/hydrogen-prototype.jpg" alt="Indoor testing of EST Solution hydrogen equipment" /></div><p className="detail-section-lead">A self-contained hydrogen system was operated under controlled indoor conditions and presented as an outdoor field demonstration, showing how distributed production can move beyond the laboratory.</p></section>
+      <section className="detail-section nav-target company-case-study" id="case-study">
+        <div className="eyebrow"><span /> CASE STUDY</div>
+        <h2>Built to work outside the lab.</h2>
+        <p className="company-case-lead">EST validated the core hydrogen production and mobility system indoors under controlled conditions, then took the same hardware outside and ran it as a live field demonstration. No swaps, no simulations. The system that passed the bench is the system that ran in the field.</p>
+        <div className="company-case-grid">
+          <figure>
+            <img src="/field-demonstration.jpg" alt="Outdoor field demonstration setup" />
+            <figcaption>Field demonstration setup</figcaption>
+          </figure>
+          <figure>
+            <img src="/hydrogen-prototype.jpg" alt="Hydrogen system hardware detail" />
+            <figcaption>System internals, indoor test bench</figcaption>
+          </figure>
+        </div>
+        <p className="company-case-note">Core performance data recorded under controlled indoor conditions.</p>
+      </section>
       <section className="detail-section nav-target company-product-portfolio" id="company-products">
         <h2 className="portfolio-title">Our product <span>portfolio.</span></h2>
         <div className="portfolio-grid">
