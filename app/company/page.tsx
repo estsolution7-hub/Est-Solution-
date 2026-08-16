@@ -27,7 +27,7 @@ const certificates = [
 ] as const;
 
 export default function CompanyPage() {
-  return <DetailShell eyebrow="COMPANY" title="A focused team for practical green hydrogen." intro="EST Solution develops renewable-energy technology through local technical capability, connected R&D and deployable hydrogen systems." subNav={subNav} hero={
+  return <DetailShell eyebrow="COMPANY" title="A focused team for practical green hydrogen." intro="EST Solution develops renewable-energy technology through local technical capability, connected R&D and deployable hydrogen systems." subNav={subNav} closingCta={<></>} hero={
     <section className="company-hero hero-gradient">
       <div className="company-bubbles" aria-hidden="true">
         <i className="bubble bubble-1" /><i className="bubble bubble-2" /><i className="bubble bubble-3" /><i className="bubble bubble-4" />
@@ -121,7 +121,7 @@ export default function CompanyPage() {
       </section>
       <section className="detail-section nav-target company-case-study" id="case-study">
         <div className="eyebrow"><span /> CASE STUDY</div>
-        <h2>Built to work outside the lab.</h2>
+        <h2>Built to work <span>outside the lab.</span></h2>
         <p className="company-case-lead">EST validated the core hydrogen production and mobility system indoors under controlled conditions, then took the same hardware outside and ran it as a live field demonstration. No swaps, no simulations. The system that passed the bench is the system that ran in the field.</p>
         <div className="company-case-grid">
           <figure>
@@ -135,17 +135,21 @@ export default function CompanyPage() {
         </div>
         <p className="company-case-note">Core performance data recorded under controlled indoor conditions.</p>
       </section>
-      <section className="detail-section nav-target company-product-portfolio" id="company-products">
-        <h2 className="portfolio-title">Our product <span>portfolio.</span></h2>
-        <div className="portfolio-grid">
-          <div className="portfolio-visual"><img src="/images/technology/prod_electrolyzer_hq.png" alt="H2-241002A PEM electrolysis system" /></div>
-          <div className="portfolio-copy">
-            <p className="portfolio-headline"><strong>Compact, containerized electrolyzers</strong> ready to install, from <strong>2.5kW to 20kW</strong>.</p>
-            <div className="portfolio-hook" aria-label="Product highlights"><span>Ready to install</span><strong>2.5–20 kW range</strong></div>
-            <p className="portfolio-support">PEM electrolysis systems: pilot, prove, and scale your green hydrogen production.</p>
-            <div className="portfolio-actions"><a className="primary" href="/products">View products</a></div>
+      <section className="nav-target company-closing-cta" id="company-products">
+        <div className="company-closing-copy">
+          <div className="company-closing-pills" aria-label="Product highlights">
+            <span>Ready to install</span>
+            <strong>2.5–20 kW range</strong>
+          </div>
+          <h2>Compact, containerized electrolyzers, ready to install.</h2>
+          <p>PEM electrolysis systems to pilot, prove, and scale your green hydrogen production, and a team ready to talk through your project.</p>
+          <div className="company-closing-actions">
+            <a className="primary" href="/products">View products</a>
+            <a href="/contact">Get in touch</a>
           </div>
         </div>
+        <img className="company-closing-product" src="/images/technology/prod_electrolyzer_hq_clean.png" alt="H2-241002A containerized PEM electrolysis system" />
+        <img className="company-closing-mark" src="/favicon.svg" alt="" aria-hidden="true" />
       </section>
     </div>
   </DetailShell>;
