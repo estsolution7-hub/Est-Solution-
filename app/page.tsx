@@ -310,7 +310,6 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="solar-footnote"><IconSun size={16} stroke={1.6} aria-hidden="true" /><span>Also offering solar power generation systems as a complementary product line — <a href="/products/solar">view details</a></span></div>
         <p className="section-next reveal"><a href="#who-we-are">{korean ? "다음: 만드는 사람들 →" : "Next: who builds them →"}</a></p>
       </section>
 
