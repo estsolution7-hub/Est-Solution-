@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { IconArrowUpRight, IconChevronDown, IconMenu2, IconX } from "@tabler/icons-react";
+import { IconArrowUpRight, IconChevronDown, IconMenu2, IconX } from "./icons";
+import { useLanguage } from "./use-language";
 
-type NavEntry = { label: string; description: string; href: string };
-type NavGroup = { label: string; href: string; items?: NavEntry[] };
+type NavEntry = { label: string; labelKr: string; description: string; descriptionKr: string; href: string };
+type NavGroup = { label: string; labelKr: string; href: string; items?: NavEntry[] };
 
 function LanguageFlag({ code }: { code: string }) {
   if (code === "EN") {
@@ -26,39 +27,40 @@ function LanguageFlag({ code }: { code: string }) {
       </g>
     </svg>;
   }
-  if (code === "IT") {
-    return <svg className="language-flag" viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246" /><rect x="8" width="8" height="16" fill="#fff" /><rect x="16" width="8" height="16" fill="#ce2b37" /></svg>;
-  }
-  return <svg className="language-flag" viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="5.34" fill="#000" /><rect y="5.33" width="24" height="5.34" fill="#dd0000" /><rect y="10.66" width="24" height="5.34" fill="#ffce00" /></svg>;
+  return null;
 }
 
 const navigation: NavGroup[] = [
-  { label: "Technology", href: "/technology", items: [
-      { label: "Why green hydrogen", description: "Gray vs blue vs green", href: "/technology#why-green-hydrogen" },
-      { label: "How PEM electrolysis works", description: "Reaction and method comparison", href: "/technology#how-it-works" },
-    { label: "Core technology", description: "Catalyst, MEA, Ti-PTL, membrane", href: "/technology#core-technology" },
-    { label: "Roadmap", description: "Seawater, marine, next steps", href: "/technology#roadmap" },
+  { label: "Technology", labelKr: "기술", href: "/technology", items: [
+    { label: "Why green hydrogen", labelKr: "그린수소란", description: "Gray vs blue vs green", descriptionKr: "그레이 · 블루 · 그린 비교", href: "/technology#why-green-hydrogen" },
+    { label: "How PEM electrolysis works", labelKr: "PEM 수전해 원리", description: "Reaction and method comparison", descriptionKr: "반응 원리와 방식 비교", href: "/technology#how-it-works" },
+    { label: "Core technology", labelKr: "핵심 기술", description: "Catalyst, MEA, Ti-PTL, membrane", descriptionKr: "촉매, MEA, Ti-PTL, 전해질막", href: "/technology#core-technology" },
+    { label: "Roadmap", labelKr: "로드맵", description: "Seawater, marine, next steps", descriptionKr: "해수 전해, 해양, 다음 단계", href: "/technology#roadmap" },
   ]},
-  { label: "Products", href: "/products", items: [
-    { label: "Electrolysis systems", description: "2.5kW · 5kW · 20kW", href: "/products#products" },
-    { label: "Components", description: "What's inside our systems", href: "/products#components" },
-    { label: "NEOHYD dispensing", description: "On-site delivery unit", href: "/products#dispensing" },
-    { label: "Applications", description: "Mobility, farms, data centers", href: "/products#applications" },
+  { label: "Products", labelKr: "제품", href: "/products", items: [
+    { label: "Electrolysis systems", labelKr: "수전해 시스템", description: "2.5kW · 5kW · 20kW", descriptionKr: "2.5kW · 5kW · 20kW", href: "/products#products" },
+    { label: "System specifications", labelKr: "시스템 사양", description: "Dimensions, output, purity", descriptionKr: "크기, 생산량, 순도", href: "/products/systems" },
+    { label: "Components", labelKr: "핵심 부품", description: "What's inside our systems", descriptionKr: "시스템 내부 구성", href: "/products#components" },
+    { label: "Component details", labelKr: "부품 상세", description: "Catalyst, MEA, membrane, Ti-PTL", descriptionKr: "촉매, MEA, 전해질막, Ti-PTL", href: "/products/components" },
+    { label: "NEOHYD dispensing", labelKr: "NEOHYD 충전", description: "On-site delivery unit", descriptionKr: "현장 공급 유닛", href: "/products#dispensing" },
+    { label: "Mobile hydrogen", labelKr: "이동형 수소", description: "Production closer to demand", descriptionKr: "수요지 인근 생산", href: "/products/mobile" },
+    { label: "Applications", labelKr: "적용 분야", description: "Mobility, farms, data centers", descriptionKr: "모빌리티, 농업, 데이터센터", href: "/products#applications" },
   ]},
-  { label: "Company", href: "/company", items: [
-    { label: "Team", description: "Leadership and engineering", href: "/company#team" },
-    { label: "Milestones", description: "Government-backed R&D programs", href: "/company#milestones" },
-    { label: "Certifications & IP", description: "Patents, trademarks and verification", href: "/company#certifications" },
-    { label: "Partners & universities", description: "Korea's hydrogen research network", href: "/company#partners" },
-    { label: "CEO message", description: "Mission and vision", href: "/company#ceo-message" },
-    { label: "Case study", description: "Field demonstration", href: "/company#case-study" },
+  { label: "Company", labelKr: "회사 소개", href: "/company", items: [
+    { label: "Team", labelKr: "팀", description: "Leadership and engineering", descriptionKr: "경영진과 연구진", href: "/company#team" },
+    { label: "Milestones", labelKr: "주요 실적", description: "Government-backed R&D programs", descriptionKr: "국가 R&D 과제 수행", href: "/company#milestones" },
+    { label: "Certifications & IP", labelKr: "인증 · 지식재산", description: "Patents, trademarks and verification", descriptionKr: "특허, 상표, 인증", href: "/company#certifications" },
+    { label: "Partners & universities", labelKr: "협력 기관 · 대학", description: "Korea's hydrogen research network", descriptionKr: "국내 수소 연구 네트워크", href: "/company#partners" },
+    { label: "CEO message", labelKr: "대표 인사말", description: "Mission and vision", descriptionKr: "미션과 비전", href: "/company#ceo-message" },
+    { label: "Case study", labelKr: "실증 사례", description: "Field demonstration", descriptionKr: "현장 실증", href: "/company#case-study" },
   ]},
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", labelKr: "문의", href: "/#contact" },
 ];
 
-export type SubNavItem = { label: string; id: string; href?: string };
+export type SubNavItem = { label: string; labelKr?: string; id: string; href?: string };
 
 export function PageSubNavigation({ subNav }: { subNav: SubNavItem[] }) {
+  const [, , korean] = useLanguage();
   const [activeSection, setActiveSection] = useState(subNav[0]?.id ?? "");
 
   useEffect(() => {
@@ -72,17 +74,17 @@ export function PageSubNavigation({ subNav }: { subNav: SubNavItem[] }) {
     return () => observer.disconnect();
   }, [subNav]);
 
-  return <nav className="page-subnav" aria-label="On this page"><div>{subNav.map((item) => <a className={activeSection === item.id ? "active" : ""} href={item.href ?? `#${item.id}`} key={item.id} aria-current={activeSection === item.id ? "location" : undefined}>{item.label}</a>)}</div></nav>;
+  return <nav className="page-subnav" aria-label={korean ? "이 페이지" : "On this page"}><div>{subNav.map((item) => <a className={activeSection === item.id ? "active" : ""} href={item.href ?? `#${item.id}`} key={item.id} aria-current={activeSection === item.id ? "location" : undefined}>{korean && item.labelKr ? item.labelKr : item.label}</a>)}</div></nav>;
 }
 
 export function SiteNavigation({ subNav = [], language: controlledLanguage, onLanguageChange }: { subNav?: SubNavItem[]; language?: string; onLanguageChange?: (language: string) => void }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
-  const [languageOpen, setLanguageOpen] = useState(false);
-  const [internalLanguage, setInternalLanguage] = useState("EN");
+  const [sharedLanguage, setSharedLanguage] = useLanguage();
+  const [route, setRoute] = useState<{ path: string; hash: string }>({ path: "", hash: "" });
   const languageRef = useRef<HTMLDivElement>(null);
-  const language = controlledLanguage ?? internalLanguage;
+  const language = controlledLanguage ?? sharedLanguage;
 
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 12);
@@ -91,53 +93,80 @@ export function SiteNavigation({ subNav = [], language: controlledLanguage, onLa
     return () => window.removeEventListener("scroll", update);
   }, []);
 
+  // Track path + hash so the dropdown can show which section you're viewing.
+  // Read on the client only, to keep the server and first client render identical.
   useEffect(() => {
-    const closeLanguageMenu = (event: PointerEvent) => {
-      if (!languageRef.current?.contains(event.target as Node)) setLanguageOpen(false);
-    };
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setLanguageOpen(false);
-    };
-    document.addEventListener("pointerdown", closeLanguageMenu);
-    document.addEventListener("keydown", closeOnEscape);
+    const read = () => setRoute({ path: window.location.pathname, hash: window.location.hash.slice(1) });
+    read();
+    window.addEventListener("hashchange", read);
+    window.addEventListener("popstate", read);
     return () => {
-      document.removeEventListener("pointerdown", closeLanguageMenu);
-      document.removeEventListener("keydown", closeOnEscape);
+      window.removeEventListener("hashchange", read);
+      window.removeEventListener("popstate", read);
     };
   }, []);
 
+
+  const isKorean = language === "KR";
   const closeMenu = () => { setMenuOpen(false); setOpenGroup(null); };
+
+  /** Marks the dropdown entry matching the page (and section) you're on. */
+  const isCurrent = (href: string) => {
+    if (!route.path) return false;
+    const [linkPath, linkHash] = href.split("#");
+    const normalise = (value: string) => (value.replace(/\/$/, "") || "/");
+    if (normalise(linkPath || "/") !== normalise(route.path)) return false;
+    return linkHash ? linkHash === route.hash : !route.hash;
+  };
+
   const selectLanguage = (nextLanguage: string) => {
-    setInternalLanguage(nextLanguage);
+    setSharedLanguage(nextLanguage === "KR" ? "KR" : "EN");
     onLanguageChange?.(nextLanguage);
-    setLanguageOpen(false);
   };
   return <>
     <header className={`global-header${scrolled ? " is-scrolled" : ""}`}>
-      <div className="global-header-left"><a className="global-brand" href="/" aria-label="EST Solution home"><img src="/est-solution-logo-transparent.png" alt="EST Solution" width={2103} height={748} /></a></div>
+      <div className="global-header-left"><a className="global-brand" href="/" aria-label="EST Solution home"><img src="/est-solution-logo-transparent.webp" alt="EST Solution" width={220} height={78} decoding="async" /></a></div>
       <nav className={`global-nav${menuOpen ? " is-open" : ""}`} aria-label="Primary navigation">
         {navigation.map((group) => group.items ? <div className={`global-nav-group${openGroup === group.label ? " is-open" : ""}`} key={group.label} onMouseEnter={() => setOpenGroup(group.label)} onMouseLeave={() => setOpenGroup(null)}>
-          <div className="global-nav-trigger-row"><a className="global-nav-trigger" href={group.href} onClick={closeMenu}>{group.label}</a><button type="button" onClick={() => setOpenGroup(openGroup === group.label ? null : group.label)} aria-expanded={openGroup === group.label} aria-label={`Toggle ${group.label} menu`}><IconChevronDown size={12} stroke={1.8} /></button></div>
-          <div className="global-dropdown">{group.items.map((item) => <a href={item.href} key={item.href} onClick={closeMenu}><strong>{item.label}</strong><span>{item.description}</span></a>)}</div>
-        </div> : <a className="global-nav-direct" href={group.href} key={group.label} onClick={closeMenu}>{group.label}</a>)}
+          <div className="global-nav-trigger-row"><a className="global-nav-trigger" href={group.href} onClick={closeMenu}>{isKorean ? group.labelKr : group.label}</a><button type="button" onClick={() => setOpenGroup(openGroup === group.label ? null : group.label)} aria-expanded={openGroup === group.label} aria-label={`Toggle ${group.label} menu`}><IconChevronDown size={12} stroke={1.8} /></button></div>
+          <div className="global-dropdown" role="menu">
+            <p className="global-dropdown-label">{isKorean ? group.labelKr : group.label}</p>
+            {group.items.map((item, index) => {
+              const active = isCurrent(item.href);
+              return <a
+                className={`global-dropdown-item${active ? " is-current" : ""}`}
+                href={item.href}
+                key={item.href}
+                role="menuitem"
+                aria-current={active ? "page" : undefined}
+                onClick={closeMenu}
+              >
+                <span className="global-dropdown-row">
+                  <span className="global-dropdown-num">{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{isKorean ? item.labelKr : item.label}</strong>
+                </span>
+                <span className="global-dropdown-desc">{isKorean ? item.descriptionKr : item.description}</span>
+              </a>;
+            })}
+          </div>
+        </div> : <a className="global-nav-direct" href={group.href} key={group.label} onClick={closeMenu}>{isKorean ? group.labelKr : group.label}</a>)}
       </nav>
       <div className="global-header-right">
-        <div className={`global-language${languageOpen ? " is-open" : ""}`} ref={languageRef}>
-          <button className="global-language-trigger" type="button" onClick={() => setLanguageOpen(!languageOpen)} aria-expanded={languageOpen} aria-haspopup="menu" aria-label={`Language: ${language}`}>
-            <LanguageFlag code={language} />
+        {/* Two languages only, so a dropdown always rendered a single naked flag
+            hanging below the header. A direct toggle removes that entirely. */}
+        <div className="global-language" ref={languageRef}>
+          <button
+            className="global-language-trigger"
+            type="button"
+            onClick={() => selectLanguage(isKorean ? "EN" : "KR")}
+            aria-label={isKorean ? "Switch to English" : "한국어로 전환"}
+            title={isKorean ? "Switch to English" : "한국어로 전환"}
+          >
+            <LanguageFlag code={isKorean ? "KR" : "EN"} />
+            <span className="global-language-code">{isKorean ? "KR" : "EN"}</span>
           </button>
-          <div className="global-language-menu" role="menu" aria-label="Choose language">
-            {[
-              ["EN", "English", "en"],
-              ["KR", "Korean", "ko"],
-              ["IT", "Italian", "it"],
-              ["DE", "German", "de"],
-            ].filter(([code]) => code !== language).map(([code, label, locale]) => (
-              <button key={code} type="button" role="menuitem" lang={locale} onClick={() => selectLanguage(code)} aria-label={label}><LanguageFlag code={code} /></button>
-            ))}
-          </div>
         </div>
-        <a className="global-inquiry" href="/#contact">Get in touch <IconArrowUpRight size={15} stroke={1.8} /></a>
+        <a className="global-inquiry" href="/#contact">{isKorean ? "문의하기" : "Get in touch"} <IconArrowUpRight size={15} stroke={1.8} /></a>
         <button className="global-menu-button" type="button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Toggle navigation">{menuOpen ? <IconX size={22} /> : <IconMenu2 size={22} />}</button>
       </div>
     </header>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useLanguage } from "../use-language";
 
 const institutions = [
   ["inst_green_energy_inst.png", "Green Energy Institute"],
@@ -43,12 +44,13 @@ const directions = ["left", "top", "bottom", "top", "right"] as const;
 function LogoGrid({ logos }: { logos: ReadonlyArray<readonly [string, string]> }) {
   return <div className="company-logo-grid">
     {logos.map(([file, alt], index) => <div className="company-logo-tile pop-tile" data-dir={directions[index % directions.length]} key={file}>
-      <img src={`/assets/company/partners/${file}`} alt={alt} />
+      <img src={`/assets/company/partners/${file}`} alt={alt} loading="lazy" decoding="async" />
     </div>)}
   </div>;
 }
 
 export function PartnersSection() {
+  const [, , korean] = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -81,12 +83,12 @@ export function PartnersSection() {
   }, []);
 
   return <section className="detail-section nav-target company-partners" id="partners" ref={sectionRef}>
-    <div className="company-team-label"><span /><p>Partners &amp; universities</p></div>
-    <h2>Built alongside Korea&apos;s hydrogen research network</h2>
-    <p className="company-partners-lead">30 government agencies, universities, and research institutes EST has worked with directly, drawn from its own partner registry.</p>
-    <h3>Institutions</h3>
+    <div className="company-team-label"><span /><p>{korean ? "협력 기관 · 대학" : "Partners & universities"}</p></div>
+    <h2>{korean ? "국내 수소 연구 네트워크와 함께 만듭니다" : "Built alongside Korea's hydrogen research network"}</h2>
+    <p className="company-partners-lead">{korean ? "이에스티가 직접 협력한 정부 기관, 대학, 연구소 30곳입니다." : "30 government agencies, universities, and research institutes EST has worked with directly, drawn from its own partner registry."}</p>
+    <h3>{korean ? "기관" : "Institutions"}</h3>
     <LogoGrid logos={institutions} />
-    <h3>Universities</h3>
+    <h3>{korean ? "대학" : "Universities"}</h3>
     <LogoGrid logos={universities} />
   </section>;
 }
