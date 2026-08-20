@@ -20,8 +20,8 @@ const coreComponents = [
 // without re-checking `components` in app/technology/page.tsx.
 const stackLayers = [
   { id: "catalyst", name: "Catalyst", nameKr: "촉매", role: "anode + cathode", roleKr: "양극 · 음극", metric: "30%+", qualifier: "cost reduction", qualifierKr: "원가 절감", image: "/images/technology/enhanced_catalyst.webp", desc: "Low-noble-metal formulation with longer operating life. Precious-metal loading is the largest lever on PEM cost.", descKr: "귀금속 사용을 최소화한 조성으로 수명을 늘렸습니다. 귀금속 담지량은 PEM 원가를 좌우하는 가장 큰 요소입니다.", tone: "green" },
-  { id: "membrane", name: "Electrolyte membrane", nameKr: "전해질막", role: "proton exchange", roleKr: "양성자 교환", metric: "2×", qualifier: "durability vs Nafion", qualifierKr: "내구성 (Nafion 대비)", image: "/images/technology/enhanced_cell.webp", desc: "Hydrocarbon-based, with crossover around a quarter of conventional PFSA — a thinner membrane at double the durability.", descKr: "탄화수소 기반으로 기존 PFSA 대비 크로스오버가 약 1/4 수준입니다. 더 얇으면서 내구성은 두 배입니다.", tone: "teal" },
-  { id: "mea", name: "MEA", nameKr: "막전극접합체", role: "bonded assembly", roleKr: "접합 조립체", metric: "37%", qualifier: "cost reduction", qualifierKr: "원가 절감", image: "/images/technology/enhanced_mea.webp", desc: "High current density with uniform large-area coating — more work per cell without adding material.", descKr: "대면적 균일 코팅으로 높은 전류밀도를 구현합니다. 재료를 늘리지 않고 셀당 성능을 높였습니다.", tone: "azure" },
+  { id: "membrane", name: "Electrolyte membrane", nameKr: "전해질막", role: "proton exchange", roleKr: "양성자 교환", metric: "2×", qualifier: "durability vs Nafion", qualifierKr: "내구성 (Nafion 대비)", image: "/images/technology/enhanced_cell.webp", desc: "Hydrocarbon-based, with crossover around a quarter of conventional PFSA. The membrane is thinner, at double the durability.", descKr: "탄화수소 기반으로 기존 PFSA 대비 크로스오버가 약 1/4 수준입니다. 더 얇으면서 내구성은 두 배입니다.", tone: "teal" },
+  { id: "mea", name: "MEA", nameKr: "막전극접합체", role: "bonded assembly", roleKr: "접합 조립체", metric: "37%", qualifier: "cost reduction", qualifierKr: "원가 절감", image: "/images/technology/enhanced_mea.webp", desc: "High current density with uniform large-area coating, so each cell does more work without adding material.", descKr: "대면적 균일 코팅으로 높은 전류밀도를 구현합니다. 재료를 늘리지 않고 셀당 성능을 높였습니다.", tone: "azure" },
   { id: "ptl", name: "Ti-PTL", nameKr: "티타늄 다공성 이송층", role: "titanium transport", roleKr: "티타늄 이송층", metric: "25%", qualifier: "cost reduction", qualifierKr: "원가 절감", image: "/images/technology/enhanced_ptl.webp", desc: "Pore-size controlled titanium. Pore structure governs how water and gas move through the cell.", descKr: "기공 크기를 제어한 티타늄입니다. 기공 구조가 셀 내부의 물과 기체 이동을 결정합니다.", tone: "deep" },
   { id: "stack", name: "Stack", nameKr: "스택", role: "assembled unit", roleKr: "조립 완성품", metric: "99.99%", qualifier: "hydrogen purity", qualifierKr: "수소 순도", image: "/product-stack-20kw.webp", desc: "Assembled and tested end to end before it ships, from 2.5 kW through 20 kW.", descKr: "2.5kW부터 20kW까지, 출하 전 전 공정을 조립·시험합니다.", tone: "dark" },
 ];
@@ -203,11 +203,11 @@ export default function Home() {
             <em className="hero-title-line">from the catalyst up.</em>
           </>}</h1>
           <p>{korean ? <>
-            <span className="hero-copy-line">촉매, 전해질막, MEA, 이송층, 스택 — 그리고 완성 시스템까지.</span>
+            <span className="hero-copy-line">촉매, 전해질막, MEA, 이송층, 스택, 그리고 완성 시스템까지.</span>
             <span className="hero-copy-line">이에스티솔루션은 수전해 시스템의 모든 층을 직접 개발하고 제조합니다.</span>
           </> : <>
-            <span className="hero-copy-line">EST develops and manufactures every layer of the electrolyzer —</span>
-            <span className="hero-copy-line">catalyst, membrane, MEA, transport layer and stack — and the finished system.</span>
+            <span className="hero-copy-line">EST develops and manufactures every layer of the electrolyzer:</span>
+            <span className="hero-copy-line">catalyst, membrane, MEA, transport layer, stack, and the finished system.</span>
             <span className="hero-copy-line">That is what lets us lower component cost, adapt hardware to your site, and support it directly.</span>
           </>}</p>
           <div className="hero-actions"><a className="button primary" href="#contact">{korean ? "기술 상담 요청" : "Request a technical consultation"}</a><a className="button ghost" href="/technology#core-technology">{korean ? "기술 살펴보기" : "Explore our technology"}</a></div>
@@ -475,7 +475,7 @@ export default function Home() {
         <div className="case-container">
           <div className="case-head reveal">
             <h2>{korean ? <>공공 캠퍼스에 설치하고,<br />시민이 직접 충전했습니다.</> : <>We put it on a public campus<br />and let people fuel up.</>}</h2>
-            <p>{korean ? <>광주과학기술원(<b>GIST</b>) 캠퍼스에 설치한 자립형 그린수소 스테이션입니다. 현장에서 직접 생산·저장하고, 겨울철 옥외 환경에서 시민 모빌리티에 수소를 공급했습니다.</> : <>A self-contained green hydrogen station at <b>GIST, Gwangju</b> — producing on site, storing, and dispensing to citizen mobility users through winter outdoor conditions.</>}</p>
+            <p>{korean ? <>광주과학기술원(<b>GIST</b>) 캠퍼스에 설치한 자립형 그린수소 스테이션입니다. 현장에서 직접 생산·저장하고, 겨울철 옥외 환경에서 시민 모빌리티에 수소를 공급했습니다.</> : <>A self-contained green hydrogen station at <b>GIST, Gwangju</b>. It produces on site, stores, and dispenses to citizen mobility users through winter outdoor conditions.</>}</p>
           </div>
 
           <figure className="case-hero reveal">
@@ -626,7 +626,7 @@ export default function Home() {
                 </span>
                 {korean ? "" : "."}
               </h2>
-              <p className="contact-subhead">{korean ? "도입 문의든 연구 협력이든, 몇 줄이면 충분합니다." : "Deployment enquiry or research partnership — a few lines is enough to start."}</p>
+              <p className="contact-subhead">{korean ? "도입 문의든 연구 협력이든, 몇 줄이면 충분합니다." : "Deployment enquiry or research partnership. A few lines is enough to start."}</p>
             </div>
           </div>
 
@@ -654,7 +654,7 @@ export default function Home() {
 
             <aside className="contact-panel" aria-label="EST Solution locations and contact details">
               <div className="location-list">
-                <article><span className="location-icon"><IconBuilding size={17} stroke={1.8} aria-hidden="true" /></span><div><small>{korean ? "본사 · 광주" : "HEADQUARTERS · GWANGJU"}</small><p>{korean ? "광주광역시 북구 첨단과기로 123, 광주과학기술원(GIST) 내" : "123 Cheomdan-gwagi-ro, Buk-gu, Gwangju, South Korea — inside GIST"}</p></div></article>
+                <article><span className="location-icon"><IconBuilding size={17} stroke={1.8} aria-hidden="true" /></span><div><small>{korean ? "본사 · 광주" : "HEADQUARTERS · GWANGJU"}</small><p>{korean ? "광주광역시 북구 첨단과기로 123, 광주과학기술원(GIST) 내" : "123 Cheomdan-gwagi-ro, Buk-gu, Gwangju, South Korea, inside GIST"}</p></div></article>
                 <article><span className="location-icon"><IconFlask2 size={17} stroke={1.8} aria-hidden="true" /></span><div><small>{korean ? "연구소 · 나주" : "R&D CENTER · NAJU"}</small><p>{korean ? "전라남도 나주시 혁신산단3길 32-18" : "32-18 Hyeoksinsandan 3-gil, Naju-si, Jeollanam-do, South Korea"}</p></div></article>
               </div>
 

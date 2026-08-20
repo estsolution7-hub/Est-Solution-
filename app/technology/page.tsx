@@ -10,13 +10,13 @@ const methods = [
   { method: "PEM", image: "/diag_pem.webp", alt: "PEM electrolysis cell diagram", note: "what we build", noteKr: "우리가 만드는 방식",
     strengths: ["High current density", "Compact", "Responds fast to variable renewables", "99.97–99.99% purity"],
     strengthsKr: ["높은 전류밀도", "소형", "재생에너지 변동에 빠르게 반응", "99.97–99.99% 순도"],
-    tradeoffs: ["Needs precious-metal catalysts — the exact cost problem we solve"],
-    tradeoffsKr: ["귀금속 촉매가 필요 — 우리가 해결하는 바로 그 원가 문제"], featured: true },
+    tradeoffs: ["Needs precious-metal catalysts, the exact cost problem we solve"],
+    tradeoffsKr: ["귀금속 촉매가 필요합니다. 우리가 해결하는 바로 그 원가 문제입니다"], featured: true },
   { method: "AEC", image: "/diag_aec.webp", alt: "AEC electrolysis cell diagram",
     strengths: ["Most mature", "Lowest capital cost", "No precious metals"],
     strengthsKr: ["가장 성숙한 기술", "가장 낮은 초기 투자비", "귀금속 불필요"],
-    tradeoffs: ["Low current density", "Slow response", "Bulky", "Liquid electrolyte"],
-    tradeoffsKr: ["낮은 전류밀도", "느린 응답성", "큰 부피", "액체 전해질"] },
+    tradeoffs: ["Low current density", "Slow response", "Bulky", "Liquid electrolyte", "Corrosive KOH handling", "Poor fit for variable renewables"],
+    tradeoffsKr: ["낮은 전류밀도", "느린 응답성", "큰 부피", "액체 전해질", "부식성 KOH 취급", "변동 재생에너지에 취약"] },
   { method: "AEM", image: "/diag_aem.webp", alt: "AEM electrolysis cell diagram",
     strengths: ["Avoids precious metals", "Lower material cost"],
     strengthsKr: ["귀금속 불필요", "낮은 소재 원가"],
@@ -33,22 +33,22 @@ const components = [
     description: "Low-noble-metal formulation with longer operating life. Precious-metal loading is the largest lever on PEM cost.",
     descriptionKr: "귀금속 사용을 최소화한 조성으로 수명을 늘렸습니다. 귀금속 담지량은 PEM 원가를 좌우하는 가장 큰 요소입니다." },
   { image: "/images/technology/enhanced_mea.webp", metric: "37%", qualifier: "cost reduction", qualifierKr: "원가 절감", name: "MEA", nameKr: "막전극접합체 (MEA)",
-    description: "High current density with uniform large-area coating — more work per cell without adding material.",
+    description: "High current density with uniform large-area coating, so each cell does more work without adding material.",
     descriptionKr: "대면적 균일 코팅으로 높은 전류밀도를 구현합니다. 재료를 늘리지 않고 셀당 성능을 높였습니다." },
   { image: "/images/technology/enhanced_ptl.webp", metric: "25%", qualifier: "cost reduction", qualifierKr: "원가 절감", name: "Ti-PTL", nameKr: "티타늄 다공성 이송층 (Ti-PTL)",
     description: "Pore-size controlled titanium. Pore structure governs how water and gas move through the cell.",
     descriptionKr: "기공 크기를 제어한 티타늄입니다. 기공 구조가 셀 내부의 물과 기체 이동을 결정합니다." },
   { image: "/images/technology/enhanced_cell.webp", metric: "2×", qualifier: "vs Nafion", qualifierKr: "Nafion 대비", name: "Electrolyte membrane", nameKr: "전해질막",
-    description: "Hydrocarbon-based, crossover ~1/4 of conventional PFSA — thinner membrane, double the durability.",
+    description: "Hydrocarbon-based, crossover ~1/4 of conventional PFSA. The membrane is thinner, with double the durability.",
     descriptionKr: "탄화수소 기반으로 기존 PFSA 대비 크로스오버가 약 1/4 수준입니다. 더 얇으면서 내구성은 두 배입니다.",
-    caption: "Assembled stack — membrane shown in situ", captionKr: "조립된 스택 — 전해질막이 장착된 상태" },
+    caption: "Assembled stack, membrane shown in situ", captionKr: "조립된 스택, 전해질막이 장착된 상태" },
 ];
 const roadmap = [
   { name: "Seawater electrolysis", nameKr: "해수 전해", Icon: IconWavesElectricity, image: "/images/technology/roadmap-seawater-v2.webp", alt: "Offshore wind turbines at sea",
-    description: "Conventional electrolysis needs purified freshwater — a real constraint in coastal and water-scarce regions. Running directly on seawater removes that dependency and makes coastal production viable.",
+    description: "Conventional electrolysis needs purified freshwater, a real constraint in coastal and water-scarce regions. Running directly on seawater removes that dependency and makes coastal production viable.",
     descriptionKr: "일반적인 수전해는 정제된 담수가 필요하며, 이는 연안이나 물이 부족한 지역에서 실질적인 제약이 됩니다. 해수를 직접 사용하면 그 의존성이 사라지고 연안 생산이 가능해집니다." },
   { name: "Hydrogen fuel cell vessels", nameKr: "수소 연료전지 선박", Icon: IconShip, image: "/images/technology/roadmap-vessels.webp", alt: "Small boats docked in a coastal harbor",
-    description: "Hydrogen-powered leisure craft in Jeollanam-do, supplying clean hydrogen to vessels in the region's coastal waters. Boats operate far from hydrogen infrastructure — a natural fit for on-site production.",
+    description: "Hydrogen-powered leisure craft in Jeollanam-do, supplying clean hydrogen to vessels in the region's coastal waters. Boats operate far from hydrogen infrastructure. That makes on-site production a natural fit.",
     descriptionKr: "전라남도의 수소 추진 레저 선박에 청정 수소를 공급합니다. 선박은 수소 인프라에서 멀리 떨어져 운항하기 때문에 현장 생산이 특히 잘 맞습니다." },
 ];
 function PemProcessDiagram({ korean }: { korean: boolean }) {
@@ -148,7 +148,7 @@ export default function TechnologyPage() {
       <section className="technology-section technology-why-section technology-reveal nav-target" id="why-green-hydrogen">
         <div className="why-heading">
           <div><div className="why-eyebrow">{korean ? "과제" : "THE CHALLENGE"}</div><h2>{korean ? <>수소는 생산 방식이 깨끗할 때 <span>비로소 깨끗합니다.</span></> : <>Hydrogen is only clean when <span>its production is clean.</span></>}</h2></div>
-          <p>{korean ? "현재 대부분의 수소는 여전히 화석연료로 만들어집니다. 그린수소는 이 탄소 집약적 공정을 재생에너지와 물로 대체해, 직접적인 CO₂ 배출 없이 에너지를 생산합니다." : "Most hydrogen is still made from fossil fuels. Green hydrogen replaces that carbon-heavy process with renewable electricity and water—producing energy without direct CO₂ emissions."}</p>
+          <p>{korean ? "현재 대부분의 수소는 여전히 화석연료로 만들어집니다. 그린수소는 이 탄소 집약적 공정을 재생에너지와 물로 대체해, 직접적인 CO₂ 배출 없이 에너지를 생산합니다." : "Most hydrogen is still made from fossil fuels. Green hydrogen replaces that carbon-heavy process with renewable electricity and water, producing energy without direct CO₂ emissions."}</p>
         </div>
         <div className="hydrogen-comparison" aria-label="Carbon emissions by hydrogen production type">
           <article className="hydrogen-card gray"><small>{korean ? "화석연료 기반" : "FOSSIL-BASED"}</small><strong>~11<span>kg</span></strong><p>{korean ? "수소 1kg당 CO₂" : "CO₂ per kg of H₂"}</p><h3>{korean ? "그레이수소" : "Gray hydrogen"}</h3></article>
@@ -161,7 +161,7 @@ export default function TechnologyPage() {
       <section className="technology-section production-system-section technology-reveal nav-target" id="production-system">
         <div className="technology-eyebrow">{korean ? "공정" : "THE PROCESS"}</div>
         <h2>{korean ? <>전기 + 물.<br /><span>결과는 수소.</span></> : <>Electricity + water.<br /><span>Hydrogen out.</span></>}</h2>
-        <p className="technology-intro">{korean ? "재생에너지가 반응을 일으키고, 물이 수소를 공급합니다. 부산물은 산소뿐이며, 공정 어디에도 탄소가 개입하지 않습니다." : "Renewable power drives the reaction. Water supplies the hydrogen. The only byproduct is oxygen—no carbon enters the process."}</p>
+        <p className="technology-intro">{korean ? "재생에너지가 반응을 일으키고, 물이 수소를 공급합니다. 부산물은 산소뿐이며, 공정 어디에도 탄소가 개입하지 않습니다." : "Renewable power drives the reaction. Water supplies the hydrogen. The only byproduct is oxygen. No carbon enters the process."}</p>
         <div className="production-system-panel">
           <svg viewBox="0 0 900 460" role="img" aria-label="Renewable power and water converge into an EST Solution PEM electrolyzer producing green hydrogen and oxygen">
             <path d="M126 150 C 240 150, 290 228, 320 232" fill="none" stroke="var(--border-stronger)" strokeWidth="2.5" />
@@ -189,26 +189,26 @@ export default function TechnologyPage() {
             <p className="pem-explainer-eyebrow">{korean ? "셀 내부" : "INSIDE THE CELL"}</p>
             <h2>{korean ? <>빠른 응답성.<br /><span>높은 순도.</span></> : <>Fast response.<br /><span>Pure hydrogen.</span></>}</h2>
             <p>{korean ? "물이 얇은 고분자 전해질막 한쪽으로 들어가 산소, 양성자, 전자로 분해됩니다." : "Water enters one side of a thin polymer membrane and splits into oxygen, protons and electrons."}</p>
-            <p>{korean ? "막은 양성자만 통과시킵니다. 반대편에서 전자와 재결합해 고순도 수소가 만들어지며, 태양광·풍력의 변동 출력을 따라갈 만큼 빠르게 반응합니다." : "The membrane passes only protons. They recombine with electrons on the other side to form high-purity hydrogen—quickly enough to follow changing solar and wind output."}</p>
+            <p>{korean ? "막은 양성자만 통과시킵니다. 반대편에서 전자와 재결합해 고순도 수소가 만들어지며, 태양광·풍력의 변동 출력을 따라갈 만큼 빠르게 반응합니다." : "The membrane passes only protons. They recombine with electrons on the other side to form high-purity hydrogen, quickly enough to follow changing solar and wind output."}</p>
           </div>
           <div className="pem-diagram-panel">
             <PemProcessDiagram korean={korean} />
           </div>
         </div>
         <h3 className="technology-table-title">{korean ? "태양광·풍력에 PEM이 강한 이유" : "Why PEM wins with solar and wind"}</h3><div className="method-card-grid">{methods.map((item) => <article className={`method-card${item.featured ? " featured" : ""}`} key={item.method}><div className="method-diagram"><img src={item.image} alt={item.alt} loading="lazy" decoding="async" /></div><div className="method-title"><h4>{item.method}</h4>{item.note && <span>{korean ? item.noteKr : item.note}</span>}</div><div className="method-detail strengths"><span><IconCheck size={11} stroke={2} />{korean ? "강점" : "Strengths"}</span><ul>{(korean ? item.strengthsKr : item.strengths).map((strength) => <li key={strength}>{strength}</li>)}</ul></div><div className="method-detail tradeoff"><span><IconAlertTriangle size={11} stroke={1.8} />{korean ? "한계" : "Trade-off"}</span><ul>{(korean ? item.tradeoffsKr : item.tradeoffs).map((tradeoff) => <li key={tradeoff}>{tradeoff}</li>)}</ul></div></article>)}</div>
-        <div className="pem-callout">{korean ? "일정하게 발전하지 않는 태양광·풍력에는 PEM의 응답성이 맞습니다. 유일한 약점인 귀금속 원가가 바로 우리의 소재 연구가 겨냥하는 문제입니다." : "PEM's responsiveness is what matches solar and wind, which don't produce on a steady schedule. Its one weakness — precious-metal cost — is the specific problem our materials work addresses."}</div>
+        <div className="pem-callout">{korean ? "일정하게 발전하지 않는 태양광·풍력에는 PEM의 응답성이 맞습니다. 유일한 약점인 귀금속 원가가 바로 우리의 소재 연구가 겨냥하는 문제입니다." : "PEM's responsiveness is what matches solar and wind, which don't produce on a steady schedule. Its one weakness, precious-metal cost, is the specific problem our materials work addresses."}</div>
       </section>
       <SectionSeam tone="light" draw molecules />
-      <section className="technology-section technology-reveal nav-target" id="core-technology"><div className="technology-eyebrow">{korean ? "핵심 경쟁력" : "OUR ADVANTAGE"}</div><h2>{korean ? <>네 가지 핵심 층.<br /><span>더 낮은 스택 원가.</span></> : <>Four critical layers.<br /><span>One lower-cost stack.</span></>}</h2><p className="technology-intro">{korean ? "수입 부품을 단순 조립하지 않습니다. 원가와 출력, 수명을 좌우하는 촉매, MEA, 이송층, 전해질막을 직접 설계하고 제조합니다." : "We do not simply assemble imported parts. We engineer the catalyst, MEA, transport layer and membrane—the components that control cost, output and lifetime."}</p><div className="component-photo-grid">{components.map((item) => <article key={item.name}><div className="component-photo"><img src={item.image} alt={`${korean ? item.nameKr : item.name} developed by EST Solution`} loading="lazy" decoding="async" width={900} height={675} /></div>{item.caption && <small className="component-caption">{korean ? item.captionKr : item.caption}</small>}<div className="component-copy"><div className="component-metric"><strong>{item.metric}</strong><span>{korean ? item.qualifierKr : item.qualifier}</span></div><h3>{korean ? item.nameKr : item.name}</h3><p>{korean ? item.descriptionKr : item.description}</p></div></article>)}</div><div className="technology-summary"><IconTrendingDown size={20} stroke={1.7} /><p>{korean ? <>이를 합치면 업계 기준 대비 <strong>스택 총원가 약 20% 절감</strong>입니다. 소재 혁신의 효과가 가장 큰 지점에 집중했습니다.</> : <>Together, roughly <strong>20% lower total stack cost</strong> against the industry baseline—focused where materials innovation has the greatest impact.</>}</p></div></section>
+      <section className="technology-section technology-reveal nav-target" id="core-technology"><div className="technology-eyebrow">{korean ? "핵심 경쟁력" : "OUR ADVANTAGE"}</div><h2>{korean ? <>네 가지 핵심 층.<br /><span>더 낮은 스택 원가.</span></> : <>Four critical layers.<br /><span>One lower-cost stack.</span></>}</h2><p className="technology-intro">{korean ? "수입 부품을 단순 조립하지 않습니다. 원가와 출력, 수명을 좌우하는 촉매, MEA, 이송층, 전해질막을 직접 설계하고 제조합니다." : "We do not simply assemble imported parts. We engineer the catalyst, MEA, transport layer and membrane: the components that control cost, output and lifetime."}</p><div className="technology-summary"><IconTrendingDown size={28} stroke={1.7} /><p>{korean ? <>이를 합치면 업계 기준 대비 <strong>스택 총원가 약 20% 절감</strong>입니다. 소재 혁신의 효과가 가장 큰 지점에 집중했습니다.</> : <>Together, roughly <strong>20% lower total stack cost</strong> against the industry baseline, focused where materials innovation has the greatest impact.</>}</p></div><div className="component-photo-grid">{components.map((item) => <article key={item.name}><div className="component-photo"><img src={item.image} alt={`${korean ? item.nameKr : item.name} developed by EST Solution`} loading="lazy" decoding="async" width={900} height={675} /></div>{item.caption && <small className="component-caption">{korean ? item.captionKr : item.caption}</small>}<div className="component-copy"><div className="component-metric"><strong>{item.metric}</strong><span>{korean ? item.qualifierKr : item.qualifier}</span></div><h3>{korean ? item.nameKr : item.name}</h3><p>{korean ? item.descriptionKr : item.description}</p></div></article>)}</div></section>
       <SectionSeam tone="light" draw />
-      <section className="technology-section technology-reveal nav-target" id="roadmap"><div className="technology-eyebrow">{korean ? "다음 단계" : "WHAT'S NEXT"}</div><h2>{korean ? <>수소가 나아갈 <span>다음 무대를 준비합니다.</span></> : <>Built for where hydrogen <span>goes next.</span></>}</h2><p className="technology-intro">{korean ? "수전해를 공장 밖으로 확장하고 있습니다. 해수 직접 전해와 청정 수소 선박이 다음 목표입니다." : "We are taking electrolysis beyond the factory—toward direct seawater production and clean hydrogen vessels."}</p><div className="roadmap-grid">{roadmap.map(({ name, nameKr, Icon, image, alt, description, descriptionKr }) => <article key={name}><div className="roadmap-photo"><img src={image} alt={alt} loading="lazy" decoding="async" /></div><div className="roadmap-content"><div className="roadmap-icon"><Icon size={24} stroke={1.8} /></div><h3>{korean ? nameKr : name}</h3><p>{korean ? descriptionKr : description}</p></div></article>)}</div></section>
+      <section className="technology-section technology-reveal nav-target" id="roadmap"><div className="technology-eyebrow">{korean ? "다음 단계" : "WHAT'S NEXT"}</div><h2>{korean ? <>수소가 나아갈 <span>다음 무대를 준비합니다.</span></> : <>Built for where hydrogen <span>goes next.</span></>}</h2><p className="technology-intro">{korean ? "수전해를 공장 밖으로 확장하고 있습니다. 해수 직접 전해와 청정 수소 선박이 다음 목표입니다." : "We are taking electrolysis beyond the factory, toward direct seawater production and clean hydrogen vessels."}</p><div className="roadmap-grid">{roadmap.map(({ name, nameKr, Icon, image, alt, description, descriptionKr }) => <article key={name}><div className="roadmap-photo"><img src={image} alt={alt} loading="lazy" decoding="async" /></div><div className="roadmap-content"><div className="roadmap-icon"><Icon size={24} stroke={1.8} /></div><h3>{korean ? nameKr : name}</h3><p>{korean ? descriptionKr : description}</p></div></article>)}</div></section>
       <section className="technology-section product-portfolio technology-reveal nav-target" id="product-portfolio">
         <div className="technology-eyebrow">{korean ? "실험실에서 현장으로" : "FROM LAB TO SITE"}</div>
         <h2 className="portfolio-title">{korean ? <>바로 <span>수소를 만듭니다.</span></> : <>Ready to make <span>hydrogen.</span></>}</h2>
         <div className="portfolio-grid">
           <div className="portfolio-visual"><img src="/images/technology/prod_electrolyzer_hq.webp" alt="H2-241002A PEM electrolysis system" loading="lazy" decoding="async" /></div>
           <div className="portfolio-copy">
-            <p className="portfolio-headline">{korean ? <><strong>소형 PEM 시스템</strong>을 바로 설치하고 시험하고 확장하십시오. <strong>2.5kW부터 20kW까지</strong>.</> : <><strong>Compact PEM systems</strong> ready to install, test and scale—from <strong>2.5 kW to 20 kW</strong>.</>}</p>
+            <p className="portfolio-headline">{korean ? <><strong>소형 PEM 시스템</strong>을 바로 설치하고 시험하고 확장하십시오. <strong>2.5kW부터 20kW까지</strong>.</> : <><strong>Compact PEM systems</strong> ready to install, test and scale, from <strong>2.5 kW to 20 kW</strong>.</>}</p>
             <div className="portfolio-hook" aria-label="Product highlights"><span>{korean ? "즉시 설치 가능" : "Ready to install"}</span><strong>{korean ? "2.5–20kW 범위" : "2.5–20 kW range"}</strong></div>
             <p className="portfolio-support">{korean ? "파일럿으로 시작해 적용성을 검증하고, 확신을 갖고 확장하십시오." : "Start with a pilot. Prove the application. Scale with confidence."}</p>
             <div className="portfolio-actions"><a href="/products">{korean ? "제품 보기" : "View products"}</a><a className="primary" href="/contact">{korean ? "견적 요청" : "Request a quote"}</a></div>

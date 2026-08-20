@@ -10,7 +10,7 @@ const applications = [
     copy: "Support demonstration fleets where centralized hydrogen supply is limited.",
     copyKr: "중앙 수소 공급이 제한적인 곳에서 실증 차량을 지원합니다.",
     image: "/images/products/application-mobility.webp",
-    alt: "EST field-style mobility use case — depot and transport",
+    alt: "EST field-style mobility use case: depot and transport",
     direction: "from-left",
   },
   {

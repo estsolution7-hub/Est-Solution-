@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { IconArrowUpRight, IconChevronDown, IconMenu2, IconX } from "./icons";
 import { useLanguage } from "./use-language";
 
-type NavEntry = { label: string; labelKr: string; description: string; descriptionKr: string; href: string };
+type NavEntry = { label: string; labelKr: string; description?: string; descriptionKr?: string; href: string };
 type NavGroup = { label: string; labelKr: string; href: string; items?: NavEntry[] };
 
 function LanguageFlag({ code }: { code: string }) {
@@ -38,21 +38,21 @@ const navigation: NavGroup[] = [
     { label: "Roadmap", labelKr: "로드맵", description: "Seawater, marine, next steps", descriptionKr: "해수 전해, 해양, 다음 단계", href: "/technology#roadmap" },
   ]},
   { label: "Products", labelKr: "제품", href: "/products", items: [
-    { label: "Electrolysis systems", labelKr: "수전해 시스템", description: "2.5kW · 5kW · 20kW", descriptionKr: "2.5kW · 5kW · 20kW", href: "/products#products" },
-    { label: "System specifications", labelKr: "시스템 사양", description: "Dimensions, output, purity", descriptionKr: "크기, 생산량, 순도", href: "/products/systems" },
-    { label: "Components", labelKr: "핵심 부품", description: "What's inside our systems", descriptionKr: "시스템 내부 구성", href: "/products#components" },
-    { label: "Component details", labelKr: "부품 상세", description: "Catalyst, MEA, membrane, Ti-PTL", descriptionKr: "촉매, MEA, 전해질막, Ti-PTL", href: "/products/components" },
-    { label: "NEOHYD dispensing", labelKr: "NEOHYD 충전", description: "On-site delivery unit", descriptionKr: "현장 공급 유닛", href: "/products#dispensing" },
-    { label: "Mobile hydrogen", labelKr: "이동형 수소", description: "Production closer to demand", descriptionKr: "수요지 인근 생산", href: "/products/mobile" },
-    { label: "Applications", labelKr: "적용 분야", description: "Mobility, farms, data centers", descriptionKr: "모빌리티, 농업, 데이터센터", href: "/products#applications" },
+    { label: "Electrolysis systems", labelKr: "수전해 시스템", href: "/products#products" },
+    { label: "System specifications", labelKr: "시스템 사양", href: "/products/systems" },
+    { label: "Components", labelKr: "핵심 부품", href: "/products#components" },
+    { label: "Component details", labelKr: "부품 상세", href: "/products/components" },
+    { label: "NEOHYD dispensing", labelKr: "NEOHYD 충전", href: "/products#dispensing" },
+    { label: "Mobile hydrogen", labelKr: "이동형 수소", href: "/products/mobile" },
+    { label: "Applications", labelKr: "적용 분야", href: "/products#applications" },
   ]},
   { label: "Company", labelKr: "회사 소개", href: "/company", items: [
-    { label: "Team", labelKr: "팀", description: "Leadership and engineering", descriptionKr: "경영진과 연구진", href: "/company#team" },
-    { label: "Milestones", labelKr: "주요 실적", description: "Government-backed R&D programs", descriptionKr: "국가 R&D 과제 수행", href: "/company#milestones" },
-    { label: "Certifications & IP", labelKr: "인증 · 지식재산", description: "Patents, trademarks and verification", descriptionKr: "특허, 상표, 인증", href: "/company#certifications" },
-    { label: "Partners & universities", labelKr: "협력 기관 · 대학", description: "Korea's hydrogen research network", descriptionKr: "국내 수소 연구 네트워크", href: "/company#partners" },
-    { label: "CEO message", labelKr: "대표 인사말", description: "Mission and vision", descriptionKr: "미션과 비전", href: "/company#ceo-message" },
-    { label: "Case study", labelKr: "실증 사례", description: "Field demonstration", descriptionKr: "현장 실증", href: "/company#case-study" },
+    { label: "Team", labelKr: "팀", href: "/company#team" },
+    { label: "Milestones", labelKr: "주요 실적", href: "/company#milestones" },
+    { label: "Certifications & IP", labelKr: "인증 · 지식재산", href: "/company#certifications" },
+    { label: "Partners & universities", labelKr: "협력 기관 · 대학", href: "/company#partners" },
+    { label: "CEO message", labelKr: "대표 인사말", href: "/company#ceo-message" },
+    { label: "Case study", labelKr: "실증 사례", href: "/company#case-study" },
   ]},
   { label: "Contact", labelKr: "문의", href: "/#contact" },
 ];
@@ -129,10 +129,11 @@ export function SiteNavigation({ subNav = [], language: controlledLanguage, onLa
       <nav className={`global-nav${menuOpen ? " is-open" : ""}`} aria-label="Primary navigation">
         {navigation.map((group) => group.items ? <div className={`global-nav-group${openGroup === group.label ? " is-open" : ""}`} key={group.label} onMouseEnter={() => setOpenGroup(group.label)} onMouseLeave={() => setOpenGroup(null)}>
           <div className="global-nav-trigger-row"><a className="global-nav-trigger" href={group.href} onClick={closeMenu}>{isKorean ? group.labelKr : group.label}</a><button type="button" onClick={() => setOpenGroup(openGroup === group.label ? null : group.label)} aria-expanded={openGroup === group.label} aria-label={`Toggle ${group.label} menu`}><IconChevronDown size={12} stroke={1.8} /></button></div>
-          <div className="global-dropdown" role="menu">
+          <div className={`global-dropdown${group.items.some((item) => item.description) ? "" : " is-compact"}`} role="menu">
             <p className="global-dropdown-label">{isKorean ? group.labelKr : group.label}</p>
             {group.items.map((item, index) => {
               const active = isCurrent(item.href);
+              const description = isKorean ? item.descriptionKr : item.description;
               return <a
                 className={`global-dropdown-item${active ? " is-current" : ""}`}
                 href={item.href}
@@ -145,7 +146,7 @@ export function SiteNavigation({ subNav = [], language: controlledLanguage, onLa
                   <span className="global-dropdown-num">{String(index + 1).padStart(2, "0")}</span>
                   <strong>{isKorean ? item.labelKr : item.label}</strong>
                 </span>
-                <span className="global-dropdown-desc">{isKorean ? item.descriptionKr : item.description}</span>
+                {description ? <span className="global-dropdown-desc">{description}</span> : null}
               </a>;
             })}
           </div>

@@ -121,7 +121,7 @@ export default function ProductsPage() {
         </h2>
         <p>{korean
           ? "촉매부터 티타늄 분리판까지, 모든 용량의 EST 시스템이 동일한 소재와 제조 기준을 공유합니다. 외부에서 조달하지 않고 직접 생산하기 때문에 품질이 일정하고 공급망 리스크가 줄어듭니다."
-          : "From catalyst to titanium plates, every EST system — at every size — shares the same materials and manufacturing standard. Producing these in-house, rather than sourcing them, keeps quality consistent and cuts supply-chain risk."}</p>
+          : "From catalyst to titanium plates, every EST system, at every size, shares the same materials and manufacturing standard. Producing these in-house, rather than sourcing them, keeps quality consistent and cuts supply-chain risk."}</p>
         <div className="titanium-grid reveal-children">
           {components.map((item) => (
             <article key={item.name}>
@@ -147,7 +147,7 @@ export default function ProductsPage() {
         </h2>
         <p className="neohyd-intro">{korean
           ? "현장에서 그린수소를 직접 생산하고 카트리지에 저장하는 이동형 수전해 유닛입니다. 전력망이 닿지 않는 곳까지 에너지를 가져갑니다."
-          : "A mobile electrolysis unit that produces green hydrogen on-site and stores it in cartridges — bringing power to places the grid doesn't reach."}</p>
+          : "A mobile electrolysis unit that produces green hydrogen on-site and stores it in cartridges, bringing power to places the grid doesn't reach."}</p>
         <div className="neohyd-visual"><img src="/images/products/neohyd-station.webp" alt="EST Solution mobile green-hydrogen production and cartridge storage truck" loading="lazy" decoding="async" /></div>
         <p className="neohyd-caption">{korean ? "이동형 그린수소 생산 · 카트리지 저장 유닛" : "Mobile green-hydrogen production and cartridge storage unit."}</p>
         <div className="neohyd-features reveal-children">

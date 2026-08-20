@@ -50,7 +50,7 @@ export default function CompanyPage() {
         <h1>{korean ? <>수소 13년.<br />회사로 3년.</> : <>13 years in hydrogen.<br />3 years as a company.</>}</h1>
         <p>{korean
           ? "이에스티솔루션은 촉매부터 완성 스택까지 그린수소 생산 시스템을 직접 설계합니다. 10년이 넘는 기술 경험 위에 세워진 회사입니다."
-          : "EST Solution engineers green hydrogen production systems in-house, from catalyst to finished stack — built on technical experience developed over more than a decade."}</p>
+          : "EST Solution engineers green hydrogen production systems in-house, from catalyst to finished stack, built on technical experience developed over more than a decade."}</p>
         <div className="company-hero-actions"><a href="#team">{korean ? "팀 소개" : "Meet the team"}</a><a href="/contact">{korean ? "문의하기" : "Get in touch"}</a></div>
       </div>
     </section>
